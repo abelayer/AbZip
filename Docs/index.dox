@@ -1,0 +1,90 @@
+/**
+ * \mainpage AbZip - Qt/C++ class for creating and managing ZIP archives
+ *
+ * \section overview Overview
+ * 
+ * AbZip is a Qt based C++ class for creating Zip archives. It's not a wrapper for 
+ * other Zip/Unzip code but accesses the archives directly via QIODevice
+ *
+ * Why Qt?  Well if you are a C++ programmer and you want to create cross-platform
+ * applications or utilities, then Qt is simply the best out their!
+ * To learn more about Qt goto <a href="http://qt-project.org/doc/">official Qt documentation</a>
+ *
+ * AbZip features include:
+ * - Creating new or opening existing (Pkware v2.0) Zip archives.
+ * - Add files or entire folders to the archive
+ * - File name filters can be applied
+ * - Update existing files
+ * - Delete files from the archive (not many Zip classes do this as I found out, which
+ * is the reason I wrote these classes!)
+ * - Extract one or more files
+ * - Extract based on file name filters
+ * - Search for files, again using wildcard filters
+ * - Use Strong AES encryption instead of the default Pkware CRC base encryption
+ * - Supports 64bit archives.
+ * - Additional compression methods can easily be created and added (Currently I've
+ * added BZip2 but intend to start to add others later).
+ *
+ *
+ * \section download Download AbZip
+ *
+ * Downloads are available from <a
+ * href="https://github.com/abelayer/AbZip">AbZip project page on GitHub</a>.
+ *
+ * \section platforms Platforms supported
+ *
+ * AbZip has been tested on Windows using win32-g++ (MinGW)
+ * 
+ * No testing has been officially done on other systems as yet, but this will change in due course.
+ *
+ * \section requirements Requirements and Third-party code
+ *
+ * - Qt version 4 or 5.  See <a href="http://www.qt.io/">Qt Home Page</a>
+ * - zlib - This comes as part of Qt 4 and 5.
+ * - AES - Encryption code by '<a href='http://http://www.gladman.me.uk/AES'>Brian Gladman</a>'
+ * - BZip2 - by  '<a href='http://www.bzip.org'>Julian Seward</a>'
+ *
+ * \section building Building, testing and installing
+ *
+ * To build the library, run:
+\verbatim
+$ cd /yourprojects/abzip
+$ qmake [PREFIX=where-to-install]
+$ make
+\endverbatim
+ *
+ * Make sure that you have Qt 4/5 installed with all required headers and
+ * utilities.
+ * If you need to specify additional include path or libraries, use
+ * qmake features (see qmake reference in the Qt documentation). 
+ *
+ * To install compiled library:
+\verbatim
+$ make install
+\endverbatim
+ *
+ * By default, AbZip compiles as a DLL/SO, but you have other
+ * options:
+ * - Just copy appropriate source files to your project and use them.
+ * - Compile it as a static library using CONFIG += staticlib qmake
+ * option. 
+ *
+ * \section using Using
+ *
+ * See \ref usage "usage page".
+ * 
+ * \section contacts Authors and contacts
+ *
+ * This code has been written by Andy Bray.
+ *
+ * To report bugs or to post any ideas or improvements, use
+ * GitHub <a
+ * href="https://github.com/abelayer/AbZip/issues">Issues</a>.
+ * If you want to send me a private message, please do so via 
+ * web@gabelay.com
+ *
+ * Do not use e-mail to report bugs, please. Reporting bugs and problems
+ * with the SourceForge.net's bug report system.
+ *
+ * Copyright (C) 2016 Andy Bray and contributors
+ **/

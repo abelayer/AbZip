@@ -1,0 +1,64 @@
+/** \page usage Usage
+ * 
+ * This page provides general information on AbZip usage. 
+ *
+ * \section examples Examples
+ *
+ * Compressing a single file and overwrite old the one if it exists
+  \verbatim
+	AbZip zip( "theFile.zip" );
+	if ( !zip.addFile( "theFile.doc" ))
+		qDebug() << zip.errorString();
+	zip.close();
+ \endverbatim
+ *
+ * Add all files in a folder including sub folders and continue if errors occur
+  \verbatim
+	AbZip zip( "theArchive.zip" );
+	if ( !zip.addDirectory( "/myFiles/filesToBackup", AbZip::ContinueOnError | AbZip::Recursive ))
+		qDebug() << zip.errorCount() << "errors occured.\n" << zip.errorString();
+	zip.close();
+ \endverbatim
+
+ * Add all JPG and PDF files in a folder including sub folders and encrypt them
+  \verbatim
+	AbZip zip( "theArchive.zip" );
+	zip.setPassword("myPasswordHere");
+	zip.setFilterNames( QStringList() << "*.jpg" << ".pdf" << ".jpeg" );
+	if ( !zip.addDirectory( "/myFiles/filesToBackup", AbZip::Recursive ))
+		qDebug() << zip.errorCount() << "errors occured.\n" << zip.errorString();
+	zip.close();
+ \endverbatim
+ *
+ * \b Note: We haven't needed to called zip.open( AbZip::modeReadWrite ); here as 
+ * both addFile() and addDirectory() detect the archive is not open and automatically open
+ * it in the required mode.
+ *
+ *
+ * Extract all files from the archive
+  \verbatim
+	AbZip zip( "theArchive.zip" );
+	if ( !zip.extractAll( "/myFiles/restoreFiles" ))
+		qDebug() << zip.errorCount() << "errors occured.\n" << zip.errorString();
+	zip.close();
+ \endverbatim
+ *
+ * Search for all PDF files within an archive. Use setFilterNames() to add more 
+ * name filters to this search if you like.
+  \verbatim
+	AbZip zip( "theArchive.zip" );
+	QList<ZipFileInfo> list = zip.findFile( "*.pdf", AbZip::Recursive );
+	zip.close();
+ \endverbatim
+
+ * \section error-handling Error handling
+ *
+ * Almost all function that perform actions on the archive will return
+ * either \c true or \c false indicating success or failure. The main exception to this
+ * is the findFile() fucntion that returns a QList of found entries.
+ * You should always check the return value for errors.
+ *
+ * To get information about the error use the functions errorCode(), errorString()
+ * and errorCount().
+ *
+ **/
