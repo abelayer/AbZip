@@ -1,0 +1,137 @@
+\hypertarget{class_ab_zip_private}{}\section{Ab\+Zip\+Private Class Reference}
+\label{class_ab_zip_private}\index{Ab\+Zip\+Private@{Ab\+Zip\+Private}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Ab\+Zip\+Private} (const Q\+String \&\+\_\+zip\+Name)\hypertarget{class_ab_zip_private_a4b9446dc9341e2ca9bb46003a3ce0b19}{}\label{class_ab_zip_private_a4b9446dc9341e2ca9bb46003a3ce0b19}
+
+\item 
+{\bfseries Ab\+Zip\+Private} (Q\+I\+O\+Device $\ast$\+\_\+io\+Device)\hypertarget{class_ab_zip_private_a560fc257b354f557310b37c9db4c5c51}{}\label{class_ab_zip_private_a560fc257b354f557310b37c9db4c5c51}
+
+\item 
+bool {\bfseries open} (\hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54e}{Ab\+Zip\+::\+Mode} mode, Ab\+Zip\+::\+Zip\+Options options=Ab\+Zip\+::\+None)\hypertarget{class_ab_zip_private_adb85555f5f818b2afa2348aaa68d73da}{}\label{class_ab_zip_private_adb85555f5f818b2afa2348aaa68d73da}
+
+\item 
+void {\bfseries close} ()\hypertarget{class_ab_zip_private_accee77a58af834eb4a68071e4950f6f6}{}\label{class_ab_zip_private_accee77a58af834eb4a68071e4950f6f6}
+
+\item 
+void {\bfseries flush\+And\+Close} ()\hypertarget{class_ab_zip_private_ad503bba30b170e1b2b1fae3e2a4e5c03}{}\label{class_ab_zip_private_ad503bba30b170e1b2b1fae3e2a4e5c03}
+
+\item 
+bool {\bfseries is\+Open} () const \hypertarget{class_ab_zip_private_a0bc0a973feb9ff7f5a776013c8131a3e}{}\label{class_ab_zip_private_a0bc0a973feb9ff7f5a776013c8131a3e}
+
+\item 
+bool {\bfseries check\+Auto\+Open\+Write} ()\hypertarget{class_ab_zip_private_a7d199196f7c51afceb093eb6b0465763}{}\label{class_ab_zip_private_a7d199196f7c51afceb093eb6b0465763}
+
+\item 
+bool {\bfseries check\+Auto\+Open\+Read} ()\hypertarget{class_ab_zip_private_ae4bf08ed224d162e40f060aeb337c75b}{}\label{class_ab_zip_private_ae4bf08ed224d162e40f060aeb337c75b}
+
+\item 
+bool {\bfseries backup\+Or\+Delete\+Current\+Zip} (Ab\+Zip\+::\+Zip\+Options options)\hypertarget{class_ab_zip_private_ad4766b24f751ccd174e3980222b750cd}{}\label{class_ab_zip_private_ad4766b24f751ccd174e3980222b750cd}
+
+\item 
+bool {\bfseries add\+File} (const Q\+String \&file, const Q\+String \&root=Q\+String(), Ab\+Zip\+::\+Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Ab\+Zip\+::\+Add\+Relative\+Paths}, int level=-\/1)\hypertarget{class_ab_zip_private_a7a73c686a3eb43a0464f4dda7ba3395d}{}\label{class_ab_zip_private_a7a73c686a3eb43a0464f4dda7ba3395d}
+
+\item 
+bool {\bfseries add\+File} (const Q\+File\+Info \&src\+File\+Info, const Q\+String \&arc\+File, Ab\+Zip\+::\+Zip\+Options options, int level=-\/1)\hypertarget{class_ab_zip_private_a8daee9e359ace4960db292f042834265}{}\label{class_ab_zip_private_a8daee9e359ace4960db292f042834265}
+
+\item 
+bool {\bfseries add\+Directory} (const Q\+String \&src\+Path, const Q\+String \&root=Q\+String(), Ab\+Zip\+::\+Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Ab\+Zip\+::\+Add\+Relative\+Paths}, int level=-\/1)\hypertarget{class_ab_zip_private_a59e04950ffdaa41d0f9f86273423aabb}{}\label{class_ab_zip_private_a59e04950ffdaa41d0f9f86273423aabb}
+
+\item 
+quint32 {\bfseries get\+Best\+Compression\+Method} (Q\+File \&src\+File\+Info, Ab\+Zip\+::\+Zip\+Options options)\hypertarget{class_ab_zip_private_a777df1bb1757b194966140a828976b6f}{}\label{class_ab_zip_private_a777df1bb1757b194966140a828976b6f}
+
+\item 
+bool {\bfseries extract\+File} (const Q\+String \&filename, const Q\+String \&dirname, Ab\+Zip\+::\+Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Ab\+Zip\+::\+Extract\+Paths})\hypertarget{class_ab_zip_private_aac5149eb6cdf6774238c622d7f6bfcf6}{}\label{class_ab_zip_private_aac5149eb6cdf6774238c622d7f6bfcf6}
+
+\item 
+bool {\bfseries extract\+File} (\hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$header, const Q\+String \&dest\+Path, Ab\+Zip\+::\+Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Ab\+Zip\+::\+Extract\+Paths})\hypertarget{class_ab_zip_private_ac7839b9f51569a004e6bd3a3c59813ea}{}\label{class_ab_zip_private_ac7839b9f51569a004e6bd3a3c59813ea}
+
+\item 
+bool {\bfseries extract\+All} (\hyperlink{class_ab_zip}{Ab\+Zip} \&zip, const Q\+String \&dest\+Path, const Q\+String \&from\+Root, Ab\+Zip\+::\+Zip\+Options options)\hypertarget{class_ab_zip_private_abe875a91034b5744b919ebc677369867}{}\label{class_ab_zip_private_abe875a91034b5744b919ebc677369867}
+
+\item 
+bool {\bfseries delete\+File} (\hyperlink{class_ab_zip}{Ab\+Zip} \&zip, const Q\+String \&filename, Ab\+Zip\+::\+Zip\+Options options=Ab\+Zip\+::\+None)\hypertarget{class_ab_zip_private_a735b7def1d063f36f81ee54ef1f0f56e}{}\label{class_ab_zip_private_a735b7def1d063f36f81ee54ef1f0f56e}
+
+\item 
+bool {\bfseries delete\+File} (\hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$header)\hypertarget{class_ab_zip_private_ad07f6a206e914ed0126a41647dc89c61}{}\label{class_ab_zip_private_ad07f6a206e914ed0126a41647dc89c61}
+
+\item 
+Q\+List$<$ \hyperlink{class_zip_file_info}{Zip\+File\+Info} $>$ {\bfseries find\+File} (\hyperlink{class_ab_zip}{Ab\+Zip} \&zip, const Q\+String \&filename, const Q\+String \&root, Ab\+Zip\+::\+Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Ab\+Zip\+::\+Recursive})\hypertarget{class_ab_zip_private_a0c941854749d649ec045fd9690e2938b}{}\label{class_ab_zip_private_a0c941854749d649ec045fd9690e2938b}
+
+\item 
+bool {\bfseries check\+Integrity} ()\hypertarget{class_ab_zip_private_abb0e34d340acbbf877069c5db214b516}{}\label{class_ab_zip_private_abb0e34d340acbbf877069c5db214b516}
+
+\item 
+bool {\bfseries set\+Error} (int err, Q\+String msg=Q\+String())\hypertarget{class_ab_zip_private_a75ddc3019dc240c024c69f2782b3e2f5}{}\label{class_ab_zip_private_a75ddc3019dc240c024c69f2782b3e2f5}
+
+\item 
+\hyperlink{class_zip_info}{Zip\+Info} {\bfseries get\+Info} ()\hypertarget{class_ab_zip_private_adb07787f8d2a739dd1146b6914c941ec}{}\label{class_ab_zip_private_adb07787f8d2a739dd1146b6914c941ec}
+
+\item 
+void {\bfseries init} ()\hypertarget{class_ab_zip_private_a1ad0da6e65d6e48f075bd1c29368203b}{}\label{class_ab_zip_private_a1ad0da6e65d6e48f075bd1c29368203b}
+
+\item 
+bool {\bfseries commit\+Deleted\+Files} ()\hypertarget{class_ab_zip_private_a16c9aacaa32463322d5cea272c82d06f}{}\label{class_ab_zip_private_a16c9aacaa32463322d5cea272c82d06f}
+
+\item 
+bool {\bfseries write\+To\+Temp\+File} (Q\+I\+O\+Device $\ast$)\hypertarget{class_ab_zip_private_a781dcdeee540e1d325e286a3e32b6b34}{}\label{class_ab_zip_private_a781dcdeee540e1d325e286a3e32b6b34}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String {\bfseries zip\+Name}\hypertarget{class_ab_zip_private_a81f94dff576355c40f5e38981f3ee432}{}\label{class_ab_zip_private_a81f94dff576355c40f5e38981f3ee432}
+
+\item 
+qint32 {\bfseries files\+Added}\hypertarget{class_ab_zip_private_aa2de6a0ac5cbe7379dd60a51a1334de3}{}\label{class_ab_zip_private_aa2de6a0ac5cbe7379dd60a51a1334de3}
+
+\item 
+qint32 {\bfseries files\+Extracted}\hypertarget{class_ab_zip_private_aa75d147307696b4a0fdbbea10146b819}{}\label{class_ab_zip_private_aa75d147307696b4a0fdbbea10146b819}
+
+\item 
+qint32 {\bfseries files\+Deleted}\hypertarget{class_ab_zip_private_add26e0e24741e5ab0b89c315834b2455}{}\label{class_ab_zip_private_add26e0e24741e5ab0b89c315834b2455}
+
+\item 
+qint32 {\bfseries error\+Count}\hypertarget{class_ab_zip_private_ac6cfef360e79133dad8f3a2a50c73308}{}\label{class_ab_zip_private_ac6cfef360e79133dad8f3a2a50c73308}
+
+\item 
+Q\+I\+O\+Device $\ast$ {\bfseries io\+Device}\hypertarget{class_ab_zip_private_a0db72c767f5237c4c9d33f1e7c05af20}{}\label{class_ab_zip_private_a0db72c767f5237c4c9d33f1e7c05af20}
+
+\item 
+Q\+String {\bfseries password}\hypertarget{class_ab_zip_private_abe28c4269c1efe3f1eda74733f47e5e9}{}\label{class_ab_zip_private_abe28c4269c1efe3f1eda74733f47e5e9}
+
+\item 
+Q\+String\+List {\bfseries name\+Filters}\hypertarget{class_ab_zip_private_a5e268df109bde420623f76d4d07d2176}{}\label{class_ab_zip_private_a5e268df109bde420623f76d4d07d2176}
+
+\item 
+int {\bfseries error\+Code}\hypertarget{class_ab_zip_private_aa3814c526b8d42b722cac76b5464c74e}{}\label{class_ab_zip_private_aa3814c526b8d42b722cac76b5464c74e}
+
+\item 
+Q\+String {\bfseries error\+Msg}\hypertarget{class_ab_zip_private_a431496abdf2fc2af01d23dc0107c1b9c}{}\label{class_ab_zip_private_a431496abdf2fc2af01d23dc0107c1b9c}
+
+\item 
+\hyperlink{class_zip_central_dir}{Zip\+Central\+Dir} $\ast$ {\bfseries central\+Dir}\hypertarget{class_ab_zip_private_ab5cadf9117b7ab6cc7711e93127af0fa}{}\label{class_ab_zip_private_ab5cadf9117b7ab6cc7711e93127af0fa}
+
+\item 
+Q\+List$<$ \hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ $>$ {\bfseries deleted\+Entries}\hypertarget{class_ab_zip_private_a32d7aa5413e5c9466b7acf2f7c48ef66}{}\label{class_ab_zip_private_a32d7aa5413e5c9466b7acf2f7c48ef66}
+
+\item 
+Q\+String\+List {\bfseries store\+These\+Types}\hypertarget{class_ab_zip_private_a512306be0adb15021037896ef86984b0}{}\label{class_ab_zip_private_a512306be0adb15021037896ef86984b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Zip\+Arcive}\hypertarget{class_ab_zip_private_aa1813ea3c4dcbbf3675ff0d4b4fb8f75}{}\label{class_ab_zip_private_aa1813ea3c4dcbbf3675ff0d4b4fb8f75}
+
+\item 
+class {\bfseries Zip\+Central\+Dir}\hypertarget{class_ab_zip_private_a291f425329925d1e089ba36a615980d1}{}\label{class_ab_zip_private_a291f425329925d1e089ba36a615980d1}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+abzip\+\_\+p.\+h\item 
+Ab\+Zip.\+cpp\end{DoxyCompactItemize}

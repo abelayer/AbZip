@@ -1,0 +1,65 @@
+\hypertarget{class_extra_fields}{}\section{Extra\+Fields Class Reference}
+\label{class_extra_fields}\index{Extra\+Fields@{Extra\+Fields}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Extra\+Fields} (const Q\+Byte\+Array \&fields)\hypertarget{class_extra_fields_a225c308bca6def17f43d6aae21ea13d9}{}\label{class_extra_fields_a225c308bca6def17f43d6aae21ea13d9}
+
+\item 
+virtual \hyperlink{class_extra_fields}{Extra\+Fields} \& {\bfseries operator=} (const \hyperlink{class_extra_fields}{Extra\+Fields} \&)\hypertarget{class_extra_fields_a30882a2550f75ebdce056f5fc15122aa}{}\label{class_extra_fields_a30882a2550f75ebdce056f5fc15122aa}
+
+\item 
+bool {\bfseries read} (const Q\+Byte\+Array \&fields)\hypertarget{class_extra_fields_ab62551d08d358aa020204f443ba553b5}{}\label{class_extra_fields_ab62551d08d358aa020204f443ba553b5}
+
+\item 
+Q\+Byte\+Array {\bfseries write} ()\hypertarget{class_extra_fields_a3df57227bc4d9ebdd645672c54d642d3}{}\label{class_extra_fields_a3df57227bc4d9ebdd645672c54d642d3}
+
+\item 
+bool {\bfseries add} (quint16 header\+ID, const Q\+Byte\+Array \&data)\hypertarget{class_extra_fields_add3e1980ff4e1a3b6b5219dfc5400c49}{}\label{class_extra_fields_add3e1980ff4e1a3b6b5219dfc5400c49}
+
+\item 
+bool {\bfseries zip64} (qint64 $\ast$uncompress\+Size, qint64 $\ast$compress\+Size=0, qint64 $\ast$offset=0)\hypertarget{class_extra_fields_a6cde92fd3de03e3e391f70dae0a6966e}{}\label{class_extra_fields_a6cde92fd3de03e3e391f70dae0a6966e}
+
+\item 
+void {\bfseries set\+Zip64} (qint64 uncompress\+Size, qint64 compress\+Size=0, qint64 offset=0)\hypertarget{class_extra_fields_a0464677c39751fac0ec07a68997609c9}{}\label{class_extra_fields_a0464677c39751fac0ec07a68997609c9}
+
+\item 
+bool {\bfseries ntfs} (qint64 $\ast$mtime=0, qint64 $\ast$atime=0, qint64 $\ast$ctime=0)\hypertarget{class_extra_fields_a9ad227cf0242111ec3cf83dbd529a3f9}{}\label{class_extra_fields_a9ad227cf0242111ec3cf83dbd529a3f9}
+
+\item 
+void {\bfseries set\+Ntfs} (qint64 mtime, qint64 atime, qint64 ctime)\hypertarget{class_extra_fields_a8aa4efde33082052f1b72e24f7f28373}{}\label{class_extra_fields_a8aa4efde33082052f1b72e24f7f28373}
+
+\item 
+bool {\bfseries timestamp} (qint64 $\ast$mtime, qint64 $\ast$atime=0, qint64 $\ast$ctime=0)\hypertarget{class_extra_fields_a8282fae53282379c57c4a728c91debe8}{}\label{class_extra_fields_a8282fae53282379c57c4a728c91debe8}
+
+\item 
+void {\bfseries set\+Time\+Stamp} (qint64 mtime, qint64 atime, qint64 ctime)\hypertarget{class_extra_fields_a50b151989f6bd39f75f70cc766958a7b}{}\label{class_extra_fields_a50b151989f6bd39f75f70cc766958a7b}
+
+\item 
+bool {\bfseries unix} (qint64 $\ast$mtime, qint64 $\ast$atime=0)\hypertarget{class_extra_fields_a37c4de1bd7d3c4a162b935c91636d907}{}\label{class_extra_fields_a37c4de1bd7d3c4a162b935c91636d907}
+
+\item 
+void {\bfseries set\+Unix} (qint64 mtime, qint64 atime)\hypertarget{class_extra_fields_a040c6b4ac71ee443a0ff3f3e42fd6856}{}\label{class_extra_fields_a040c6b4ac71ee443a0ff3f3e42fd6856}
+
+\item 
+bool {\bfseries get\+Win\+Zip\+A\+ES} (quint16 \&method, quint8 \&strength)\hypertarget{class_extra_fields_a5bad9761cc868f6308dd94c5d964bd6c}{}\label{class_extra_fields_a5bad9761cc868f6308dd94c5d964bd6c}
+
+\item 
+void {\bfseries set\+Win\+Zip\+A\+ES} (quint16 method)\hypertarget{class_extra_fields_aedb7c21caa58ae04b52bf3c1573285a8}{}\label{class_extra_fields_aedb7c21caa58ae04b52bf3c1573285a8}
+
+\item 
+bool {\bfseries unicode} (Q\+String \&name, quint16 header\+ID)\hypertarget{class_extra_fields_aea83aaa7e5853d0d1d831f73d24978e1}{}\label{class_extra_fields_aea83aaa7e5853d0d1d831f73d24978e1}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Map$<$ quint16, Q\+Byte\+Array $>$ {\bfseries map\+Fields}\hypertarget{class_extra_fields_ad018997adafb683c8146044945c91055}{}\label{class_extra_fields_ad018997adafb683c8146044945c91055}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Extra\+Fields.\+h\item 
+Extra\+Fields.\+cpp\end{DoxyCompactItemize}

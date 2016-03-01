@@ -1,0 +1,80 @@
+\hypertarget{class_zip_file_info}{}\section{Zip\+File\+Info Class Reference}
+\label{class_zip_file_info}\index{Zip\+File\+Info@{Zip\+File\+Info}}
+
+
+This class holds information about a file stored within the archive file.  
+
+
+
+
+{\ttfamily \#include $<$Zip\+File\+Info.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Zip\+File\+Info} (Central\+Dir\+File\+Header $\ast$header)\hypertarget{class_zip_file_info_a53eaec8e89f609f959be56f472d4ee6d}{}\label{class_zip_file_info_a53eaec8e89f609f959be56f472d4ee6d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String \hyperlink{class_zip_file_info_ac32470d6ef45541b30f12a12fc603192}{file\+Path}\hypertarget{class_zip_file_info_ac32470d6ef45541b30f12a12fc603192}{}\label{class_zip_file_info_ac32470d6ef45541b30f12a12fc603192}
+
+\begin{DoxyCompactList}\small\item\em The full path and filename as stored in the archive. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_zip_file_info_aa6614798700a47f90f46f6a91674c954}{comment}\hypertarget{class_zip_file_info_aa6614798700a47f90f46f6a91674c954}{}\label{class_zip_file_info_aa6614798700a47f90f46f6a91674c954}
+
+\begin{DoxyCompactList}\small\item\em The comment assigned to this file. \end{DoxyCompactList}\item 
+Q\+Date\+Time \hyperlink{class_zip_file_info_a20e1b125e61f8cd47fe31d17b57358c4}{last\+Modified\+Date}\hypertarget{class_zip_file_info_a20e1b125e61f8cd47fe31d17b57358c4}{}\label{class_zip_file_info_a20e1b125e61f8cd47fe31d17b57358c4}
+
+\begin{DoxyCompactList}\small\item\em The last modifies date of the file. \end{DoxyCompactList}\item 
+quint32 \hyperlink{class_zip_file_info_a7e4527e9861accbb956312499f773e5f}{crc32}\hypertarget{class_zip_file_info_a7e4527e9861accbb956312499f773e5f}{}\label{class_zip_file_info_a7e4527e9861accbb956312499f773e5f}
+
+\begin{DoxyCompactList}\small\item\em The C\+RC checksum for the stored file. \end{DoxyCompactList}\item 
+quint64 \hyperlink{class_zip_file_info_a35a18493b5bfe8d4fcf256e808582b25}{compressed\+Size}\hypertarget{class_zip_file_info_a35a18493b5bfe8d4fcf256e808582b25}{}\label{class_zip_file_info_a35a18493b5bfe8d4fcf256e808582b25}
+
+\begin{DoxyCompactList}\small\item\em The compressed side of the file in bytes. \end{DoxyCompactList}\item 
+quint64 \hyperlink{class_zip_file_info_ade1c9213a715166ab723e738ad704289}{uncompressed\+Size}\hypertarget{class_zip_file_info_ade1c9213a715166ab723e738ad704289}{}\label{class_zip_file_info_ade1c9213a715166ab723e738ad704289}
+
+\begin{DoxyCompactList}\small\item\em The uncompressed (or original) size of the file. \end{DoxyCompactList}\item 
+quint32 \hyperlink{class_zip_file_info_a70b6f0f38965a8e768724b23ae07ccfc}{compression\+Method}\hypertarget{class_zip_file_info_a70b6f0f38965a8e768724b23ae07ccfc}{}\label{class_zip_file_info_a70b6f0f38965a8e768724b23ae07ccfc}
+
+\begin{DoxyCompactList}\small\item\em Pkware compression method (See P\+K\+W\+A\+RE A\+P\+P\+N\+O\+T\+E.\+T\+XT section 4.\+4.\+5) \end{DoxyCompactList}\item 
+quint32 \hyperlink{class_zip_file_info_a3c716f122b4ef2855fda29c85134afc9}{version}
+\item 
+quint32 \hyperlink{class_zip_file_info_a5d76d9072b0814a107593ebde156b847}{made\+By\+OS}\hypertarget{class_zip_file_info_a5d76d9072b0814a107593ebde156b847}{}\label{class_zip_file_info_a5d76d9072b0814a107593ebde156b847}
+
+\begin{DoxyCompactList}\small\item\em P\+K\+W\+A\+RE OS made by. See P\+K\+W\+A\+RE A\+P\+P\+N\+O\+T\+E.\+T\+XT section 4.\+4.\+2.\+2. \end{DoxyCompactList}\item 
+Q\+File\+::\+Permissions \hyperlink{class_zip_file_info_a88fd608b8464a8819e961dc8502f7358}{permissions}\hypertarget{class_zip_file_info_a88fd608b8464a8819e961dc8502f7358}{}\label{class_zip_file_info_a88fd608b8464a8819e961dc8502f7358}
+
+\begin{DoxyCompactList}\small\item\em The original file permission (e.\+g. read/write/execute etc.) \end{DoxyCompactList}\item 
+quint8 \hyperlink{class_zip_file_info_add65b96e7292b4b9cc64df88df825757}{attributes}
+\item 
+bool \hyperlink{class_zip_file_info_abf01ca906861f366d319c8225080986b}{is\+Folder}\hypertarget{class_zip_file_info_abf01ca906861f366d319c8225080986b}{}\label{class_zip_file_info_abf01ca906861f366d319c8225080986b}
+
+\begin{DoxyCompactList}\small\item\em true if this entry is a folder only and not a file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_zip_file_info_a7c95573352b13d2a8842584ed8ac6a4f}{is\+Encrypted}\hypertarget{class_zip_file_info_a7c95573352b13d2a8842584ed8ac6a4f}{}\label{class_zip_file_info_a7c95573352b13d2a8842584ed8ac6a4f}
+
+\begin{DoxyCompactList}\small\item\em true if this file is encrypted. See set\+Password() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds information about a file stored within the archive file. 
+
+\begin{DoxySeeAlso}{See also}
+find\+Find() 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Data Documentation}
+\index{Zip\+File\+Info@{Zip\+File\+Info}!version@{version}}
+\index{version@{version}!Zip\+File\+Info@{Zip\+File\+Info}}
+\subsubsection[{\texorpdfstring{version}{version}}]{\setlength{\rightskip}{0pt plus 5cm}quint32 Zip\+File\+Info\+::version}\hypertarget{class_zip_file_info_a3c716f122b4ef2855fda29c85134afc9}{}\label{class_zip_file_info_a3c716f122b4ef2855fda29c85134afc9}
+Version made by (See P\+K\+W\+A\+RE A\+P\+P\+N\+O\+T\+E.\+T\+XT section 4.\+4.\+2). Major version/10, minor version \% 10 (e.\+g. version = 45 which is 4.\+5) \index{Zip\+File\+Info@{Zip\+File\+Info}!attributes@{attributes}}
+\index{attributes@{attributes}!Zip\+File\+Info@{Zip\+File\+Info}}
+\subsubsection[{\texorpdfstring{attributes}{attributes}}]{\setlength{\rightskip}{0pt plus 5cm}quint8 Zip\+File\+Info\+::attributes}\hypertarget{class_zip_file_info_add65b96e7292b4b9cc64df88df825757}{}\label{class_zip_file_info_add65b96e7292b4b9cc64df88df825757}
+D\+OS base file attributes (e.\+g archive, system, read only etc.) Bit 1 = Archive, Bit 2 = Hidden, Bit 4 = System, Bit 5 = folder, Bit 6 = Archive 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Zip\+File\+Info.\+h\item 
+Zip\+File\+Info.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,83 @@
+\hypertarget{class_central_dir_file_header}{}\section{Central\+Dir\+File\+Header Class Reference}
+\label{class_central_dir_file_header}\index{Central\+Dir\+File\+Header@{Central\+Dir\+File\+Header}}
+Inheritance diagram for Central\+Dir\+File\+Header\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_central_dir_file_header}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Central\+Dir\+File\+Header} (Q\+Object $\ast$parent=0)\hypertarget{class_central_dir_file_header_a936a94fc3dc92bd5757f490e16d5a7d2}{}\label{class_central_dir_file_header_a936a94fc3dc92bd5757f490e16d5a7d2}
+
+\item 
+virtual void {\bfseries init\+From\+File} (const Q\+File\+Info \&file)\hypertarget{class_central_dir_file_header_aa6f76dcbb002b69247ca1c2b1a6e733d}{}\label{class_central_dir_file_header_aa6f76dcbb002b69247ca1c2b1a6e733d}
+
+\item 
+virtual bool {\bfseries read} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_central_dir_file_header_aa2de28fb3fbd63c69b9d4041d77f7e67}{}\label{class_central_dir_file_header_aa2de28fb3fbd63c69b9d4041d77f7e67}
+
+\item 
+virtual qint64 {\bfseries write} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_central_dir_file_header_a953bac15dceb1fdb7f82856354fe77fd}{}\label{class_central_dir_file_header_a953bac15dceb1fdb7f82856354fe77fd}
+
+\item 
+void {\bfseries set\+Permissions} (Q\+File\+::\+Permissions perm, bool is\+Dir)\hypertarget{class_central_dir_file_header_af151ff82537933da3b329b6b76f47027}{}\label{class_central_dir_file_header_af151ff82537933da3b329b6b76f47027}
+
+\item 
+Q\+File\+::\+Permissions {\bfseries get\+Permissions} ()\hypertarget{class_central_dir_file_header_a072070fd1e9e189c8feeea1fab24d8fc}{}\label{class_central_dir_file_header_a072070fd1e9e189c8feeea1fab24d8fc}
+
+\item 
+virtual void {\bfseries set\+Sizes} (qint64 uncomp\+Size, qint64 comp\+Size, qint64 offset)\hypertarget{class_central_dir_file_header_a1daced3f8b961a0b73a2e554ab908d95}{}\label{class_central_dir_file_header_a1daced3f8b961a0b73a2e554ab908d95}
+
+\item 
+virtual quint64 {\bfseries get\+Relative\+Offset} ()\hypertarget{class_central_dir_file_header_adcfbe672c809b8efea26b79af3d6b3ac}{}\label{class_central_dir_file_header_adcfbe672c809b8efea26b79af3d6b3ac}
+
+\item 
+virtual bool {\bfseries is\+Directory} ()\hypertarget{class_central_dir_file_header_a05613bcf1e42a8fc38795a42749fe725}{}\label{class_central_dir_file_header_a05613bcf1e42a8fc38795a42749fe725}
+
+\item 
+bool {\bfseries is\+Valid} ()\hypertarget{class_central_dir_file_header_af57db3daefe8a0e327931f0cd4eda026}{}\label{class_central_dir_file_header_af57db3daefe8a0e327931f0cd4eda026}
+
+\item 
+virtual quint32 {\bfseries size} ()\hypertarget{class_central_dir_file_header_aefedef9f1906aa8721256c62ae7681ea}{}\label{class_central_dir_file_header_aefedef9f1906aa8721256c62ae7681ea}
+
+\item 
+virtual \hyperlink{class_zip_file_info}{Zip\+File\+Info} {\bfseries get\+File\+Info} ()\hypertarget{class_central_dir_file_header_a494d0d293c9c0afa90e323cf817c9099}{}\label{class_central_dir_file_header_a494d0d293c9c0afa90e323cf817c9099}
+
+\item 
+void {\bfseries set\+File\+Name} (const Q\+String \&filename)\hypertarget{class_central_dir_file_header_a0b163566e9527c2a2837fb21e90a8f79}{}\label{class_central_dir_file_header_a0b163566e9527c2a2837fb21e90a8f79}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+quint16 {\bfseries version\+Made\+By}\hypertarget{class_central_dir_file_header_a77151181bd4959798b24e3eabcffc175}{}\label{class_central_dir_file_header_a77151181bd4959798b24e3eabcffc175}
+
+\item 
+quint16 {\bfseries file\+Comment\+Length}\hypertarget{class_central_dir_file_header_afd3e9292575de99acf41c217bf7c2ab6}{}\label{class_central_dir_file_header_afd3e9292575de99acf41c217bf7c2ab6}
+
+\item 
+quint16 {\bfseries disk\+Number\+Start}\hypertarget{class_central_dir_file_header_aa9e6ee7f961258189c65b2bab9f5372a}{}\label{class_central_dir_file_header_aa9e6ee7f961258189c65b2bab9f5372a}
+
+\item 
+quint16 {\bfseries internal\+File\+Attr}\hypertarget{class_central_dir_file_header_ab638cf854455dfcf5ed68ef537beb7bf}{}\label{class_central_dir_file_header_ab638cf854455dfcf5ed68ef537beb7bf}
+
+\item 
+quint32 {\bfseries external\+File\+Attr}\hypertarget{class_central_dir_file_header_aa2808c73e4aa65d594fd0894d801a235}{}\label{class_central_dir_file_header_aa2808c73e4aa65d594fd0894d801a235}
+
+\item 
+quint32 {\bfseries relative\+Offset}\hypertarget{class_central_dir_file_header_a2c7d9e91e348f35315d85f5de7b79abf}{}\label{class_central_dir_file_header_a2c7d9e91e348f35315d85f5de7b79abf}
+
+\item 
+Q\+Byte\+Array {\bfseries comment}\hypertarget{class_central_dir_file_header_a3bd3d7a3e379fcc96812329d74537f09}{}\label{class_central_dir_file_header_a3bd3d7a3e379fcc96812329d74537f09}
+
+\item 
+Q\+String {\bfseries s\+File\+Name}\hypertarget{class_central_dir_file_header_a79ae94905014b0e2d4d644d8d98eb807}{}\label{class_central_dir_file_header_a79ae94905014b0e2d4d644d8d98eb807}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Central\+Dir\+File\+Header.\+h\item 
+Central\+Dir\+File\+Header.\+cpp\end{DoxyCompactItemize}

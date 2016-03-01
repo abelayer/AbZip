@@ -1,0 +1,95 @@
+\hypertarget{class_zip_central_dir}{}\section{Zip\+Central\+Dir Class Reference}
+\label{class_zip_central_dir}\index{Zip\+Central\+Dir@{Zip\+Central\+Dir}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ {\bfseries find\+File} (const Q\+String \&file, Ab\+Zip\+::\+Zip\+Options options=Ab\+Zip\+::\+None)\hypertarget{class_zip_central_dir_a9e3d196b1b30e4b84999bb765bb4443c}{}\label{class_zip_central_dir_a9e3d196b1b30e4b84999bb765bb4443c}
+
+\item 
+bool {\bfseries read} (Q\+I\+O\+Device $\ast$io\+Device, \hyperlink{class_ab_zip_private}{Ab\+Zip\+Private} $\ast$zip)\hypertarget{class_zip_central_dir_aca04f8c6d0353584c834e1b2a3fe0492}{}\label{class_zip_central_dir_aca04f8c6d0353584c834e1b2a3fe0492}
+
+\item 
+qint64 {\bfseries write} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_zip_central_dir_ac319fbf93540ef44ba309463538ab8a1}{}\label{class_zip_central_dir_ac319fbf93540ef44ba309463538ab8a1}
+
+\item 
+void {\bfseries reset} ()\hypertarget{class_zip_central_dir_a90000923d889c64ea60ca97a32c64bde}{}\label{class_zip_central_dir_a90000923d889c64ea60ca97a32c64bde}
+
+\item 
+void {\bfseries set\+Modified} ()\hypertarget{class_zip_central_dir_a04663567e505f98a16f15051f1cf5aef}{}\label{class_zip_central_dir_a04663567e505f98a16f15051f1cf5aef}
+
+\item 
+bool {\bfseries is\+Modified} ()\hypertarget{class_zip_central_dir_a4d2a572fa388c457664c42b3db2c8ed5}{}\label{class_zip_central_dir_a4d2a572fa388c457664c42b3db2c8ed5}
+
+\item 
+void {\bfseries set\+Offset\+To\+Start\+Of\+CD} (qint64 pos)\hypertarget{class_zip_central_dir_aa38e1915249b5efc081607a789f99389}{}\label{class_zip_central_dir_aa38e1915249b5efc081607a789f99389}
+
+\item 
+qint64 {\bfseries offset\+To\+Start\+Of\+CD} ()\hypertarget{class_zip_central_dir_ad5a7357b59b1b2d407e0b6d94487bf87}{}\label{class_zip_central_dir_ad5a7357b59b1b2d407e0b6d94487bf87}
+
+\item 
+qint64 {\bfseries number\+Of\+Entries} ()\hypertarget{class_zip_central_dir_a5197e4c5b3773590c545aa8ce680262a}{}\label{class_zip_central_dir_a5197e4c5b3773590c545aa8ce680262a}
+
+\item 
+void {\bfseries set\+Number\+Of\+Entries} (qint64 num)\hypertarget{class_zip_central_dir_a95e84fe272a63c27179490f1d0756e64}{}\label{class_zip_central_dir_a95e84fe272a63c27179490f1d0756e64}
+
+\item 
+qint64 {\bfseries size\+Of\+CD} ()\hypertarget{class_zip_central_dir_a9cf10ec756a92328125ed75a158c28a1}{}\label{class_zip_central_dir_a9cf10ec756a92328125ed75a158c28a1}
+
+\item 
+void {\bfseries set\+Size\+Of\+CD} (qint64 size)\hypertarget{class_zip_central_dir_a167da4c36be3f138d3507118c0d2e804}{}\label{class_zip_central_dir_a167da4c36be3f138d3507118c0d2e804}
+
+\item 
+void {\bfseries adjust\+Offsets} (qint64 from\+Offset, qint64 size)\hypertarget{class_zip_central_dir_a9e390a8fa0359913f46ab5b607a19f9c}{}\label{class_zip_central_dir_a9e390a8fa0359913f46ab5b607a19f9c}
+
+\item 
+\hyperlink{class_zip_info}{Zip\+Info} {\bfseries get\+Info} ()\hypertarget{class_zip_central_dir_a592b4f4bc65a11805fad0bf669a87451}{}\label{class_zip_central_dir_a592b4f4bc65a11805fad0bf669a87451}
+
+\item 
+qint64 {\bfseries locate\+Signature} (quint32 signature, Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_zip_central_dir_a14a2efad7b288924e81bdb726ddd7c53}{}\label{class_zip_central_dir_a14a2efad7b288924e81bdb726ddd7c53}
+
+\item 
+qint64 {\bfseries create\+Sorted\+Header} ()\hypertarget{class_zip_central_dir_a40ee6d012bab89f080e00fedae78dfd3}{}\label{class_zip_central_dir_a40ee6d012bab89f080e00fedae78dfd3}
+
+\item 
+\hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ {\bfseries get\+First\+File} ()\hypertarget{class_zip_central_dir_a4041e55f7ffdd57deef6e38fce7ce5ba}{}\label{class_zip_central_dir_a4041e55f7ffdd57deef6e38fce7ce5ba}
+
+\item 
+\hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ {\bfseries get\+Next\+File} ()\hypertarget{class_zip_central_dir_a056758bcfb0dd19b014cd4835f381782}{}\label{class_zip_central_dir_a056758bcfb0dd19b014cd4835f381782}
+
+\item 
+bool {\bfseries has\+Next\+File} ()\hypertarget{class_zip_central_dir_a27557b70b74ee3bc3e1af065e960edda}{}\label{class_zip_central_dir_a27557b70b74ee3bc3e1af065e960edda}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+List$<$ \hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ $>$ {\bfseries entries}\hypertarget{class_zip_central_dir_a506d248cd5827b0b7f7fc1381ed696f2}{}\label{class_zip_central_dir_a506d248cd5827b0b7f7fc1381ed696f2}
+
+\item 
+qint64 {\bfseries start\+Of\+End\+Of\+CD}\hypertarget{class_zip_central_dir_affee080f335ccb6b743eeaf0232da5d7}{}\label{class_zip_central_dir_affee080f335ccb6b743eeaf0232da5d7}
+
+\item 
+\hyperlink{class_end_of_central_dir}{End\+Of\+Central\+Dir} {\bfseries end\+Of\+Central\+Dir}\hypertarget{class_zip_central_dir_a9b7624ca3e35243ba2b33e99def96a5c}{}\label{class_zip_central_dir_a9b7624ca3e35243ba2b33e99def96a5c}
+
+\item 
+\hyperlink{class_end_of_central_dir64}{End\+Of\+Central\+Dir64} $\ast$ {\bfseries end\+Of\+Central\+Dir64}\hypertarget{class_zip_central_dir_aebcc853396d9d3290fe6a51719549251}{}\label{class_zip_central_dir_aebcc853396d9d3290fe6a51719549251}
+
+\item 
+bool {\bfseries modified}\hypertarget{class_zip_central_dir_a408b733a770aa177f5b076a4db519cc3}{}\label{class_zip_central_dir_a408b733a770aa177f5b076a4db519cc3}
+
+\item 
+bool {\bfseries is\+Valid}\hypertarget{class_zip_central_dir_af25f4bf2e6a9b4dbc1f2135fc4982f59}{}\label{class_zip_central_dir_af25f4bf2e6a9b4dbc1f2135fc4982f59}
+
+\item 
+Q\+Map$<$ Q\+String, \hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ $>$ {\bfseries sorted\+Entries}\hypertarget{class_zip_central_dir_a3643cdef8204bc6cbe8c94650d52e52f}{}\label{class_zip_central_dir_a3643cdef8204bc6cbe8c94650d52e52f}
+
+\item 
+Q\+Map\+Iterator$<$ Q\+String, \hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$ $>$ {\bfseries iterator\+Entries}\hypertarget{class_zip_central_dir_aa51019093eb039145251932f2786f73d}{}\label{class_zip_central_dir_aa51019093eb039145251932f2786f73d}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Zip\+Central\+Dir.\+h\item 
+Zip\+Central\+Dir.\+cpp\end{DoxyCompactItemize}

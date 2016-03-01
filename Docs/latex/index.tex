@@ -1,0 +1,55 @@
+\hypertarget{index_overview}{}\section{Overview}\label{index_overview}
+\hyperlink{class_ab_zip}{Ab\+Zip} is a Qt based C++ class for creating Zip archives. It\textquotesingle{}s not a wrapper for other Zip/\+Unzip code but accesses the archives directly via Q\+I\+O\+Device
+
+Why Qt? Well if you are a C++ programmer and you want to create cross-\/platform applications or utilities, then Qt is simply the best out their! To learn more about Qt goto \href{http://qt-project.org/doc/}{\tt official Qt documentation}
+
+\hyperlink{class_ab_zip}{Ab\+Zip} features include\+:
+\begin{DoxyItemize}
+\item Creating new or opening existing (Pkware v2.\+0) Zip archives.
+\item Add files or entire folders to the archive
+\item File name filters can be applied
+\item Update existing files
+\item Delete files from the archive (not many Zip classes do this as I found out, which is the reason I wrote these classes!)
+\item Extract one or more files
+\item Extract based on file name filters
+\item Search for files, again using wildcard filters
+\item Use Strong A\+ES encryption instead of the default Pkware C\+RC base encryption
+\item Supports 64bit archives.
+\item Additional compression methods can easily be created and added (Currently I\textquotesingle{}ve added B\+Zip2 but intend to start to add others later).
+\end{DoxyItemize}\hypertarget{index_download}{}\section{Download Ab\+Zip}\label{index_download}
+Downloads are available from \href{https://github.com/abelayer/AbZip}{\tt Ab\+Zip project page on Git\+Hub}.\hypertarget{index_platforms}{}\section{Platforms supported}\label{index_platforms}
+\hyperlink{class_ab_zip}{Ab\+Zip} has been tested on Windows using win32-\/g++ (Min\+GW)
+
+No testing has been officially done on other systems as yet, but this will change in due course.\hypertarget{index_requirements}{}\section{Requirements and Third-\/party code}\label{index_requirements}
+
+\begin{DoxyItemize}
+\item Qt version 4 or 5. See \href{http://www.qt.io/}{\tt Qt Home Page}
+\item zlib -\/ This comes as part of Qt 4 and 5.
+\item A\+ES -\/ Encryption code by \textquotesingle{}\href{http://http://www.gladman.me.uk/AES}{\tt Brian Gladman}\textquotesingle{}
+\item B\+Zip2 -\/ by \textquotesingle{}\href{http://www.bzip.org}{\tt Julian Seward}\textquotesingle{}
+\end{DoxyItemize}\hypertarget{index_building}{}\section{Building, testing and installing}\label{index_building}
+To build the library, run\+: \begin{DoxyVerb}$ cd /yourprojects/abzip
+$ qmake [PREFIX=where-to-install]
+$ make
+\end{DoxyVerb}
+
+
+Make sure that you have Qt 4/5 installed with all required headers and utilities. If you need to specify additional include path or libraries, use qmake features (see qmake reference in the Qt documentation).
+
+To install compiled library\+: \begin{DoxyVerb}$ make install
+\end{DoxyVerb}
+
+
+By default, \hyperlink{class_ab_zip}{Ab\+Zip} compiles as a D\+L\+L/\+SO, but you have other options\+:
+\begin{DoxyItemize}
+\item Just copy appropriate source files to your project and use them.
+\item Compile it as a static library using C\+O\+N\+F\+IG += staticlib qmake option.
+\end{DoxyItemize}\hypertarget{index_using}{}\section{Using}\label{index_using}
+See \hyperlink{usage}{usage page}.\hypertarget{index_contacts}{}\section{Authors and contacts}\label{index_contacts}
+This code has been written by Andy Bray.
+
+To report bugs or to post any ideas or improvements, use Git\+Hub \href{https://github.com/abelayer/AbZip/issues}{\tt Issues}. If you want to send me a private message, please do so via \href{mailto:web@gabelay.com}{\tt web@gabelay.\+com}
+
+Do not use e-\/mail to report bugs, please. Reporting bugs and problems with the Source\+Forge.\+net\textquotesingle{}s bug report system.
+
+Copyright (C) 2016 Andy Bray and contributors 

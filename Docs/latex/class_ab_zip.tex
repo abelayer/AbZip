@@ -1,0 +1,857 @@
+\hypertarget{class_ab_zip}{}\section{Ab\+Zip Class Reference}
+\label{class_ab_zip}\index{Ab\+Zip@{Ab\+Zip}}
+
+
+Inherits Q\+Object.
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54e}{Mode} \{ \hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eab1422ad58f4dcd50cff8ce563ec8a806}{mode\+Open\+Read}, 
+\hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eacf5b3a4319c2d25e81ba95bef0ac3041}{mode\+Open\+Write}, 
+\hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54ea9c1fc83e455d4baf3dacee9e691616b8}{mode\+Create\+New}
+ \}
+\item 
+enum \hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504}{Error\+Code} \{ \\*
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a897b2aeaa63e2e2be4464b795017c971}{Ok}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a5c47b45f7cef73c6e14a9e5e7d2108b6}{General\+Error}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad2e454eab3290b12e6a0dd81374d6cc7}{Create\+Dir\+Error}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a0d8a3def87960152f44da3aea842e99f}{Open\+File\+Error}, 
+\\*
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aa084f0a8084c9602eea2ab75bc10ede9}{Create\+File\+Error}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ace462f90eb1cedae9a3c57ab06048b1c}{Invalid\+Archive}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a501e9909cf9ff21a190916fa9ba04d24}{Seek\+Error}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a67c493072811f65bc610ba548c1a58c7}{Open\+In\+Read\+Only}, 
+\\*
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504abf9ead9668e2736dabaf19715a34b91e}{File\+Exists}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504afd59228859ee6670b7ecd0c4c59db347}{Extract\+Failed}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a75a9dbed21bb60a9b71c8334ad48fe01}{Add\+File\+Failed}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504af1834b62bfacbc694454951991db07d8}{Copy\+Error}, 
+\\*
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a193afd741eb566f39b60449b5382cbd1}{Set\+Mod\+Time\+Failed}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aef61d198809fa602715c8417ce4b7eb8}{Invalid\+Compressor}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a34988dd81ed571efcab3f7143a94b485}{Invalid\+Encryption}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a25b7ccd2a6530e4804fb7d687b53d238}{Delete\+Error}, 
+\\*
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ae6325b0e0af02c01b4202af2741dec89}{Corrupted}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a3a5a8bf255b6bc79afe71e6130d24a84}{Invalid\+Password}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504af5e2fe359cb2692612e9c7afd6790bca}{Invalid\+Aes\+Data}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad240f6e5b52b94c609a1d725c5d0f805}{File\+Not\+Found}, 
+\\*
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad4f4b4d76a4f74639c286813801c617c}{Write\+Failed}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aeb03e302df4c361ec623ab72ccffb49a}{Header\+Integrity\+Error}, 
+\hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ae3c62cab02d3f6fecb706cb8641e0708}{Central\+Dir\+Error}
+ \}\begin{DoxyCompactList}\small\item\em Error codes. For all errors other than Ok, call \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} to retrieve the error message. \end{DoxyCompactList}
+\item 
+enum \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5}{Option} \{ \\*
+{\bfseries None} = 0x0000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}{Verify\+Only} = 0x0001, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} = 0x0002, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive} = 0x0004, 
+\\*
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}{Dont\+Overwrite} = 0x0008, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a875536b65a4540f85ac32deb23181913}{Ignore\+Folders} = 0x0010, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ad65280f282a5d96e9d4324141c3c38c5}{Ignore\+Files} = 0x0020, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae69e12b2d2bc7565cb61969b5aaa1996}{Backup\+Existing} = 0x0040, 
+\\*
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths} = 0x0080, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths} = 0x0100, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}{Add\+Absolute\+Paths} = 0x0200, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}{Add\+Ignore\+Paths} = 0x0400, 
+\\*
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}{Add\+Replace\+Files} = 0x1000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files} = 0x2000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error} = 0x4000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ade267877085e03c98076fe12ce440440}{Ignore\+Store\+Only\+Checks} = 0x8000, 
+\\*
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a58109d8c41d7075deeba22c6600feec1}{use\+B\+Zip2\+Compression} = 0x10000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}{use\+A\+E\+S\+Encryption} = 0x20000
+ \}\begin{DoxyCompactList}\small\item\em Archive options. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_ab_zip_a7ed92297b98cffe8e8962c4f8f4bb0f8}{Ab\+Zip} (Q\+Object $\ast$parent=0)\hypertarget{class_ab_zip_a7ed92297b98cffe8e8962c4f8f4bb0f8}{}\label{class_ab_zip_a7ed92297b98cffe8e8962c4f8f4bb0f8}
+
+\begin{DoxyCompactList}\small\item\em Constructs the default \hyperlink{class_ab_zip}{Ab\+Zip} object. You must use set\+Zip\+File\+Name() before calling any other member functions. \end{DoxyCompactList}\item 
+\hyperlink{class_ab_zip_a74a6d96f82ac0175654f008b2c70ab2a}{Ab\+Zip} (const Q\+String \&zip\+Name, Q\+Object $\ast$parent=0)\hypertarget{class_ab_zip_a74a6d96f82ac0175654f008b2c70ab2a}{}\label{class_ab_zip_a74a6d96f82ac0175654f008b2c70ab2a}
+
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{class_ab_zip}{Ab\+Zip} for a specified Archive name. \end{DoxyCompactList}\item 
+\hyperlink{class_ab_zip_a6bb8457120378a4b46f9f9919608a0d3}{Ab\+Zip} (Q\+I\+O\+Device $\ast$io\+Device, Q\+Object $\ast$parent=0)\hypertarget{class_ab_zip_a6bb8457120378a4b46f9f9919608a0d3}{}\label{class_ab_zip_a6bb8457120378a4b46f9f9919608a0d3}
+
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{class_ab_zip}{Ab\+Zip} for a given Q\+I\+O\+Device. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_ab_zip_a46bccdabd74355e149241d96b1494085}{$\sim$\+Ab\+Zip} ()\hypertarget{class_ab_zip_a46bccdabd74355e149241d96b1494085}{}\label{class_ab_zip_a46bccdabd74355e149241d96b1494085}
+
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_ab_zip}{Ab\+Zip} and closes the archive. Central Directory changes are save at when \hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close()} is called. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_ab57494eaad3a580c84dd66978e84db0c}{open} (\hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54e}{Mode} mode=\hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eab1422ad58f4dcd50cff8ce563ec8a806}{mode\+Open\+Read}, Zip\+Options options=None)
+\begin{DoxyCompactList}\small\item\em Opens the archive for either reading or writing. {\bfseries Note\+:} If you don\textquotesingle{}t call \hyperlink{class_ab_zip_ab57494eaad3a580c84dd66978e84db0c}{open()} before calling one of the main add or extract functions, then \hyperlink{class_ab_zip}{Ab\+Zip} will automatically open the archive in the required mode. (e.\+g If you call \hyperlink{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{add\+Directory()} then it opens in mode\+Open\+Write, or if you call \hyperlink{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{extract\+All()} and the archive is not already open, then it will be open with mode\+Open\+Read. This mode will remain untill you call \hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close()}. \end{DoxyCompactList}\item 
+void \hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close} ()
+\begin{DoxyCompactList}\small\item\em Closes the archive if open. If any file delete operations are pending, then these are commited at this point. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_aaa0b968b507346894fedb53519e40bba}{is\+Open} ()
+\begin{DoxyCompactList}\small\item\em Checks if the archive is open or not. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_a151daf4412c98f40a7608fd825689382}{add\+File} (const Q\+String \&file, const Q\+String \&root, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, int level=-\/1)
+\begin{DoxyCompactList}\small\item\em Adds the specified file to the archive. If the file already exists and has the same last modified date, then the file will not be added. If Skip\+Existing\+Files option is specified, then existing files will not be overwritten even if they are older. If Add\+Replace\+Files option is specified, then the file will be added even if it is older then the existing file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_aa71d315aae5caaab47e1a90b5fae6ceb}{add\+File} (const Q\+String \&file, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, int level=-\/1)
+\begin{DoxyCompactList}\small\item\em Adds the specified file to the archive. If the file already exists and has the same last modified date, then the file will not be added. If Skip\+Existing\+Files option is specified, then existing files will not be overwritten even if they are older. If Add\+Replace\+Files option is specified, then the file will be added even if it is older then the existing file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{add\+Directory} (const Q\+String \&src\+Path, const Q\+String \&, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, int level=-\/1)
+\begin{DoxyCompactList}\small\item\em Add all files in a directory to the archive. You can set filters to only add files that match a specified mask (See \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()} ). By specifying the Recursive option, you can add all files from all sub folders. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_a3345e5c1542f71379ca7086267f090fd}{add\+Directory} (const Q\+String \&src\+Path, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, int level=-\/1)
+\begin{DoxyCompactList}\small\item\em Add all files in a directory to the archive. You can set filters to only add files that match a specified mask (See \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()} ). By specifying the Recursive option, you can add all fiels from all sub folders. See options for further. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{extract\+All} (const Q\+String \&dest\+Path, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths})
+\begin{DoxyCompactList}\small\item\em Extract all files from the archive to a specified destination path If Continue\+On\+Error option is not specified, then the operation will stop if any errors are encountered. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_af5c5a08bd8f20b04c93c1f6ecb05a020}{extract\+All} (const Q\+String \&dest\+Path, const Q\+String \&from\+Root, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths})
+\begin{DoxyCompactList}\small\item\em Extract all files from the specified root archive folder to a specified destination path. If Continue\+On\+Error option is not specified, then the operation will stop if any errors are encountered. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_a699adc1eaa924986e2ef2e2b3f9ab333}{extract\+File} (const Q\+String \&filename, const Q\+String \&dest\+Path, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths})
+\begin{DoxyCompactList}\small\item\em Extract the specified file from the archive to a specified destination folder. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_a23498ad8f7c7600e771ecb1ca022d4ad}{extract\+Files} (const Q\+String\+List \&list\+Files, const Q\+String \&dest\+Path, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths})
+\begin{DoxyCompactList}\small\item\em Extract all files from the specified list\+Files and save them to the destination folder. If Continue\+On\+Error option is not specified, then the operation will stop if any errors are encountered. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_aba2e10727c9b7267e384e4e26ba63cbc}{delete\+File} (const Q\+String \&filename, Zip\+Options options=Ab\+Zip\+::\+None)
+\begin{DoxyCompactList}\small\item\em Delete the specified file from the archive. {\bfseries Note\+:} The file data is only removed from the archive when you call \hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close()} \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_a783167f4c5f87551d7e2dc54b2beea3f}{check\+Integrity} ()
+\begin{DoxyCompactList}\small\item\em This function performs a full integrity check of the archive file. Including badly formed Central Directories, mismating local headers and corrupted file data. This function is the equivalent to calling extract\+All( \char`\"{}\char`\"{}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}{Ab\+Zip\+::\+Verify\+Only} );. \end{DoxyCompactList}\item 
+Q\+List$<$ \hyperlink{class_zip_file_info}{Zip\+File\+Info} $>$ \hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File} (const Q\+String \&filename, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive})
+\begin{DoxyCompactList}\small\item\em This searches the archive for a matching file spec. If found, then a \hyperlink{class_zip_file_info}{Zip\+File\+Info} structure is filled containing the zip file information about that file. \end{DoxyCompactList}\item 
+Q\+List$<$ \hyperlink{class_zip_file_info}{Zip\+File\+Info} $>$ \hyperlink{class_ab_zip_a3a60562106d519e49173bb0fdc42808f}{find\+File} (const Q\+String \&filename, const Q\+String \&root, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive})
+\begin{DoxyCompactList}\small\item\em This searches the archive for a matching file spec. If found, then a \hyperlink{class_zip_file_info}{Zip\+File\+Info} structure is filled containing the zip file information about that file. \end{DoxyCompactList}\item 
+void \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters} (const Q\+String\+List \&name\+Filters)
+\begin{DoxyCompactList}\small\item\em This allows you to set specific name filters when adding, extractinmg or searching for files. Each name filter is a wildcard filter that understands $\ast$ and ? wildcards. (See Q\+Reg\+Exp wildcard matching.) \end{DoxyCompactList}\item 
+void \hyperlink{class_ab_zip_a23197e4aeb30549b15adc0e8b5eaf239}{clear\+Name\+Filters} ()
+\begin{DoxyCompactList}\small\item\em Clears and previously set name filters. \end{DoxyCompactList}\item 
+void \hyperlink{class_ab_zip_a31f7636ca8c3ca66fd52b57c0f5b2328}{set\+Password} (const Q\+String \&password)
+\begin{DoxyCompactList}\small\item\em If a password is set during an add operation, then the file will be encrypted. If you extracting an existing encrypted file, then you must call this function to set the password for decryption. \end{DoxyCompactList}\item 
+void \hyperlink{class_ab_zip_afd354e102978d775abddf3263363c8d2}{clear\+Password} ()
+\begin{DoxyCompactList}\small\item\em Clears a previously set encryption/decryption password. \end{DoxyCompactList}\item 
+int \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code} () const 
+\begin{DoxyCompactList}\small\item\em All functions return either true for success or false if an error occurred. Call this function to retrieve the last known error code. {\bfseries Note\+:} Errors are accumilative whilst the archive is open, call \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} to reset the error code, count and message. \end{DoxyCompactList}\item 
+int \hyperlink{class_ab_zip_ae32a8a92d2cc267e2c57705e95fafc05}{error\+Count} () const 
+\begin{DoxyCompactList}\small\item\em On multiple file operations (e.\+g. \hyperlink{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{add\+Directory()} or \hyperlink{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{extract\+All()} ) and the option Continue\+On\+Error has been set, then this will return the total number of errors that occurred. {\bfseries Note\+:} Errors are accumilative whilst the archive is open, call \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} to reset the error code, count and message. \end{DoxyCompactList}\item 
+const Q\+String \& \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a human-\/readable description of the last error that occurred. On operations that perform multiple tasks, then multiple error messsages are returned separated by a new line character. {\bfseries Note\+:} Errors are accumilative whilst the archive is open, call \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} to reset the error code, count and message. \end{DoxyCompactList}\item 
+void \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors} ()\hypertarget{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{}\label{class_ab_zip_a4e08361f95e0bc46aae1599232674230}
+
+\begin{DoxyCompactList}\small\item\em This resets the error code, error count and last error message. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_a6eafaf85de8379cbbf0e0936ff35f82b}{set\+Comment} (const Q\+String \&comment)
+\begin{DoxyCompactList}\small\item\em Call this function to add your own comment stored in the archives central directory. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_ab_zip_a03bf0363847fa7d2b37ca9217d497b73}{get\+Comment} () const 
+\begin{DoxyCompactList}\small\item\em Gets any comment that may be present in the archives central directory. This is also returned with \hyperlink{class_ab_zip_a1516ad117dad8e91491a6a5367539f70}{get\+Info()} \end{DoxyCompactList}\item 
+\hyperlink{class_zip_info}{Zip\+Info} \hyperlink{class_ab_zip_a1516ad117dad8e91491a6a5367539f70}{get\+Info} () const 
+\begin{DoxyCompactList}\small\item\em This function will return core information about the archive (e.\+g. Comment, Total compressed size, total uncompressed size, file count, version, total files added, extracted and deleted) \end{DoxyCompactList}\item 
+void {\bfseries set\+Zip\+File\+Name} (const Q\+String \&name)\hypertarget{class_ab_zip_a769a83363d37087880fb9b60a1f32fc4}{}\label{class_ab_zip_a769a83363d37087880fb9b60a1f32fc4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\index{Ab\+Zip@{Ab\+Zip}!Mode@{Mode}}
+\index{Mode@{Mode}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{Mode}{Mode}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Ab\+Zip\+::\+Mode}}\hypertarget{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54e}{}\label{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54e}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{mode\+Open\+Read@{mode\+Open\+Read}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!mode\+Open\+Read@{mode\+Open\+Read}}\item[{\em 
+mode\+Open\+Read\hypertarget{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eab1422ad58f4dcd50cff8ce563ec8a806}{}\label{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eab1422ad58f4dcd50cff8ce563ec8a806}
+}]Opens the archive for reading only. You will not be able to perform any modification operations whilst in this mode. \index{mode\+Open\+Write@{mode\+Open\+Write}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!mode\+Open\+Write@{mode\+Open\+Write}}\item[{\em 
+mode\+Open\+Write\hypertarget{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eacf5b3a4319c2d25e81ba95bef0ac3041}{}\label{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eacf5b3a4319c2d25e81ba95bef0ac3041}
+}]Open the archive for both reading and writing. \index{mode\+Create\+New@{mode\+Create\+New}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!mode\+Create\+New@{mode\+Create\+New}}\item[{\em 
+mode\+Create\+New\hypertarget{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54ea9c1fc83e455d4baf3dacee9e691616b8}{}\label{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54ea9c1fc83e455d4baf3dacee9e691616b8}
+}]Creates a new archive and opens it for reading and writing. {\bfseries Warning\+:} Unless you specify the Backup\+Existing option when creating the file then if an archive with same name exists then it will be overwritten! If Backup\+Existing is set, then the existing archive will be renamed. \end{description}
+\end{Desc}
+\index{Ab\+Zip@{Ab\+Zip}!Error\+Code@{Error\+Code}}
+\index{Error\+Code@{Error\+Code}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{Error\+Code}{ErrorCode}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Ab\+Zip\+::\+Error\+Code}}\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504}
+
+
+Error codes. For all errors other than Ok, call \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} to retrieve the error message. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Ok@{Ok}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Ok@{Ok}}\item[{\em 
+Ok\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a897b2aeaa63e2e2be4464b795017c971}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a897b2aeaa63e2e2be4464b795017c971}
+}]No Error. \index{General\+Error@{General\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!General\+Error@{General\+Error}}\item[{\em 
+General\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a5c47b45f7cef73c6e14a9e5e7d2108b6}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a5c47b45f7cef73c6e14a9e5e7d2108b6}
+}]General error message. \index{Create\+Dir\+Error@{Create\+Dir\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Create\+Dir\+Error@{Create\+Dir\+Error}}\item[{\em 
+Create\+Dir\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad2e454eab3290b12e6a0dd81374d6cc7}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad2e454eab3290b12e6a0dd81374d6cc7}
+}]Failed to create a new folder. \index{Open\+File\+Error@{Open\+File\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Open\+File\+Error@{Open\+File\+Error}}\item[{\em 
+Open\+File\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a0d8a3def87960152f44da3aea842e99f}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a0d8a3def87960152f44da3aea842e99f}
+}]Unable to open the archive file or the file being added. \index{Create\+File\+Error@{Create\+File\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Create\+File\+Error@{Create\+File\+Error}}\item[{\em 
+Create\+File\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aa084f0a8084c9602eea2ab75bc10ede9}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aa084f0a8084c9602eea2ab75bc10ede9}
+}]Unable to create a temporary file for extraction. \index{Invalid\+Archive@{Invalid\+Archive}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Invalid\+Archive@{Invalid\+Archive}}\item[{\em 
+Invalid\+Archive\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ace462f90eb1cedae9a3c57ab06048b1c}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ace462f90eb1cedae9a3c57ab06048b1c}
+}]Unable to read the Central Directory form the archive file. It\textquotesingle{}s either correcpt or not a valid Zip file. \index{Seek\+Error@{Seek\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Seek\+Error@{Seek\+Error}}\item[{\em 
+Seek\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a501e9909cf9ff21a190916fa9ba04d24}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a501e9909cf9ff21a190916fa9ba04d24}
+}]Failed to locate Local File Header in the zip file. Most likely a corrupt Central Directory record. \index{Open\+In\+Read\+Only@{Open\+In\+Read\+Only}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Open\+In\+Read\+Only@{Open\+In\+Read\+Only}}\item[{\em 
+Open\+In\+Read\+Only\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a67c493072811f65bc610ba548c1a58c7}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a67c493072811f65bc610ba548c1a58c7}
+}]The Archive is open in Read mode and you are trying to perform a write action. Close and re-\/open for writing. \index{File\+Exists@{File\+Exists}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!File\+Exists@{File\+Exists}}\item[{\em 
+File\+Exists\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504abf9ead9668e2736dabaf19715a34b91e}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504abf9ead9668e2736dabaf19715a34b91e}
+}]The file to be extracted already exists and you have specified the \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}{Ab\+Zip\+::\+Dont\+Overwrite} option. \index{Extract\+Failed@{Extract\+Failed}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Extract\+Failed@{Extract\+Failed}}\item[{\em 
+Extract\+Failed\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504afd59228859ee6670b7ecd0c4c59db347}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504afd59228859ee6670b7ecd0c4c59db347}
+}]An error occurred extracting the file data from the archive. See \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for more information. \index{Add\+File\+Failed@{Add\+File\+Failed}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Add\+File\+Failed@{Add\+File\+Failed}}\item[{\em 
+Add\+File\+Failed\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a75a9dbed21bb60a9b71c8334ad48fe01}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a75a9dbed21bb60a9b71c8334ad48fe01}
+}]A error occurred compressing and adding the data to the archive. See \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for more information. \index{Copy\+Error@{Copy\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Copy\+Error@{Copy\+Error}}\item[{\em 
+Copy\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504af1834b62bfacbc694454951991db07d8}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504af1834b62bfacbc694454951991db07d8}
+}]An error occurred copying the temporary extracted file to the destination folder. \index{Set\+Mod\+Time\+Failed@{Set\+Mod\+Time\+Failed}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Set\+Mod\+Time\+Failed@{Set\+Mod\+Time\+Failed}}\item[{\em 
+Set\+Mod\+Time\+Failed\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a193afd741eb566f39b60449b5382cbd1}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a193afd741eb566f39b60449b5382cbd1}
+}]Unable to set the last modified time for the extracted file to that stored in the archive. \index{Invalid\+Compressor@{Invalid\+Compressor}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Invalid\+Compressor@{Invalid\+Compressor}}\item[{\em 
+Invalid\+Compressor\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aef61d198809fa602715c8417ce4b7eb8}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aef61d198809fa602715c8417ce4b7eb8}
+}]The decompression method required to extract the file is not supported by this library. \index{Invalid\+Encryption@{Invalid\+Encryption}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Invalid\+Encryption@{Invalid\+Encryption}}\item[{\em 
+Invalid\+Encryption\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a34988dd81ed571efcab3f7143a94b485}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a34988dd81ed571efcab3f7143a94b485}
+}]The decryption method required to extract the file is not supported by this library. \index{Delete\+Error@{Delete\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Delete\+Error@{Delete\+Error}}\item[{\em 
+Delete\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a25b7ccd2a6530e4804fb7d687b53d238}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a25b7ccd2a6530e4804fb7d687b53d238}
+}]An error occurred writing to a temp archive while deleting files from the current archive. \index{Corrupted@{Corrupted}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Corrupted@{Corrupted}}\item[{\em 
+Corrupted\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ae6325b0e0af02c01b4202af2741dec89}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ae6325b0e0af02c01b4202af2741dec89}
+}]Corrupt data found during extraction. C\+RC or A\+ES validation failed. \index{Invalid\+Password@{Invalid\+Password}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Invalid\+Password@{Invalid\+Password}}\item[{\em 
+Invalid\+Password\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a3a5a8bf255b6bc79afe71e6130d24a84}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504a3a5a8bf255b6bc79afe71e6130d24a84}
+}]Invalid password specified for decryption. \index{Invalid\+Aes\+Data@{Invalid\+Aes\+Data}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Invalid\+Aes\+Data@{Invalid\+Aes\+Data}}\item[{\em 
+Invalid\+Aes\+Data\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504af5e2fe359cb2692612e9c7afd6790bca}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504af5e2fe359cb2692612e9c7afd6790bca}
+}]Invalid Win\+Zip A\+ES extra data specified. \index{File\+Not\+Found@{File\+Not\+Found}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!File\+Not\+Found@{File\+Not\+Found}}\item[{\em 
+File\+Not\+Found\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad240f6e5b52b94c609a1d725c5d0f805}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad240f6e5b52b94c609a1d725c5d0f805}
+}]The file to be added or extracted was not found. \index{Write\+Failed@{Write\+Failed}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Write\+Failed@{Write\+Failed}}\item[{\em 
+Write\+Failed\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad4f4b4d76a4f74639c286813801c617c}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ad4f4b4d76a4f74639c286813801c617c}
+}]An error occurred writing the Central Directory to file. \index{Header\+Integrity\+Error@{Header\+Integrity\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Header\+Integrity\+Error@{Header\+Integrity\+Error}}\item[{\em 
+Header\+Integrity\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aeb03e302df4c361ec623ab72ccffb49a}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504aeb03e302df4c361ec623ab72ccffb49a}
+}]The Central Directory Header file does not match the Local File Header. \index{Central\+Dir\+Error@{Central\+Dir\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Central\+Dir\+Error@{Central\+Dir\+Error}}\item[{\em 
+Central\+Dir\+Error\hypertarget{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ae3c62cab02d3f6fecb706cb8641e0708}{}\label{class_ab_zip_ac669c2fce0fbde75677d12711c11c504ae3c62cab02d3f6fecb706cb8641e0708}
+}]An error has occurred in reading the Central Directory. \end{description}
+\end{Desc}
+\index{Ab\+Zip@{Ab\+Zip}!Option@{Option}}
+\index{Option@{Option}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{Option}{Option}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Ab\+Zip\+::\+Option}}\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5}
+
+
+Archive options. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Verify\+Only@{Verify\+Only}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Verify\+Only@{Verify\+Only}}\item[{\em 
+Verify\+Only\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}
+}]Used to verity the integrity of the archive. This is only valis on all \textquotesingle{}extract\textquotesingle{} function calls See also \hyperlink{class_ab_zip_a783167f4c5f87551d7e2dc54b2beea3f}{check\+Integrity()}. \index{Case\+Sensitive@{Case\+Sensitive}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Case\+Sensitive@{Case\+Sensitive}}\item[{\em 
+Case\+Sensitive\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}
+}]When searching for files in the archive or to add to the archive, use Case Sensitive matching. \index{Recursive@{Recursive}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Recursive@{Recursive}}\item[{\em 
+Recursive\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}
+}]When searching or adding directories, recurse into all sub folders. \index{Dont\+Overwrite@{Dont\+Overwrite}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Dont\+Overwrite@{Dont\+Overwrite}}\item[{\em 
+Dont\+Overwrite\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}
+}]If specified, existing local files will not be overwritten. \index{Ignore\+Folders@{Ignore\+Folders}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Ignore\+Folders@{Ignore\+Folders}}\item[{\em 
+Ignore\+Folders\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a875536b65a4540f85ac32deb23181913}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a875536b65a4540f85ac32deb23181913}
+}]Ignore folders when searching the archive. \index{Ignore\+Files@{Ignore\+Files}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Ignore\+Files@{Ignore\+Files}}\item[{\em 
+Ignore\+Files\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ad65280f282a5d96e9d4324141c3c38c5}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ad65280f282a5d96e9d4324141c3c38c5}
+}]Ignore files when searching the archive. \index{Backup\+Existing@{Backup\+Existing}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Backup\+Existing@{Backup\+Existing}}\item[{\em 
+Backup\+Existing\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae69e12b2d2bc7565cb61969b5aaa1996}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae69e12b2d2bc7565cb61969b5aaa1996}
+}]If set and the open mode mode\+Create\+New is used, then if the archive exists it will be rename with an incremental number added to the file name (e.\+g. \textquotesingle{}file.\+zip\textquotesingle{} becomes \textquotesingle{}file (1).zip\textquotesingle{} and a new \textquotesingle{}file.\+zip\textquotesingle{} created) \index{Extract\+Paths@{Extract\+Paths}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Extract\+Paths@{Extract\+Paths}}\item[{\em 
+Extract\+Paths\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}
+}]Recreate the relative path from the archive when extracting files. \index{Add\+Relative\+Paths@{Add\+Relative\+Paths}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Add\+Relative\+Paths@{Add\+Relative\+Paths}}\item[{\em 
+Add\+Relative\+Paths\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}
+}]Add files including relative paths. \index{Add\+Absolute\+Paths@{Add\+Absolute\+Paths}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Add\+Absolute\+Paths@{Add\+Absolute\+Paths}}\item[{\em 
+Add\+Absolute\+Paths\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}
+}]Add files to the archive and store using the files absolute path. \index{Add\+Ignore\+Paths@{Add\+Ignore\+Paths}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Add\+Ignore\+Paths@{Add\+Ignore\+Paths}}\item[{\em 
+Add\+Ignore\+Paths\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}
+}]All files are put in the root of the archive file. This is not a good options to use as you may get files with the same name being added and if Skip\+Existing\+Files is not set then the original file will be overwritten! \index{Add\+Replace\+Files@{Add\+Replace\+Files}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Add\+Replace\+Files@{Add\+Replace\+Files}}\item[{\em 
+Add\+Replace\+Files\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}
+}]Always add and replace files that exists and ignore if different. \index{Skip\+Existing\+Files@{Skip\+Existing\+Files}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Skip\+Existing\+Files@{Skip\+Existing\+Files}}\item[{\em 
+Skip\+Existing\+Files\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}
+}]Don\textquotesingle{}t overwrite any files of the same file name and location in archive. \index{Continue\+On\+Error@{Continue\+On\+Error}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Continue\+On\+Error@{Continue\+On\+Error}}\item[{\em 
+Continue\+On\+Error\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}
+}]On operations that add or extract multiple files, then continue if an error occures. \index{Ignore\+Store\+Only\+Checks@{Ignore\+Store\+Only\+Checks}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Ignore\+Store\+Only\+Checks@{Ignore\+Store\+Only\+Checks}}\item[{\em 
+Ignore\+Store\+Only\+Checks\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ade267877085e03c98076fe12ce440440}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ade267877085e03c98076fe12ce440440}
+}]\hyperlink{class_ab_zip}{Ab\+Zip} will detect any files that it thinks should not be compressed and store them raw (e.\+g. files that are already compressed). If you want to ignore this feature, then specify this option. \index{use\+B\+Zip2\+Compression@{use\+B\+Zip2\+Compression}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!use\+B\+Zip2\+Compression@{use\+B\+Zip2\+Compression}}\item[{\em 
+use\+B\+Zip2\+Compression\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a58109d8c41d7075deeba22c6600feec1}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a58109d8c41d7075deeba22c6600feec1}
+}]For the use of B\+Zip2 compression over the default Deflate compression. \index{use\+A\+E\+S\+Encryption@{use\+A\+E\+S\+Encryption}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!use\+A\+E\+S\+Encryption@{use\+A\+E\+S\+Encryption}}\item[{\em 
+use\+A\+E\+S\+Encryption\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}
+}]Use Win\+Zip A\+ES strong encryption over the default crc encryption. \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{Ab\+Zip@{Ab\+Zip}!open@{open}}
+\index{open@{open}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{open(\+Mode mode=mode\+Open\+Read, Zip\+Options options=\+None)}{open(Mode mode=modeOpenRead, ZipOptions options=None)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::open (
+\begin{DoxyParamCaption}
+\item[{{\bf Mode}}]{mode = {\ttfamily {\bf mode\+Open\+Read}}, }
+\item[{Zip\+Options}]{options = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_ab57494eaad3a580c84dd66978e84db0c}{}\label{class_ab_zip_ab57494eaad3a580c84dd66978e84db0c}
+
+
+Opens the archive for either reading or writing. {\bfseries Note\+:} If you don\textquotesingle{}t call \hyperlink{class_ab_zip_ab57494eaad3a580c84dd66978e84db0c}{open()} before calling one of the main add or extract functions, then \hyperlink{class_ab_zip}{Ab\+Zip} will automatically open the archive in the required mode. (e.\+g If you call \hyperlink{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{add\+Directory()} then it opens in mode\+Open\+Write, or if you call \hyperlink{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{extract\+All()} and the archive is not already open, then it will be open with mode\+Open\+Read. This mode will remain untill you call \hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close()}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The open mode for the archive (Default\+: mode\+Open\+Read) \\
+\hline
+{\em options} & This is either None (default) or use Backup\+Existing with mode\+Create\+New \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eab1422ad58f4dcd50cff8ce563ec8a806}{mode\+Open\+Read}, \hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54eacf5b3a4319c2d25e81ba95bef0ac3041}{mode\+Open\+Write}, \hyperlink{class_ab_zip_ad24114feac0d38566f6b36f5fc0db54ea9c1fc83e455d4baf3dacee9e691616b8}{mode\+Create\+New} 
+
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae69e12b2d2bc7565cb61969b5aaa1996}{Backup\+Existing} 
+
+\hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!close@{close}}
+\index{close@{close}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}void Ab\+Zip\+::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{}\label{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}
+
+
+Closes the archive if open. If any file delete operations are pending, then these are commited at this point. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_ab57494eaad3a580c84dd66978e84db0c}{open()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{is\+Open()}{isOpen()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_aaa0b968b507346894fedb53519e40bba}{}\label{class_ab_zip_aaa0b968b507346894fedb53519e40bba}
+
+
+Checks if the archive is open or not. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the archive is open, else {\ttfamily false} 
+\end{DoxyReturn}
+\index{Ab\+Zip@{Ab\+Zip}!add\+File@{add\+File}}
+\index{add\+File@{add\+File}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{add\+File(const Q\+String \&file, const Q\+String \&root, Zip\+Options options=\+Add\+Relative\+Paths, int level=-\/1)}{addFile(const QString &file, const QString &root, ZipOptions options=AddRelativePaths, int level=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::add\+File (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{file, }
+\item[{const Q\+String \&}]{root, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Add\+Relative\+Paths}}, }
+\item[{int}]{level = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a151daf4412c98f40a7608fd825689382}{}\label{class_ab_zip_a151daf4412c98f40a7608fd825689382}
+
+
+Adds the specified file to the archive. If the file already exists and has the same last modified date, then the file will not be added. If Skip\+Existing\+Files option is specified, then existing files will not be overwritten even if they are older. If Add\+Replace\+Files option is specified, then the file will be added even if it is older then the existing file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The full path and file name for the file to be added. \\
+\hline
+{\em root} & (optional) The directory in the archive to store this file. \\
+\hline
+{\em options} & Options to apply during adding. \\
+\hline
+{\em level} & (optional) The level to use for compression from 0 = no compression to 9 high compression but slower (default is 8). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}{Add\+Absolute\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}{Add\+Ignore\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}{Add\+Replace\+Files} 
+\end{DoxySeeAlso}
+
+
+Referenced by clear\+Name\+Filters().
+
+\index{Ab\+Zip@{Ab\+Zip}!add\+File@{add\+File}}
+\index{add\+File@{add\+File}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{add\+File(const Q\+String \&file, Zip\+Options options=\+Add\+Relative\+Paths, int level=-\/1)}{addFile(const QString &file, ZipOptions options=AddRelativePaths, int level=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::add\+File (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{file, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Add\+Relative\+Paths}}, }
+\item[{int}]{level = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_aa71d315aae5caaab47e1a90b5fae6ceb}{}\label{class_ab_zip_aa71d315aae5caaab47e1a90b5fae6ceb}
+
+
+Adds the specified file to the archive. If the file already exists and has the same last modified date, then the file will not be added. If Skip\+Existing\+Files option is specified, then existing files will not be overwritten even if they are older. If Add\+Replace\+Files option is specified, then the file will be added even if it is older then the existing file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The full path and file name for the file to be added. \\
+\hline
+{\em options} & Options to apply during adding. \\
+\hline
+{\em level} & (optional) The level to use for compression from 0 = no compression to 9 high compression but slower (default is 8). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}{Add\+Absolute\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}{Add\+Ignore\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}{Add\+Replace\+Files} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!add\+Directory@{add\+Directory}}
+\index{add\+Directory@{add\+Directory}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{add\+Directory(const Q\+String \&src\+Path, const Q\+String \&, Zip\+Options options=\+Add\+Relative\+Paths, int level=-\/1)}{addDirectory(const QString &srcPath, const QString &, ZipOptions options=AddRelativePaths, int level=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::add\+Directory (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{src\+Path, }
+\item[{const Q\+String \&}]{, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Add\+Relative\+Paths}}, }
+\item[{int}]{level = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{}\label{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}
+
+
+Add all files in a directory to the archive. You can set filters to only add files that match a specified mask (See \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()} ). By specifying the Recursive option, you can add all files from all sub folders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src\+Path} & The full path to the folder to add files \\
+\hline
+{\em root} & Use this as the root folder when adding to the archive. e.\+g. If root is {\ttfamily \textquotesingle{}backup/files\textquotesingle{}} and we are adding {\ttfamily \textquotesingle{}c\+:/folder1/folder2/file1}.txt\textquotesingle{} and {\ttfamily \textquotesingle{}c\+:/folder1/folder2/folder3/file2}.txt\textquotesingle{} then
+\begin{DoxyItemize}
+\item if Add\+Relative\+Path option specified, files will be added as {\ttfamily \textquotesingle{}backup/files/folder2/file1.\+txt\textquotesingle{}} and {\ttfamily \textquotesingle{}backup/files/folder2/folder3/file2.\+txt\textquotesingle{}} 
+\item if Add\+Absolute\+Paths option specified, files will be added as {\ttfamily \textquotesingle{}backup/files/folder1/folder2/file1.\+txt\textquotesingle{}} and {\ttfamily \textquotesingle{}backup/files/folder1/folder2/folder3/file2.\+txt\textquotesingle{}} 
+\item if Add\+Ignore\+Paths option specified, files will be added as {\ttfamily \textquotesingle{}backup/files/file1.\+txt\textquotesingle{}} and {\ttfamily \textquotesingle{}backup/files/file2.\+txt\textquotesingle{}} 
+\end{DoxyItemize}\\
+\hline
+{\em options} & Options to apply during adding. \\
+\hline
+{\em level} & (optional) The level to use for compression from 0 = no compression to 9 high compression but slower (default is 8). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}{Add\+Absolute\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}{Add\+Ignore\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}{Add\+Replace\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error} 
+
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
+\end{DoxySeeAlso}
+
+
+Referenced by clear\+Name\+Filters().
+
+\index{Ab\+Zip@{Ab\+Zip}!add\+Directory@{add\+Directory}}
+\index{add\+Directory@{add\+Directory}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{add\+Directory(const Q\+String \&src\+Path, Zip\+Options options=\+Add\+Relative\+Paths, int level=-\/1)}{addDirectory(const QString &srcPath, ZipOptions options=AddRelativePaths, int level=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::add\+Directory (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{src\+Path, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Add\+Relative\+Paths}}, }
+\item[{int}]{level = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a3345e5c1542f71379ca7086267f090fd}{}\label{class_ab_zip_a3345e5c1542f71379ca7086267f090fd}
+
+
+Add all files in a directory to the archive. You can set filters to only add files that match a specified mask (See \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()} ). By specifying the Recursive option, you can add all fiels from all sub folders. See options for further. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src\+Path} & The full path to the folder to add files \\
+\hline
+{\em options} & Options to apply during adding. \\
+\hline
+{\em level} & (optional) The level to use for compression from 0 = no compression to 9 high compression but slower (default is 8). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a9fe2234f7fddcfdae76f8aeb8c3c2d44}{Add\+Relative\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a4f4f6e6bb644fb8c8994a198833e08dd}{Add\+Absolute\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1525b553c7ec40d3a51e30731b8e84b0}{Add\+Ignore\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a1fcbc789293975fb30038ef333269744}{Add\+Replace\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error} 
+
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!extract\+All@{extract\+All}}
+\index{extract\+All@{extract\+All}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{extract\+All(const Q\+String \&dest\+Path, Zip\+Options options=\+Extract\+Paths)}{extractAll(const QString &destPath, ZipOptions options=ExtractPaths)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::extract\+All (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{dest\+Path, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Extract\+Paths}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{}\label{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}
+
+
+Extract all files from the archive to a specified destination path If Continue\+On\+Error option is not specified, then the operation will stop if any errors are encountered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Path} & The full path name to where to extract the files \\
+\hline
+{\em options} & Options use for extracting \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}{Dont\+Overwrite} 
+
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
+\end{DoxySeeAlso}
+
+
+Referenced by delete\+File().
+
+\index{Ab\+Zip@{Ab\+Zip}!extract\+All@{extract\+All}}
+\index{extract\+All@{extract\+All}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{extract\+All(const Q\+String \&dest\+Path, const Q\+String \&from\+Root, Zip\+Options options=\+Extract\+Paths)}{extractAll(const QString &destPath, const QString &fromRoot, ZipOptions options=ExtractPaths)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::extract\+All (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{dest\+Path, }
+\item[{const Q\+String \&}]{from\+Root, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Extract\+Paths}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_af5c5a08bd8f20b04c93c1f6ecb05a020}{}\label{class_ab_zip_af5c5a08bd8f20b04c93c1f6ecb05a020}
+
+
+Extract all files from the specified root archive folder to a specified destination path. If Continue\+On\+Error option is not specified, then the operation will stop if any errors are encountered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Path} & The full path name to where to extract the files \\
+\hline
+{\em from\+Root} & Extract all file from this root folder within the archive \\
+\hline
+{\em options} & Options use for extracting \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error 
+\end{DoxyReturn}
+\index{Ab\+Zip@{Ab\+Zip}!extract\+File@{extract\+File}}
+\index{extract\+File@{extract\+File}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{extract\+File(const Q\+String \&filename, const Q\+String \&dest\+Path, Zip\+Options options=\+Extract\+Paths)}{extractFile(const QString &filename, const QString &destPath, ZipOptions options=ExtractPaths)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::extract\+File (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{filename, }
+\item[{const Q\+String \&}]{dest\+Path, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Extract\+Paths}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a699adc1eaa924986e2ef2e2b3f9ab333}{}\label{class_ab_zip_a699adc1eaa924986e2ef2e2b3f9ab333}
+
+
+Extract the specified file from the archive to a specified destination folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & This is the full path and filename of the file to extract. \\
+\hline
+{\em dest\+Path} & The full path name to where to extract the file. \\
+\hline
+{\em options} & Options use for extracting \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}{Dont\+Overwrite}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!extract\+Files@{extract\+Files}}
+\index{extract\+Files@{extract\+Files}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{extract\+Files(const Q\+String\+List \&list\+Files, const Q\+String \&dest\+Path, Zip\+Options options=\+Extract\+Paths)}{extractFiles(const QStringList &listFiles, const QString &destPath, ZipOptions options=ExtractPaths)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::extract\+Files (
+\begin{DoxyParamCaption}
+\item[{const Q\+String\+List \&}]{list\+Files, }
+\item[{const Q\+String \&}]{dest\+Path, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Extract\+Paths}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a23498ad8f7c7600e771ecb1ca022d4ad}{}\label{class_ab_zip_a23498ad8f7c7600e771ecb1ca022d4ad}
+
+
+Extract all files from the specified list\+Files and save them to the destination folder. If Continue\+On\+Error option is not specified, then the operation will stop if any errors are encountered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+Files} & A Qstring\+List containing all the files to extract \\
+\hline
+{\em dest\+Path} & The full path name to where to extract the file. \\
+\hline
+{\em options} & Options use for extracting \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a5fbbad9051dbd556f6c66ecb88bb7633}{Extract\+Paths}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a19424543923204da4ee787ecacd9209b}{Skip\+Existing\+Files}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5afe12bba10bd24a3bf1da93500fd5c401}{Dont\+Overwrite}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+\end{DoxySeeAlso}
+
+
+References Continue\+On\+Error.
+
+\index{Ab\+Zip@{Ab\+Zip}!delete\+File@{delete\+File}}
+\index{delete\+File@{delete\+File}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{delete\+File(const Q\+String \&filename, Zip\+Options options=\+Ab\+Zip\+::\+None)}{deleteFile(const QString &filename, ZipOptions options=AbZip::None)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::delete\+File (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{filename, }
+\item[{Zip\+Options}]{options = {\ttfamily AbZip\+:\+:None}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_aba2e10727c9b7267e384e4e26ba63cbc}{}\label{class_ab_zip_aba2e10727c9b7267e384e4e26ba63cbc}
+
+
+Delete the specified file from the archive. {\bfseries Note\+:} The file data is only removed from the archive when you call \hyperlink{class_ab_zip_a8a68479ea9a9b4ba18064eb4f011af83}{close()} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The full path and filename to the file within the archive to be deleted. Wildcard specifications camn be used to delete all files matching a wildcard spec. (e.\+g. \char`\"{}$\ast$.\+pdf\char`\"{} will delete {\bfseries all} files in the archive with a \textquotesingle{}.pdf\textquotesingle{} file extention) \\
+\hline
+{\em options} & Options use for extracting \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
+\end{DoxySeeAlso}
+
+
+References extract\+All().
+
+\index{Ab\+Zip@{Ab\+Zip}!check\+Integrity@{check\+Integrity}}
+\index{check\+Integrity@{check\+Integrity}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{check\+Integrity()}{checkIntegrity()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::check\+Integrity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a783167f4c5f87551d7e2dc54b2beea3f}{}\label{class_ab_zip_a783167f4c5f87551d7e2dc54b2beea3f}
+
+
+This function performs a full integrity check of the archive file. Including badly formed Central Directories, mismating local headers and corrupted file data. This function is the equivalent to calling extract\+All( \char`\"{}\char`\"{}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}{Ab\+Zip\+::\+Verify\+Only} );. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error 
+\end{DoxyReturn}
+\index{Ab\+Zip@{Ab\+Zip}!find\+File@{find\+File}}
+\index{find\+File@{find\+File}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{find\+File(const Q\+String \&filename, Zip\+Options options=\+Recursive)}{findFile(const QString &filename, ZipOptions options=Recursive)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$ {\bf Zip\+File\+Info} $>$ Ab\+Zip\+::find\+File (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{filename, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Recursive}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{}\label{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}
+
+
+This searches the archive for a matching file spec. If found, then a \hyperlink{class_zip_file_info}{Zip\+File\+Info} structure is filled containing the zip file information about that file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The filename to search for. Filename wildcards can be used (e.\+g. \textquotesingle{}$\ast$.pdf\textquotesingle{} or \textquotesingle{}{\itshape accounts} ) \\
+\hline
+{\em options} & Options use for the search (e.\+g. Recursive, Case\+Sensitive ) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If one or more matches are found, then a Qlist of \hyperlink{class_zip_file_info}{Zip\+File\+Info} entries are returned, else an empty list is returned.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!find\+File@{find\+File}}
+\index{find\+File@{find\+File}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{find\+File(const Q\+String \&filename, const Q\+String \&root, Zip\+Options options=\+Recursive)}{findFile(const QString &filename, const QString &root, ZipOptions options=Recursive)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$ {\bf Zip\+File\+Info} $>$ Ab\+Zip\+::find\+File (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{filename, }
+\item[{const Q\+String \&}]{root, }
+\item[{Zip\+Options}]{options = {\ttfamily {\bf Recursive}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a3a60562106d519e49173bb0fdc42808f}{}\label{class_ab_zip_a3a60562106d519e49173bb0fdc42808f}
+
+
+This searches the archive for a matching file spec. If found, then a \hyperlink{class_zip_file_info}{Zip\+File\+Info} structure is filled containing the zip file information about that file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The filename to search for. Filename wildcards can be used (e.\+g. \textquotesingle{}$\ast$.pdf\textquotesingle{} or \textquotesingle{}{\itshape accounts} ) \\
+\hline
+{\em root} & This is the archive folder to search from. \\
+\hline
+{\em options} & Options use for the search (e.\+g. Recursive, Case\+Sensitive ) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If one or more matches are found, then a Qlist of \hyperlink{class_zip_file_info}{Zip\+File\+Info} entries are returned, else an empty list is returned.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!set\+Name\+Filters@{set\+Name\+Filters}}
+\index{set\+Name\+Filters@{set\+Name\+Filters}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{set\+Name\+Filters(const Q\+String\+List \&name\+Filters)}{setNameFilters(const QStringList &nameFilters)}}]{\setlength{\rightskip}{0pt plus 5cm}void Ab\+Zip\+::set\+Name\+Filters (
+\begin{DoxyParamCaption}
+\item[{const Q\+String\+List \&}]{name\+Filters}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{}\label{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}
+
+
+This allows you to set specific name filters when adding, extractinmg or searching for files. Each name filter is a wildcard filter that understands $\ast$ and ? wildcards. (See Q\+Reg\+Exp wildcard matching.) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+Filters} & A Q\+String\+List containing one or more name filters (e.\+g. Q\+String\+List() $<$$<$ \char`\"{}$\ast$.\+pdf\char`\"{} $<$$<$ \char`\"{}$\ast$.\+doc\char`\"{} )\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_a23197e4aeb30549b15adc0e8b5eaf239}{clear\+Name\+Filters()}, \hyperlink{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{add\+Directory()}, \hyperlink{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{extract\+All()}, \hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}, \hyperlink{class_ab_zip_aba2e10727c9b7267e384e4e26ba63cbc}{delete\+File()} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!clear\+Name\+Filters@{clear\+Name\+Filters}}
+\index{clear\+Name\+Filters@{clear\+Name\+Filters}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{clear\+Name\+Filters()}{clearNameFilters()}}]{\setlength{\rightskip}{0pt plus 5cm}void Ab\+Zip\+::clear\+Name\+Filters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a23197e4aeb30549b15adc0e8b5eaf239}{}\label{class_ab_zip_a23197e4aeb30549b15adc0e8b5eaf239}
+
+
+Clears and previously set name filters. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()} 
+\end{DoxySeeAlso}
+
+
+References add\+Directory(), and add\+File().
+
+\index{Ab\+Zip@{Ab\+Zip}!set\+Password@{set\+Password}}
+\index{set\+Password@{set\+Password}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{set\+Password(const Q\+String \&password)}{setPassword(const QString &password)}}]{\setlength{\rightskip}{0pt plus 5cm}void Ab\+Zip\+::set\+Password (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{password}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a31f7636ca8c3ca66fd52b57c0f5b2328}{}\label{class_ab_zip_a31f7636ca8c3ca66fd52b57c0f5b2328}
+
+
+If a password is set during an add operation, then the file will be encrypted. If you extracting an existing encrypted file, then you must call this function to set the password for decryption. 
+
+{\bfseries Note\+:} The default encryption uses the standard P\+K\+W\+A\+RE encryption which is considered weak by todays standards and its use is recommended only for situations with low security needs or for compatibility with older .Z\+IP applications. For higher security situations it\textquotesingle{}s recommended that you use the option use\+A\+E\+S\+Encryption. 
+\begin{DoxyParams}{Parameters}
+{\em password} & The password use for encryption\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}{use\+A\+E\+S\+Encryption} 
+
+\hyperlink{class_ab_zip_afd354e102978d775abddf3263363c8d2}{clear\+Password()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!clear\+Password@{clear\+Password}}
+\index{clear\+Password@{clear\+Password}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{clear\+Password()}{clearPassword()}}]{\setlength{\rightskip}{0pt plus 5cm}void Ab\+Zip\+::clear\+Password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_afd354e102978d775abddf3263363c8d2}{}\label{class_ab_zip_afd354e102978d775abddf3263363c8d2}
+
+
+Clears a previously set encryption/decryption password. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_a31f7636ca8c3ca66fd52b57c0f5b2328}{set\+Password()}; 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!error\+Code@{error\+Code}}
+\index{error\+Code@{error\+Code}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{error\+Code() const }{errorCode() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Ab\+Zip\+::error\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{}\label{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}
+
+
+All functions return either true for success or false if an error occurred. Call this function to retrieve the last known error code. {\bfseries Note\+:} Errors are accumilative whilst the archive is open, call \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} to reset the error code, count and message. 
+
+\begin{DoxyReturn}{Returns}
+The last Error\+Code that occurred.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_ae32a8a92d2cc267e2c57705e95fafc05}{error\+Count()}, \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()}, \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()}, \hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504}{Error\+Code} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!error\+Count@{error\+Count}}
+\index{error\+Count@{error\+Count}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{error\+Count() const }{errorCount() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Ab\+Zip\+::error\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_ab_zip_ae32a8a92d2cc267e2c57705e95fafc05}{}\label{class_ab_zip_ae32a8a92d2cc267e2c57705e95fafc05}
+
+
+On multiple file operations (e.\+g. \hyperlink{class_ab_zip_ae4ad67e2d39ff729f648d12ec89b8ea0}{add\+Directory()} or \hyperlink{class_ab_zip_ac32a9ad3665fea51a0d3977e251ade73}{extract\+All()} ) and the option Continue\+On\+Error has been set, then this will return the total number of errors that occurred. {\bfseries Note\+:} Errors are accumilative whilst the archive is open, call \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} to reset the error code, count and message. 
+
+\begin{DoxyReturn}{Returns}
+The total number of errors that occurred.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()}, \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()}, \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()}, \hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504}{Error\+Code} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!error\+String@{error\+String}}
+\index{error\+String@{error\+String}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{error\+String() const }{errorString() const }}]{\setlength{\rightskip}{0pt plus 5cm}const Q\+String \& Ab\+Zip\+::error\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{}\label{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}
+
+
+Returns a human-\/readable description of the last error that occurred. On operations that perform multiple tasks, then multiple error messsages are returned separated by a new line character. {\bfseries Note\+:} Errors are accumilative whilst the archive is open, call \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} to reset the error code, count and message. 
+
+\begin{DoxyReturn}{Returns}
+The last error message that occured
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()}, \hyperlink{class_ab_zip_ae32a8a92d2cc267e2c57705e95fafc05}{error\+Count()}, \hyperlink{class_ab_zip_a4e08361f95e0bc46aae1599232674230}{clear\+Errors()} \hyperlink{class_ab_zip_ac669c2fce0fbde75677d12711c11c504}{Error\+Code} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!set\+Comment@{set\+Comment}}
+\index{set\+Comment@{set\+Comment}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{set\+Comment(const Q\+String \&comment)}{setComment(const QString &comment)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::set\+Comment (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{comment}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_a6eafaf85de8379cbbf0e0936ff35f82b}{}\label{class_ab_zip_a6eafaf85de8379cbbf0e0936ff35f82b}
+
+
+Call this function to add your own comment stored in the archives central directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comment} & The comment to add to the archive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error 
+\end{DoxyReturn}
+\index{Ab\+Zip@{Ab\+Zip}!get\+Comment@{get\+Comment}}
+\index{get\+Comment@{get\+Comment}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{get\+Comment() const }{getComment() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Ab\+Zip\+::get\+Comment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_ab_zip_a03bf0363847fa7d2b37ca9217d497b73}{}\label{class_ab_zip_a03bf0363847fa7d2b37ca9217d497b73}
+
+
+Gets any comment that may be present in the archives central directory. This is also returned with \hyperlink{class_ab_zip_a1516ad117dad8e91491a6a5367539f70}{get\+Info()} 
+
+\begin{DoxyReturn}{Returns}
+Returns the comment otherwise an empty string is returned.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ab_zip_a1516ad117dad8e91491a6a5367539f70}{get\+Info()} 
+\end{DoxySeeAlso}
+\index{Ab\+Zip@{Ab\+Zip}!get\+Info@{get\+Info}}
+\index{get\+Info@{get\+Info}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{get\+Info() const }{getInfo() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Zip\+Info} Ab\+Zip\+::get\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_ab_zip_a1516ad117dad8e91491a6a5367539f70}{}\label{class_ab_zip_a1516ad117dad8e91491a6a5367539f70}
+
+
+This function will return core information about the archive (e.\+g. Comment, Total compressed size, total uncompressed size, file count, version, total files added, extracted and deleted) 
+
+\begin{DoxyReturn}{Returns}
+A \hyperlink{class_zip_info}{Zip\+Info} structure containing the information
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_zip_info}{Zip\+Info} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ab\+Zip.\+h\item 
+Ab\+Zip.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,50 @@
+\hypertarget{class_encryption}{}\section{Encryption Class Reference}
+\label{class_encryption}\index{Encryption@{Encryption}}
+Inheritance diagram for Encryption\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_encryption}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries init} (const Q\+String \&password)=0\hypertarget{class_encryption_a97865cc44363acccea82f66499222462}{}\label{class_encryption_a97865cc44363acccea82f66499222462}
+
+\item 
+virtual void {\bfseries encrypt\+Bytes} (char $\ast$buffer, qint64 read)=0\hypertarget{class_encryption_aaa63ade9c7b6283b919412da922df134}{}\label{class_encryption_aaa63ade9c7b6283b919412da922df134}
+
+\item 
+virtual void {\bfseries decrypt\+Bytes} (char $\ast$buffer, qint64 read)=0\hypertarget{class_encryption_ab467f304d2704fb3c77b54f7ed83759b}{}\label{class_encryption_ab467f304d2704fb3c77b54f7ed83759b}
+
+\item 
+virtual bool {\bfseries decrypt\+Header} (Q\+I\+O\+Device $\ast$io\+Device, const Q\+String \&password, quint16 crc)=0\hypertarget{class_encryption_ac11a58aa3489c5e0fbb6bdce79210e0a}{}\label{class_encryption_ac11a58aa3489c5e0fbb6bdce79210e0a}
+
+\item 
+virtual qint32 {\bfseries encrypt\+Header} (Q\+I\+O\+Device $\ast$io\+Device, const Q\+String \&password, quint16 crc)=0\hypertarget{class_encryption_a6410d06ffe65c05c5a83e44432d4718f}{}\label{class_encryption_a6410d06ffe65c05c5a83e44432d4718f}
+
+\item 
+virtual qint32 {\bfseries decrypt\+Footer} (Q\+I\+O\+Device $\ast$, quint16)\hypertarget{class_encryption_a4d082b62c244d6e0d726e1f9e1ab5fed}{}\label{class_encryption_a4d082b62c244d6e0d726e1f9e1ab5fed}
+
+\item 
+virtual qint32 {\bfseries encrypt\+Footer} (Q\+I\+O\+Device $\ast$)\hypertarget{class_encryption_a8c6c320ee22e285595fccbba86fdf260}{}\label{class_encryption_a8c6c320ee22e285595fccbba86fdf260}
+
+\item 
+virtual qint32 {\bfseries size} ()\hypertarget{class_encryption_a92ae68c7ab8c90d73444f1ca691d3d24}{}\label{class_encryption_a92ae68c7ab8c90d73444f1ca691d3d24}
+
+\item 
+bool {\bfseries is\+Supported} (int method)\hypertarget{class_encryption_ab1d23252ee899aa477803502fc4586be}{}\label{class_encryption_ab1d23252ee899aa477803502fc4586be}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_encryption}{Encryption} $\ast$ {\bfseries create\+Encryptor} (quint32 type)\hypertarget{class_encryption_a35ee86579a689e8a68909b9ca34c457f}{}\label{class_encryption_a35ee86579a689e8a68909b9ca34c457f}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Encryption/encryption.\+h\item 
+Encryption/encryption.\+cpp\end{DoxyCompactItemize}

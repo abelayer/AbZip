@@ -1,0 +1,198 @@
+\hypertarget{class_zip_dir_iterator}{}\section{Zip\+Dir\+Iterator Class Reference}
+\label{class_zip_dir_iterator}\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+
+
+This class provides a search or extraction directory iterator. You can use this class to navigate entries within the archive. A starting root folder and file name fitlers can be applied.  
+
+
+
+
+{\ttfamily \#include $<$Zip\+Dir\+Iterator.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_zip_dir_iterator_a247697e7ae174a120a70ee1a2649c15e}{Zip\+Dir\+Iterator} (const \hyperlink{class_ab_zip}{Ab\+Zip} \&zip, const Q\+String \&\hyperlink{class_zip_dir_iterator_a696786be9be2b184e56fd78cf2688d4f}{path}=Q\+String(), Ab\+Zip\+::\+Zip\+Options options=Ab\+Zip\+::\+None)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{class_zip_dir_iterator}{Zip\+Dir\+Iterator} class ready to search the archive. You can pass options to decide how the directory should be iterated. \end{DoxyCompactList}\item 
+\hyperlink{class_zip_dir_iterator_a8238d94253790ecf14c0144622c93411}{Zip\+Dir\+Iterator} (const \hyperlink{class_ab_zip}{Ab\+Zip} \&zip, const Q\+String \&\hyperlink{class_zip_dir_iterator_a696786be9be2b184e56fd78cf2688d4f}{path}, const Q\+String\+List \&name\+Filters, Ab\+Zip\+::\+Zip\+Options options=Ab\+Zip\+::\+None)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{class_zip_dir_iterator}{Zip\+Dir\+Iterator} class ready to search the archive using name\+Filters. You can pass options to decide how the directory should be iterated. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_zip_dir_iterator_af4fdbc99dc568df6f3c7851cfb4d3c02}{$\sim$\+Zip\+Dir\+Iterator} ()\hypertarget{class_zip_dir_iterator_af4fdbc99dc568df6f3c7851cfb4d3c02}{}\label{class_zip_dir_iterator_af4fdbc99dc568df6f3c7851cfb4d3c02}
+
+\begin{DoxyCompactList}\small\item\em Destroys the \hyperlink{class_zip_dir_iterator}{Zip\+Dir\+Iterator}. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_zip_dir_iterator_adbe5429c0aad92a78fee63cdd745cbfb}{next} ()
+\begin{DoxyCompactList}\small\item\em next Advances the iterator to the next matching entry, and returns the file path of this new entry. If \hyperlink{class_zip_dir_iterator_a99154331b3ba3983727647db9d8be094}{has\+Next()} returns false, this function does nothing, and returns a null Q\+String. \end{DoxyCompactList}\item 
+bool \hyperlink{class_zip_dir_iterator_a99154331b3ba3983727647db9d8be094}{has\+Next} () const 
+\begin{DoxyCompactList}\small\item\em has\+Next Tests if their is at least one more matching entry found. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_zip_dir_iterator_a6fce99e90601b44e3484adaf464b3366}{file\+Name} () const 
+\begin{DoxyCompactList}\small\item\em file\+Name Returns the file name for the current entry, without the path prepended. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_zip_dir_iterator_addce0eff9eb5849cf8bdaecb08f4549d}{file\+Path} () const 
+\begin{DoxyCompactList}\small\item\em file\+Path Returns the full file and path for the current entry. \end{DoxyCompactList}\item 
+\hyperlink{class_zip_file_info}{Zip\+File\+Info} \hyperlink{class_zip_dir_iterator_aac1012735e0eb5373e3d579066815231}{file\+Info} () const 
+\begin{DoxyCompactList}\small\item\em file\+Info Get a \hyperlink{class_zip_file_info}{Zip\+File\+Info} class containing all the information about the entry in the archive. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_zip_dir_iterator_a696786be9be2b184e56fd78cf2688d4f}{path} () const 
+\begin{DoxyCompactList}\small\item\em path Returns the path only of the found entry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Ab\+Zip\+Private}\hypertarget{class_zip_dir_iterator_abaf6316ec5a7c303c4bc88421dc71747}{}\label{class_zip_dir_iterator_abaf6316ec5a7c303c4bc88421dc71747}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class provides a search or extraction directory iterator. You can use this class to navigate entries within the archive. A starting root folder and file name fitlers can be applied. 
+
+Here is an example of how to find all P\+DF files within the archive. \begin{DoxyVerb}    AbZip zip("myarchive.zip");
+
+    ZipDirIterator it( zip, "", QStringList() << "*.pdf", AbZip::Recursive );
+    while (it.hasNext())
+    {
+        it.next();
+        ZipFileInfo info  = it.fileInfo();
+        qDebug() << info.filePath << info.lastModifiedDate;
+    }
+    zip.close();
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{Zip\+Dir\+Iterator(const Ab\+Zip \&zip, const Q\+String \&path=\+Q\+String(), Ab\+Zip\+::\+Zip\+Options options=\+Ab\+Zip\+::\+None)}{ZipDirIterator(const AbZip &zip, const QString &path=QString(), AbZip::ZipOptions options=AbZip::None)}}]{\setlength{\rightskip}{0pt plus 5cm}Zip\+Dir\+Iterator\+::\+Zip\+Dir\+Iterator (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ab\+Zip} \&}]{zip, }
+\item[{const Q\+String \&}]{path = {\ttfamily QString()}, }
+\item[{Ab\+Zip\+::\+Zip\+Options}]{options = {\ttfamily AbZip\+:\+:None}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_zip_dir_iterator_a247697e7ae174a120a70ee1a2649c15e}{}\label{class_zip_dir_iterator_a247697e7ae174a120a70ee1a2649c15e}
+
+
+Constructs a \hyperlink{class_zip_dir_iterator}{Zip\+Dir\+Iterator} class ready to search the archive. You can pass options to decide how the directory should be iterated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip} & The \hyperlink{class_ab_zip}{Ab\+Zip} class \\
+\hline
+{\em path} & The root folder within the archive to start iterating from. \\
+\hline
+{\em options} & Iterator options (Recursive, Case\+Sensitive, Ignore\+Folders, Ignore\+Files) \\
+\hline
+\end{DoxyParams}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{Zip\+Dir\+Iterator(const Ab\+Zip \&zip, const Q\+String \&path, const Q\+String\+List \&name\+Filters, Ab\+Zip\+::\+Zip\+Options options=\+Ab\+Zip\+::\+None)}{ZipDirIterator(const AbZip &zip, const QString &path, const QStringList &nameFilters, AbZip::ZipOptions options=AbZip::None)}}]{\setlength{\rightskip}{0pt plus 5cm}Zip\+Dir\+Iterator\+::\+Zip\+Dir\+Iterator (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ab\+Zip} \&}]{zip, }
+\item[{const Q\+String \&}]{path, }
+\item[{const Q\+String\+List \&}]{name\+Filters, }
+\item[{Ab\+Zip\+::\+Zip\+Options}]{options = {\ttfamily AbZip\+:\+:None}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_zip_dir_iterator_a8238d94253790ecf14c0144622c93411}{}\label{class_zip_dir_iterator_a8238d94253790ecf14c0144622c93411}
+
+
+Constructs a \hyperlink{class_zip_dir_iterator}{Zip\+Dir\+Iterator} class ready to search the archive using name\+Filters. You can pass options to decide how the directory should be iterated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip} & The \hyperlink{class_ab_zip}{Ab\+Zip} class \\
+\hline
+{\em path} & The root folder within the archive to start iterating from. \\
+\hline
+{\em name\+Filters} & Set name filters to search for (e.\+g. \char`\"{}$\ast$.\+pdf\char`\"{} or "$\ast$abc$\ast$) \\
+\hline
+{\em options} & Iterator options (Recursive, Case\+Sensitive, Ignore\+Folders, Ignore\+Files) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!next@{next}}
+\index{next@{next}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{next()}{next()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Zip\+Dir\+Iterator\+::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_zip_dir_iterator_adbe5429c0aad92a78fee63cdd745cbfb}{}\label{class_zip_dir_iterator_adbe5429c0aad92a78fee63cdd745cbfb}
+
+
+next Advances the iterator to the next matching entry, and returns the file path of this new entry. If \hyperlink{class_zip_dir_iterator_a99154331b3ba3983727647db9d8be094}{has\+Next()} returns false, this function does nothing, and returns a null Q\+String. 
+
+\begin{DoxyReturn}{Returns}
+Returns the full path and file name to the found entry. 
+\end{DoxyReturn}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!has\+Next@{has\+Next}}
+\index{has\+Next@{has\+Next}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{has\+Next() const }{hasNext() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Zip\+Dir\+Iterator\+::has\+Next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_zip_dir_iterator_a99154331b3ba3983727647db9d8be094}{}\label{class_zip_dir_iterator_a99154331b3ba3983727647db9d8be094}
+
+
+has\+Next Tests if their is at least one more matching entry found. 
+
+\begin{DoxyReturn}{Returns}
+Returns true if there is at least one more entry in the archive; otherwise, false is returned. 
+\end{DoxyReturn}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!file\+Name@{file\+Name}}
+\index{file\+Name@{file\+Name}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{file\+Name() const }{fileName() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Zip\+Dir\+Iterator\+::file\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_zip_dir_iterator_a6fce99e90601b44e3484adaf464b3366}{}\label{class_zip_dir_iterator_a6fce99e90601b44e3484adaf464b3366}
+
+
+file\+Name Returns the file name for the current entry, without the path prepended. 
+
+\begin{DoxyReturn}{Returns}
+A Q\+String containing the file name only 
+\end{DoxyReturn}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!file\+Path@{file\+Path}}
+\index{file\+Path@{file\+Path}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{file\+Path() const }{filePath() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Zip\+Dir\+Iterator\+::file\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_zip_dir_iterator_addce0eff9eb5849cf8bdaecb08f4549d}{}\label{class_zip_dir_iterator_addce0eff9eb5849cf8bdaecb08f4549d}
+
+
+file\+Path Returns the full file and path for the current entry. 
+
+\begin{DoxyReturn}{Returns}
+A Q\+String containing the full path and file name. 
+\end{DoxyReturn}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!file\+Info@{file\+Info}}
+\index{file\+Info@{file\+Info}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{file\+Info() const }{fileInfo() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Zip\+File\+Info} Zip\+Dir\+Iterator\+::file\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_zip_dir_iterator_aac1012735e0eb5373e3d579066815231}{}\label{class_zip_dir_iterator_aac1012735e0eb5373e3d579066815231}
+
+
+file\+Info Get a \hyperlink{class_zip_file_info}{Zip\+File\+Info} class containing all the information about the entry in the archive. 
+
+\begin{DoxyReturn}{Returns}
+A \hyperlink{class_zip_file_info}{Zip\+File\+Info} class containing all the information about the file. This will contain empty data if no entry was found 
+\end{DoxyReturn}
+\index{Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}!path@{path}}
+\index{path@{path}!Zip\+Dir\+Iterator@{Zip\+Dir\+Iterator}}
+\subsubsection[{\texorpdfstring{path() const }{path() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Zip\+Dir\+Iterator\+::path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_zip_dir_iterator_a696786be9be2b184e56fd78cf2688d4f}{}\label{class_zip_dir_iterator_a696786be9be2b184e56fd78cf2688d4f}
+
+
+path Returns the path only of the found entry. 
+
+\begin{DoxyReturn}{Returns}
+A Q\+String containing the path only. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Zip\+Dir\+Iterator.\+h\item 
+Zip\+Dir\+Iterator.\+cpp\end{DoxyCompactItemize}

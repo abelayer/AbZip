@@ -1,0 +1,104 @@
+\hypertarget{class_i_o_buffer}{}\section{I\+O\+Buffer Class Reference}
+\label{class_i_o_buffer}\index{I\+O\+Buffer@{I\+O\+Buffer}}
+
+
+Provides a message buffer that can be used to read \& write data across the network.  
+
+
+
+
+{\ttfamily \#include $<$iobuffer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_i_o_buffer_aaddfcb5f6c59ca99d262dd9fafd8ecf0}{I\+O\+Buffer} ()\hypertarget{class_i_o_buffer_aaddfcb5f6c59ca99d262dd9fafd8ecf0}{}\label{class_i_o_buffer_aaddfcb5f6c59ca99d262dd9fafd8ecf0}
+
+\begin{DoxyCompactList}\small\item\em construct a new, empty buffer\+: \end{DoxyCompactList}\item 
+\hyperlink{class_i_o_buffer_a196c8daea9e0cefa3419c8ecd91bc4c8}{I\+O\+Buffer} (int \hyperlink{class_i_o_buffer_a42b956c3deeece1c211f4d907b81df4f}{size})\hypertarget{class_i_o_buffer_a196c8daea9e0cefa3419c8ecd91bc4c8}{}\label{class_i_o_buffer_a196c8daea9e0cefa3419c8ecd91bc4c8}
+
+\begin{DoxyCompactList}\small\item\em Construct a new buffer with a given size. \end{DoxyCompactList}\item 
+\hyperlink{class_i_o_buffer_a0191b3fa615740b538b7c5967fe16020}{I\+O\+Buffer} (const Q\+Byte\+Array \&ba\+Seed)\hypertarget{class_i_o_buffer_a0191b3fa615740b538b7c5967fe16020}{}\label{class_i_o_buffer_a0191b3fa615740b538b7c5967fe16020}
+
+\begin{DoxyCompactList}\small\item\em Construct a new buffer, but seed with the contents of a Byte\+Array. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_a0dc99315a3ce465ea4d9acd5d50e7ffb}{clear} ()\hypertarget{class_i_o_buffer_a0dc99315a3ce465ea4d9acd5d50e7ffb}{}\label{class_i_o_buffer_a0dc99315a3ce465ea4d9acd5d50e7ffb}
+
+\begin{DoxyCompactList}\small\item\em Clear the contents of the message\+: \end{DoxyCompactList}\item 
+int {\bfseries read} (Q\+I\+O\+Device $\ast$io\+Device, qint64 \hyperlink{class_i_o_buffer_a42b956c3deeece1c211f4d907b81df4f}{size})\hypertarget{class_i_o_buffer_afd3ae083064e09c37ed3051396aa77bd}{}\label{class_i_o_buffer_afd3ae083064e09c37ed3051396aa77bd}
+
+\item 
+bool \hyperlink{class_i_o_buffer_a8c1daae319f96022aa7581d599fa9c42}{has\+Data} ()\hypertarget{class_i_o_buffer_a8c1daae319f96022aa7581d599fa9c42}{}\label{class_i_o_buffer_a8c1daae319f96022aa7581d599fa9c42}
+
+\begin{DoxyCompactList}\small\item\em returns true if there is still data in the buffer to read \end{DoxyCompactList}\item 
+quint32 \hyperlink{class_i_o_buffer_a42b956c3deeece1c211f4d907b81df4f}{size} () const \hypertarget{class_i_o_buffer_a42b956c3deeece1c211f4d907b81df4f}{}\label{class_i_o_buffer_a42b956c3deeece1c211f4d907b81df4f}
+
+\begin{DoxyCompactList}\small\item\em get message size\+: \end{DoxyCompactList}\item 
+quint32 {\bfseries current\+Position} ()\hypertarget{class_i_o_buffer_addf52c4c0142a77cc813901b89142532}{}\label{class_i_o_buffer_addf52c4c0142a77cc813901b89142532}
+
+\item 
+void {\bfseries seek} (quint32 n\+Pos)\hypertarget{class_i_o_buffer_a6b2f3efb10d9d153e15f86d5af83123f}{}\label{class_i_o_buffer_a6b2f3efb10d9d153e15f86d5af83123f}
+
+\item 
+const Q\+Byte\+Array \& \hyperlink{class_i_o_buffer_a6a21eeca1fead702fc3a92f996e40e22}{get\+Byte\+Array} () const \hypertarget{class_i_o_buffer_a6a21eeca1fead702fc3a92f996e40e22}{}\label{class_i_o_buffer_a6a21eeca1fead702fc3a92f996e40e22}
+
+\begin{DoxyCompactList}\small\item\em get a copy of the message as a byte array\+: \end{DoxyCompactList}\item 
+quint8 \hyperlink{class_i_o_buffer_a05384fbfbb87b7c6a7e223277747c67c}{read\+Byte} ()\hypertarget{class_i_o_buffer_a05384fbfbb87b7c6a7e223277747c67c}{}\label{class_i_o_buffer_a05384fbfbb87b7c6a7e223277747c67c}
+
+\begin{DoxyCompactList}\small\item\em read a single byte. Modifies internal position\+: \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_a45ee7000e2252bf5fe174ca8c62851af}{write\+Byte} (quint8 n)\hypertarget{class_i_o_buffer_a45ee7000e2252bf5fe174ca8c62851af}{}\label{class_i_o_buffer_a45ee7000e2252bf5fe174ca8c62851af}
+
+\begin{DoxyCompactList}\small\item\em Write a single byte. \end{DoxyCompactList}\item 
+quint32 \hyperlink{class_i_o_buffer_a3196ccee986397959ea380ebc7d78a60}{read\+U\+Int32} ()\hypertarget{class_i_o_buffer_a3196ccee986397959ea380ebc7d78a60}{}\label{class_i_o_buffer_a3196ccee986397959ea380ebc7d78a60}
+
+\begin{DoxyCompactList}\small\item\em reads a four byte unsigned integer from the message, and moves the current position one by 4 bytes. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_aebba84dbb318f0b032269bb82edb204e}{write\+U\+Int32} (quint32 n)\hypertarget{class_i_o_buffer_aebba84dbb318f0b032269bb82edb204e}{}\label{class_i_o_buffer_aebba84dbb318f0b032269bb82edb204e}
+
+\begin{DoxyCompactList}\small\item\em writes four bytes at the current position and moves the position forwards by 4 bytes. \end{DoxyCompactList}\item 
+quint64 \hyperlink{class_i_o_buffer_ab263efa258ef2ff16a4025d92b345c27}{read\+U\+Int64} ()\hypertarget{class_i_o_buffer_ab263efa258ef2ff16a4025d92b345c27}{}\label{class_i_o_buffer_ab263efa258ef2ff16a4025d92b345c27}
+
+\begin{DoxyCompactList}\small\item\em reads a 8 byte unsigned long from the message, and moves the current position one by 4 bytes. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_aa75e90ba59b00c9059276d9c5b129699}{write\+U\+Int64} (quint64 n)\hypertarget{class_i_o_buffer_aa75e90ba59b00c9059276d9c5b129699}{}\label{class_i_o_buffer_aa75e90ba59b00c9059276d9c5b129699}
+
+\begin{DoxyCompactList}\small\item\em writes 8 bytes at the current position and moves the position forwards by 8 bytes. \end{DoxyCompactList}\item 
+Q\+Byte\+Array \hyperlink{class_i_o_buffer_af54078c28c7295c9bb28740bf4990104}{read\+Byte\+Array} (quint32 \hyperlink{class_i_o_buffer_a42b956c3deeece1c211f4d907b81df4f}{size})\hypertarget{class_i_o_buffer_af54078c28c7295c9bb28740bf4990104}{}\label{class_i_o_buffer_af54078c28c7295c9bb28740bf4990104}
+
+\begin{DoxyCompactList}\small\item\em reads a string of size length. Modifies position. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_abaafe1bdd43d424fca4b9bac5846cfaf}{write\+Byte\+Array} (const Q\+Byte\+Array \&ba)\hypertarget{class_i_o_buffer_abaafe1bdd43d424fca4b9bac5846cfaf}{}\label{class_i_o_buffer_abaafe1bdd43d424fca4b9bac5846cfaf}
+
+\begin{DoxyCompactList}\small\item\em writes data size, then data (without nulls) to message. Modifies position. \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_adce0cfc8dfc3d6ccc69513e10a178957}{write\+Raw\+Bytes} (const Q\+Byte\+Array \&ba)
+\item 
+void \hyperlink{class_i_o_buffer_af9619b26aafb45844f63a215124de76e}{write\+Raw\+Data} (const void $\ast$data, int n\+Len)\hypertarget{class_i_o_buffer_af9619b26aafb45844f63a215124de76e}{}\label{class_i_o_buffer_af9619b26aafb45844f63a215124de76e}
+
+\begin{DoxyCompactList}\small\item\em Write raw byte data to buffer. \end{DoxyCompactList}\item 
+quint16 \hyperlink{class_i_o_buffer_abba978ccb9022bc608216cc881621344}{read\+U\+Int16} ()\hypertarget{class_i_o_buffer_abba978ccb9022bc608216cc881621344}{}\label{class_i_o_buffer_abba978ccb9022bc608216cc881621344}
+
+\begin{DoxyCompactList}\small\item\em Read an unsigned short\+: \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_a6e2c7b30872f141e758f7ce0bcee0c87}{write\+U\+Int16} (quint16 n)\hypertarget{class_i_o_buffer_a6e2c7b30872f141e758f7ce0bcee0c87}{}\label{class_i_o_buffer_a6e2c7b30872f141e758f7ce0bcee0c87}
+
+\begin{DoxyCompactList}\small\item\em Write an unsigned short\+: \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_ad3ece8430cd992d4d557c7489b5d04ee}{pad} (quint8 n\+Num\+Bytes)\hypertarget{class_i_o_buffer_ad3ece8430cd992d4d557c7489b5d04ee}{}\label{class_i_o_buffer_ad3ece8430cd992d4d557c7489b5d04ee}
+
+\begin{DoxyCompactList}\small\item\em Pad a certain number of empty (0) bytes\+: \end{DoxyCompactList}\item 
+void \hyperlink{class_i_o_buffer_a894778b04bea57dfc69332034a9d5879}{skip} (quint8 n\+Num\+Bytes)\hypertarget{class_i_o_buffer_a894778b04bea57dfc69332034a9d5879}{}\label{class_i_o_buffer_a894778b04bea57dfc69332034a9d5879}
+
+\begin{DoxyCompactList}\small\item\em Skip a number of bytes -\/ to be used with the \hyperlink{class_i_o_buffer_ad3ece8430cd992d4d557c7489b5d04ee}{pad()} method above\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides a message buffer that can be used to read \& write data across the network. 
+
+\subsection{Member Function Documentation}
+\index{I\+O\+Buffer@{I\+O\+Buffer}!write\+Raw\+Bytes@{write\+Raw\+Bytes}}
+\index{write\+Raw\+Bytes@{write\+Raw\+Bytes}!I\+O\+Buffer@{I\+O\+Buffer}}
+\subsubsection[{\texorpdfstring{write\+Raw\+Bytes(const Q\+Byte\+Array \&ba)}{writeRawBytes(const QByteArray &ba)}}]{\setlength{\rightskip}{0pt plus 5cm}void I\+O\+Buffer\+::write\+Raw\+Bytes (
+\begin{DoxyParamCaption}
+\item[{const Q\+Byte\+Array \&}]{ba}
+\end{DoxyParamCaption}
+)}\hypertarget{class_i_o_buffer_adce0cfc8dfc3d6ccc69513e10a178957}{}\label{class_i_o_buffer_adce0cfc8dfc3d6ccc69513e10a178957}
+Write some raw bytes to the buffer array. This can be used to concatenate two messages together. No syntax checking is done, so it\textquotesingle{}s important that the source byte array comes from another net message buffer. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+iobuffer.\+h\item 
+iobuffer.\+cpp\end{DoxyCompactItemize}

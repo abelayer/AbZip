@@ -1,0 +1,41 @@
+This page provides general information on \hyperlink{class_ab_zip}{Ab\+Zip} usage.\hypertarget{usage_examples}{}\section{Examples}\label{usage_examples}
+Compressing a single file and overwrite old the one if it exists \begin{DoxyVerb}   AbZip zip( "theFile.zip" );
+   if ( !zip.addFile( "theFile.doc" ))
+    qDebug() << zip.errorString();
+   zip.close();
+\end{DoxyVerb}
+
+
+Add all files in a folder including sub folders and continue if errors occur \begin{DoxyVerb}   AbZip zip( "theArchive.zip" );
+   if ( !zip.addDirectory( "/myFiles/filesToBackup", AbZip::ContinueOnError | AbZip::Recursive ))
+    qDebug() << zip.errorCount() << "errors occured.\n" << zip.errorString();
+   zip.close();
+\end{DoxyVerb}
+
+
+Add all J\+PG and P\+DF files in a folder including sub folders and encrypt them \begin{DoxyVerb}   AbZip zip( "theArchive.zip" );
+   zip.setPassword("myPasswordHere");
+   zip.setFilterNames( QStringList() << "*.jpg" << ".pdf" << ".jpeg" );
+   if ( !zip.addDirectory( "/myFiles/filesToBackup", AbZip::Recursive ))
+    qDebug() << zip.errorCount() << "errors occured.\n" << zip.errorString();
+   zip.close();
+\end{DoxyVerb}
+
+
+{\bfseries Note\+:} We haven\textquotesingle{}t needed to called zip.\+open( Ab\+Zip\+::mode\+Read\+Write ); here as both add\+File() and add\+Directory() detect the archive is not open and automatically open it in the required mode.
+
+Extract all files from the archive \begin{DoxyVerb}   AbZip zip( "theArchive.zip" );
+   if ( !zip.extractAll( "/myFiles/restoreFiles" ))
+    qDebug() << zip.errorCount() << "errors occured.\n" << zip.errorString();
+   zip.close();
+\end{DoxyVerb}
+
+
+Search for all P\+DF files within an archive. Use set\+Filter\+Names() to add more name filters to this search if you like. \begin{DoxyVerb}   AbZip zip( "theArchive.zip" );
+   QList<ZipFileInfo> list = zip.findFile( "*.pdf", AbZip::Recursive );
+   zip.close();
+\end{DoxyVerb}
+\hypertarget{usage_error-handling}{}\section{Error handling}\label{usage_error-handling}
+Almost all function that perform actions on the archive will return either {\ttfamily true} or {\ttfamily false} indicating success or failure. The main exception to this is the find\+File() fucntion that returns a Q\+List of found entries. You should always check the return value for errors.
+
+To get information about the error use the functions error\+Code(), error\+String() and error\+Count(). 

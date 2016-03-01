@@ -1,0 +1,134 @@
+\hypertarget{class_local_file_header}{}\section{Local\+File\+Header Class Reference}
+\label{class_local_file_header}\index{Local\+File\+Header@{Local\+File\+Header}}
+Inheritance diagram for Local\+File\+Header\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_local_file_header}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Local\+File\+Header} (Q\+Object $\ast$parent=0)\hypertarget{class_local_file_header_acaa7ee47d85dd5c386f2ce856fd7fc45}{}\label{class_local_file_header_acaa7ee47d85dd5c386f2ce856fd7fc45}
+
+\item 
+void {\bfseries init} (\hyperlink{class_central_dir_file_header}{Central\+Dir\+File\+Header} $\ast$)\hypertarget{class_local_file_header_a56f012880e2c05912c542fd55a84af59}{}\label{class_local_file_header_a56f012880e2c05912c542fd55a84af59}
+
+\item 
+virtual void {\bfseries init\+From\+File} (const Q\+File\+Info \&file)\hypertarget{class_local_file_header_adeef33267982114b0de527dbea19d006}{}\label{class_local_file_header_adeef33267982114b0de527dbea19d006}
+
+\item 
+virtual bool {\bfseries validate} (\hyperlink{class_local_file_header}{Local\+File\+Header} $\ast$header)\hypertarget{class_local_file_header_a9b9deb860fd0e12de2f9386b7b39c7ba}{}\label{class_local_file_header_a9b9deb860fd0e12de2f9386b7b39c7ba}
+
+\item 
+virtual bool {\bfseries read} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_local_file_header_ab98f873f99674cd0ee1f502fa8dfabbe}{}\label{class_local_file_header_ab98f873f99674cd0ee1f502fa8dfabbe}
+
+\item 
+void {\bfseries read\+Extra\+Data} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_local_file_header_ad94b61ae11160de695bcacf2ddd4b527}{}\label{class_local_file_header_ad94b61ae11160de695bcacf2ddd4b527}
+
+\item 
+virtual qint64 {\bfseries write} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_local_file_header_ad1b8db67cd8b1bc40ddc4b18ec1c965b}{}\label{class_local_file_header_ad1b8db67cd8b1bc40ddc4b18ec1c965b}
+
+\item 
+void {\bfseries check\+For\+Extra\+Data} ()\hypertarget{class_local_file_header_ad96ffbe84518735db139e6208f1a1af4}{}\label{class_local_file_header_ad96ffbe84518735db139e6208f1a1af4}
+
+\item 
+virtual quint32 {\bfseries size} ()\hypertarget{class_local_file_header_a9c8046db467f4b75df105aeb9880c208}{}\label{class_local_file_header_a9c8046db467f4b75df105aeb9880c208}
+
+\item 
+virtual void {\bfseries set\+Sizes} (qint64 uncomp\+Size, qint64 comp\+Size, qint64 offset)\hypertarget{class_local_file_header_ad88a498ed8ab584b2e7f16efa8f8a4a6}{}\label{class_local_file_header_ad88a498ed8ab584b2e7f16efa8f8a4a6}
+
+\item 
+virtual quint64 {\bfseries get\+Compressed\+Size} ()\hypertarget{class_local_file_header_aedfa8ca1feeef650316300073be122aa}{}\label{class_local_file_header_aedfa8ca1feeef650316300073be122aa}
+
+\item 
+virtual quint64 {\bfseries get\+Uncompressed\+Size} ()\hypertarget{class_local_file_header_a240de2fe2662c3a34735cd82196ebb97}{}\label{class_local_file_header_a240de2fe2662c3a34735cd82196ebb97}
+
+\item 
+virtual \hyperlink{class_zip_file_info}{Zip\+File\+Info} {\bfseries get\+File\+Info} ()\hypertarget{class_local_file_header_abb9284dbe8941f0b0eadd2b150c9598e}{}\label{class_local_file_header_abb9284dbe8941f0b0eadd2b150c9598e}
+
+\item 
+void {\bfseries set\+Win\+Zip\+A\+ES} ()\hypertarget{class_local_file_header_a9500acf93c40b2af9b71c788f7a460f1}{}\label{class_local_file_header_a9500acf93c40b2af9b71c788f7a460f1}
+
+\item 
+bool {\bfseries get\+Win\+Zip\+A\+ES} (quint16 \&method, quint8 \&strength)\hypertarget{class_local_file_header_a4fa663f8a9a1b26789803dd296f3a378}{}\label{class_local_file_header_a4fa663f8a9a1b26789803dd296f3a378}
+
+\item 
+qint32 {\bfseries write\+Data\+Descriptor} (Q\+I\+O\+Device $\ast$io\+Device)\hypertarget{class_local_file_header_a0567b1c94652c562d46ee2ab4f5126a6}{}\label{class_local_file_header_a0567b1c94652c562d46ee2ab4f5126a6}
+
+\item 
+bool {\bfseries is\+Encrypted} () const \hypertarget{class_local_file_header_a33996bd1afd71db3f9f00224674b6168}{}\label{class_local_file_header_a33996bd1afd71db3f9f00224674b6168}
+
+\item 
+bool {\bfseries is\+Strong\+Encryption} () const \hypertarget{class_local_file_header_a63c1bb635cd4dcd23b0f82454c6343e4}{}\label{class_local_file_header_a63c1bb635cd4dcd23b0f82454c6343e4}
+
+\item 
+bool {\bfseries has\+Data\+Descriptor} () const \hypertarget{class_local_file_header_a15a507eddcc2bf87a5175e67e3899ef4}{}\label{class_local_file_header_a15a507eddcc2bf87a5175e67e3899ef4}
+
+\item 
+bool {\bfseries is\+U\+T\+F8} () const \hypertarget{class_local_file_header_afbd61cda32e6dcaaeb45d9adf47271df}{}\label{class_local_file_header_afbd61cda32e6dcaaeb45d9adf47271df}
+
+\item 
+virtual bool {\bfseries is\+Directory} ()\hypertarget{class_local_file_header_a4b6ac0958d1b1c5d8fa644958b95fd91}{}\label{class_local_file_header_a4b6ac0958d1b1c5d8fa644958b95fd91}
+
+\item 
+Q\+Date\+Time {\bfseries last\+Mod\+Date} ()\hypertarget{class_local_file_header_a283275ad33159e99b4bb3e947fedb662}{}\label{class_local_file_header_a283275ad33159e99b4bb3e947fedb662}
+
+\item 
+virtual bool {\bfseries is\+Valid} ()\hypertarget{class_local_file_header_af8a271a149d0ba5b301b844f61911954}{}\label{class_local_file_header_af8a271a149d0ba5b301b844f61911954}
+
+\item 
+bool {\bfseries is\+Newer} (\hyperlink{class_local_file_header}{Local\+File\+Header} $\ast$header)\hypertarget{class_local_file_header_a3847eaf14d6c271a901b0d960cc9b5f3}{}\label{class_local_file_header_a3847eaf14d6c271a901b0d960cc9b5f3}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+quint32 {\bfseries signature}\hypertarget{class_local_file_header_adcc9a2c234ec2e26e5c7358e3315946f}{}\label{class_local_file_header_adcc9a2c234ec2e26e5c7358e3315946f}
+
+\item 
+quint16 {\bfseries version\+Needed}\hypertarget{class_local_file_header_aa4db5de4e9a6367ea36b74756531a4d3}{}\label{class_local_file_header_aa4db5de4e9a6367ea36b74756531a4d3}
+
+\item 
+quint16 {\bfseries general\+Flag}\hypertarget{class_local_file_header_a733065405af1a246d867b42575f4b9cf}{}\label{class_local_file_header_a733065405af1a246d867b42575f4b9cf}
+
+\item 
+quint16 {\bfseries compression\+Method}\hypertarget{class_local_file_header_a0ad542245edc21fb1a390407cf2f969f}{}\label{class_local_file_header_a0ad542245edc21fb1a390407cf2f969f}
+
+\item 
+quint16 {\bfseries last\+Mod\+File\+Time}\hypertarget{class_local_file_header_aa4c7323e8ab6490a063f85e881190a56}{}\label{class_local_file_header_aa4c7323e8ab6490a063f85e881190a56}
+
+\item 
+quint16 {\bfseries last\+Mod\+File\+Date}\hypertarget{class_local_file_header_a47fe0372ae0904e9bf132f438b004ed6}{}\label{class_local_file_header_a47fe0372ae0904e9bf132f438b004ed6}
+
+\item 
+quint32 {\bfseries crc\+\_\+32}\hypertarget{class_local_file_header_a068f69346d74585f804927cfa8ab918c}{}\label{class_local_file_header_a068f69346d74585f804927cfa8ab918c}
+
+\item 
+quint32 {\bfseries compressed\+Size}\hypertarget{class_local_file_header_a06b989416d2b096f052406fc63bddeaf}{}\label{class_local_file_header_a06b989416d2b096f052406fc63bddeaf}
+
+\item 
+quint32 {\bfseries uncompressed\+Size}\hypertarget{class_local_file_header_a81bf12198360193274745a37900bfddc}{}\label{class_local_file_header_a81bf12198360193274745a37900bfddc}
+
+\item 
+quint16 {\bfseries filename\+Length}\hypertarget{class_local_file_header_abd88ba0e76ceb4a7d806b4388a618a06}{}\label{class_local_file_header_abd88ba0e76ceb4a7d806b4388a618a06}
+
+\item 
+quint16 {\bfseries extra\+Field\+Length}\hypertarget{class_local_file_header_a87187f44a2ae3e6fb31413bc85026836}{}\label{class_local_file_header_a87187f44a2ae3e6fb31413bc85026836}
+
+\item 
+Q\+Byte\+Array {\bfseries file\+Name}\hypertarget{class_local_file_header_a7a196568e07114379ea852a8f96fda3c}{}\label{class_local_file_header_a7a196568e07114379ea852a8f96fda3c}
+
+\item 
+Q\+Byte\+Array {\bfseries extra\+Field}\hypertarget{class_local_file_header_aeb9a94312e15b73dcd68bb948684a637}{}\label{class_local_file_header_aeb9a94312e15b73dcd68bb948684a637}
+
+\item 
+\hyperlink{class_extra_fields}{Extra\+Fields} $\ast$ {\bfseries extra\+Fields}\hypertarget{class_local_file_header_a4a8d3099ee583c2e6f734a7436087ed9}{}\label{class_local_file_header_a4a8d3099ee583c2e6f734a7436087ed9}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Local\+File\+Header.\+h\item 
+Local\+File\+Header.\+cpp\end{DoxyCompactItemize}

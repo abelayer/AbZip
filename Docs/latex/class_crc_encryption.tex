@@ -1,0 +1,36 @@
+\hypertarget{class_crc_encryption}{}\section{Crc\+Encryption Class Reference}
+\label{class_crc_encryption}\index{Crc\+Encryption@{Crc\+Encryption}}
+Inheritance diagram for Crc\+Encryption\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_crc_encryption}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries init} (const Q\+String \&password)\hypertarget{class_crc_encryption_a96a5a38de291acf747e3877e8152cf2f}{}\label{class_crc_encryption_a96a5a38de291acf747e3877e8152cf2f}
+
+\item 
+virtual void {\bfseries encrypt\+Bytes} (char $\ast$buffer, qint64 read)\hypertarget{class_crc_encryption_a15c9ea560fa38faad31753f8d1b4cde2}{}\label{class_crc_encryption_a15c9ea560fa38faad31753f8d1b4cde2}
+
+\item 
+virtual void {\bfseries decrypt\+Bytes} (char $\ast$buffer, qint64 read)\hypertarget{class_crc_encryption_a493ac6c8358a4d16bef448868f38c70c}{}\label{class_crc_encryption_a493ac6c8358a4d16bef448868f38c70c}
+
+\item 
+virtual bool {\bfseries decrypt\+Header} (Q\+I\+O\+Device $\ast$io\+Device, const Q\+String \&password, quint16 crc)\hypertarget{class_crc_encryption_a9a02a41d83dfba15804a354fb819c78a}{}\label{class_crc_encryption_a9a02a41d83dfba15804a354fb819c78a}
+
+\item 
+virtual qint32 {\bfseries encrypt\+Header} (Q\+I\+O\+Device $\ast$io\+Device, const Q\+String \&password, quint16 crc)\hypertarget{class_crc_encryption_abe8a41f417076ad49206d6322da21fcb}{}\label{class_crc_encryption_abe8a41f417076ad49206d6322da21fcb}
+
+\item 
+virtual qint32 {\bfseries size} ()\hypertarget{class_crc_encryption_ad9a3ee53ea1b8074045d76b27cddeecc}{}\label{class_crc_encryption_ad9a3ee53ea1b8074045d76b27cddeecc}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Encryption/Crc\+Encryption.\+h\item 
+Encryption/Crc\+Encryption.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\hypertarget{class_compressor}{}\section{Compressor Class Reference}
+\label{class_compressor}\index{Compressor@{Compressor}}
+Inheritance diagram for Compressor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_compressor}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Error\+Code} \{ \\*
+{\bfseries Ok}, 
+{\bfseries Zlib\+Init\+Failed}, 
+{\bfseries Zlib\+End\+Failed}, 
+{\bfseries Zlib\+Error}, 
+\\*
+{\bfseries Read\+Failed}, 
+{\bfseries Write\+Failed}, 
+{\bfseries Unknown\+Error}
+ \}\hypertarget{class_compressor_ac6712f1a2670b2a24e3a08b48eba0eb3}{}\label{class_compressor_ac6712f1a2670b2a24e3a08b48eba0eb3}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Compressor} (Q\+I\+O\+Device $\ast$in\+Dev, Q\+I\+O\+Device $\ast$out\+Dev)\hypertarget{class_compressor_a5623f19c6f1a57729c54c5b86daa3d17}{}\label{class_compressor_a5623f19c6f1a57729c54c5b86daa3d17}
+
+\item 
+virtual bool {\bfseries compress\+Data} (\hyperlink{class_encryption}{Encryption} $\ast$=0)\hypertarget{class_compressor_a3662f3d224c11802119599cbfa3d4968}{}\label{class_compressor_a3662f3d224c11802119599cbfa3d4968}
+
+\item 
+virtual bool {\bfseries decompress\+Data} (qint64, \hyperlink{class_encryption}{Encryption} $\ast$=0)\hypertarget{class_compressor_abfadce38ef8d0a80c665ddc730060624}{}\label{class_compressor_abfadce38ef8d0a80c665ddc730060624}
+
+\item 
+bool {\bfseries set\+Error} (int err, Q\+String msg=Q\+String())\hypertarget{class_compressor_a4de3d2ddd3bc7b9a1b8420ace67f7e7e}{}\label{class_compressor_a4de3d2ddd3bc7b9a1b8420ace67f7e7e}
+
+\item 
+Q\+String {\bfseries error\+String} ()\hypertarget{class_compressor_af0eb46f4ff176acee451022f04550bbc}{}\label{class_compressor_af0eb46f4ff176acee451022f04550bbc}
+
+\item 
+void {\bfseries check\+If\+Binary} (char $\ast$, quint32)\hypertarget{class_compressor_a8461c15528230cf5429bbe1bc6beb6d3}{}\label{class_compressor_a8461c15528230cf5429bbe1bc6beb6d3}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_compressor}{Compressor} $\ast$ {\bfseries create\+Compressor} (quint32 Type, int level, Q\+I\+O\+Device $\ast$in\+Dev, Q\+I\+O\+Device $\ast$out\+Dev=0)\hypertarget{class_compressor_a4e31c3a071af09f1a8f0aac6fb5a0ed0}{}\label{class_compressor_a4e31c3a071af09f1a8f0aac6fb5a0ed0}
+
+\item 
+static \hyperlink{class_compressor}{Compressor} $\ast$ {\bfseries create\+Decompressor} (quint32 Type, Q\+I\+O\+Device $\ast$in\+Dev, Q\+I\+O\+Device $\ast$out\+Dev=0)\hypertarget{class_compressor_ac43a8e9e39c62073845aec10e3377ae7}{}\label{class_compressor_ac43a8e9e39c62073845aec10e3377ae7}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+quint32 {\bfseries crc}\hypertarget{class_compressor_a04a57ed7b3c439093471cce16866b6cf}{}\label{class_compressor_a04a57ed7b3c439093471cce16866b6cf}
+
+\item 
+quint64 {\bfseries compressed\+Size}\hypertarget{class_compressor_aaeecd0bed5de1f9227b9c91fd79417de}{}\label{class_compressor_aaeecd0bed5de1f9227b9c91fd79417de}
+
+\item 
+quint64 {\bfseries uncompressed\+Size}\hypertarget{class_compressor_a17ecd3f88ea7bd5f8887734edc369905}{}\label{class_compressor_a17ecd3f88ea7bd5f8887734edc369905}
+
+\item 
+bool {\bfseries is\+Ascii}\hypertarget{class_compressor_a0b9b4a15a629f4c150ca6512fc71fe54}{}\label{class_compressor_a0b9b4a15a629f4c150ca6512fc71fe54}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+I\+O\+Device $\ast$ {\bfseries in\+Device}\hypertarget{class_compressor_ab6e62910c14712b41f3b3f56ab04da2c}{}\label{class_compressor_ab6e62910c14712b41f3b3f56ab04da2c}
+
+\item 
+Q\+I\+O\+Device $\ast$ {\bfseries out\+Device}\hypertarget{class_compressor_a00290fc56b3386ec6c5027ba00120a32}{}\label{class_compressor_a00290fc56b3386ec6c5027ba00120a32}
+
+\item 
+char $\ast$ {\bfseries in\+Buffer}\hypertarget{class_compressor_aa1ae0a0efd2fc8d47f8933436a64aa1d}{}\label{class_compressor_aa1ae0a0efd2fc8d47f8933436a64aa1d}
+
+\item 
+char $\ast$ {\bfseries out\+Buffer}\hypertarget{class_compressor_a4506d2a5d36ca6661de5058a2dadb3a4}{}\label{class_compressor_a4506d2a5d36ca6661de5058a2dadb3a4}
+
+\item 
+int {\bfseries error}\hypertarget{class_compressor_a37e46d6f1d453a96944780d87ddc6992}{}\label{class_compressor_a37e46d6f1d453a96944780d87ddc6992}
+
+\item 
+Q\+String {\bfseries error\+Message}\hypertarget{class_compressor_a49917f2829d934bb11731504c16ba300}{}\label{class_compressor_a49917f2829d934bb11731504c16ba300}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Compressors/Compressor.\+h\item 
+Compressors/Compressor.\+cpp\end{DoxyCompactItemize}
