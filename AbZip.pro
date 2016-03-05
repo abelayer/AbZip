@@ -36,12 +36,12 @@ LIBS += -L$$PWD/aes/release -laes
 }
 
 # if you want LZMA support....
-#CONFIG+=lzma2
+#CONFIG+=lzma
 
-lzma2 {
-DEFINES += USE_LZMA2
-INCLUDEPATH += $$PWD/Lzma2
-LIBS += -L$$PWD/Lzma2/release -lLzma2
+lzma {
+DEFINES += USE_LZMA
+INCLUDEPATH += $$PWD/Lzma/include
+LIBS += -L$$PWD/Lzma/lib -lLzma
 }
 
 #CONFIG += staticlib
@@ -69,7 +69,9 @@ SOURCES += \
     ZipDirIterator.cpp \
     Compressors/Bzip2Compressor.cpp \
     Compressors/Bzip2Decompressor.cpp \
-    Encryption/AesEncryption.cpp
+    Encryption/AesEncryption.cpp \
+    Compressors/LzmaCompressor.cpp \
+    Compressors/LzmaDecompressor.cpp
 
 HEADERS += \
     AbZip.h \
@@ -92,7 +94,9 @@ HEADERS += \
     ZipDirIterator.h \
     Compressors/Bzip2Compressor.h \
     Compressors/Bzip2Decompressor.h \
-    Encryption/AesEncryption.h
+    Encryption/AesEncryption.h \
+    Compressors/LzmaCompressor.h \
+    Compressors/LzmaDecompressor.h
 
 
 VERSION = 0.1.0.0

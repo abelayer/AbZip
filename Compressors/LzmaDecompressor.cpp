@@ -19,9 +19,9 @@
 **
 ****************************************************************************/
 
-#ifdef USE_BZIP2
+#ifdef USE_LZMA
 
-#include "Bzip2Decompressor.h"
+#include "LzmaDecompressor.h"
 
 #if QT_VERSION >= 0x050000
 #include <QtZlib/zlib.h>
@@ -29,42 +29,46 @@
 #include <zlib.h>
 #endif
 
+// read/write buffer size
+#define LZMA_BUFSIZE  409600
 
-Bzip2Decompressor::Bzip2Decompressor(  QIODevice* inDev, QIODevice* outDev ) :
+
+LzmaDecompressor::LzmaDecompressor(  QIODevice* inDev, QIODevice* outDev ) :
     Compressor(inDev, outDev)
 {
     init( );
 }
 
 
-bool Bzip2Decompressor::init( )
+bool LzmaDecompressor::init( )
 {
-    memset( &bstream, 0, sizeof(bz_stream));
+    memset(&stream, 0, sizeof(stream));
 
-    if ( BZ2_bzDecompressInit(&bstream, 0, 0) != BZ_OK )
+    const uint32_t flags = LZMA_TELL_UNSUPPORTED_CHECK | LZMA_CONCATENATED;
+    const uint64_t memory_limit = UINT64_MAX; /* no memory limit */
+
+    if (lzma_stream_decoder (&stream, memory_limit, flags) != LZMA_OK)
         return false;
 
+
     // Create the read/write buffers
-    inBuffer = new char[DEFAULT_BUFSIZE];
-    outBuffer = new char[DEFAULT_BUFSIZE];
-
-
-    bstream.avail_out = DEFAULT_BUFSIZE;
-    bstream.next_out = outBuffer;
+    inBuffer = new char[LZMA_BUFSIZE];
+    outBuffer = new char[LZMA_BUFSIZE];
 
     return true;
 }
 
 
-bool Bzip2Decompressor::decompressData( qint64 compSize, Encryption* encrypt )
+bool LzmaDecompressor::decompressData( qint64 compSize, Encryption* encrypt )
 {
-    qint64 rep = compSize / DEFAULT_BUFSIZE;
-    qint64 rem = compSize % DEFAULT_BUFSIZE;
+    qint64 rep = compSize / LZMA_BUFSIZE;
+    qint64 rem = compSize % LZMA_BUFSIZE;
     qint64 cur = 0;
 
     // extract data
     qint64 read;
-    int zret;
+    lzma_ret zret;
+    lzma_action action = LZMA_RUN;
 
     int decompressedSize;
 
@@ -77,7 +81,7 @@ bool Bzip2Decompressor::decompressData( qint64 compSize, Encryption* encrypt )
     // Decompress until deflate stream ends or end of file
     do
     {
-        read = inDevice->read(inBuffer, cur < rep ? DEFAULT_BUFSIZE : rem);
+        read = inDevice->read(inBuffer, cur < rep ? LZMA_BUFSIZE : rem);
         if (!read)
             break;
 
@@ -91,30 +95,36 @@ bool Bzip2Decompressor::decompressData( qint64 compSize, Encryption* encrypt )
         if ( encrypt )
             encrypt->decryptBytes( inBuffer, read);
 
+        // Have we read everything
+        if ( cur >= rep )
+            action = LZMA_FINISH;
+
         cur++;
         compressedSize += read;
 
-        bstream.next_in = inBuffer;
-        bstream.avail_in = read;
+
+        stream.next_in = (uint8_t*)inBuffer;
+        stream.avail_in = read;
 
         do {
-            bstream.avail_out = DEFAULT_BUFSIZE;
-            bstream.next_out = outBuffer;
+            stream.avail_out = LZMA_BUFSIZE;
+            stream.next_out = (uint8_t*)outBuffer;
 
-            zret = BZ2_bzDecompress(&bstream );
+            //zret = inflate(&stream, Z_NO_FLUSH);
+            zret = lzma_code (&stream, action ); //LZMA_FINISH);
 
             switch (zret)
             {
-            case BZ_DATA_ERROR:
-            case BZ_MEM_ERROR:
+            //case Z_NEED_DICT:
+            case LZMA_DATA_ERROR:
+            case LZMA_MEM_ERROR:
                 end();
-                return setError(WriteFailed, "BZIP2 decompression error!");
-                return false;
+                return setError(WriteFailed, "LZMA decompression error!");
             default:
                 break;
             }
 
-            decompressedSize = DEFAULT_BUFSIZE - bstream.avail_out;
+            decompressedSize = LZMA_BUFSIZE - stream.avail_out;
             uncompressedSize += decompressedSize;
 
             if (outDevice)      // we allow this to be 0 to just check the validity of the data
@@ -127,26 +137,20 @@ bool Bzip2Decompressor::decompressData( qint64 compSize, Encryption* encrypt )
                 }
             }
 
-            crc = crc32(crc, (unsigned char*)outBuffer, decompressedSize);
+            crc = crc32(crc, (const Bytef*) outBuffer, decompressedSize);
 
-        } while (bstream.avail_out == 0);
+        } while (stream.avail_out == 0);
 
-    } while (zret != BZ_STREAM_END);
-
+    } while (zret != LZMA_STREAM_END);
     end();
 
     return true;
 }
 
 
-bool Bzip2Decompressor::end()
+bool LzmaDecompressor::end()
 {
-    bstream.total_in_lo32 = 0;
-    bstream.total_in_hi32 = 0;
-
-    if ( BZ2_bzDecompressEnd(&bstream) != BZ_OK)
-        return setError(ZlibEndFailed, "BZIP2 Decompression End failed!");
-
+    lzma_end (&stream);
     return true;
 }
 

@@ -600,6 +600,13 @@ bool AbZipPrivate::addFile(const QFileInfo& srcFileInfo, const QString& arcFile,
     if ( options.testFlag(AbZip::useBZip2Compression))
         newHeader->versionNeeded = 45;
 #endif
+#ifdef USE_LZMA
+    if ( options.testFlag(AbZip::useLzmaCompression))
+    {
+        newHeader->versionNeeded = 63;
+        //newHeader->generalFlag |= 2;
+    }
+#endif
 
     if (newHeader->compressionMethod == methodDeflate)
     {
@@ -800,6 +807,10 @@ quint32 AbZipPrivate::getBestCompressionMethod( QFile& file, AbZip::ZipOptions o
 #ifdef USE_BZIP2
     if ( options.testFlag(AbZip::useBZip2Compression))
         return methodBzip2;     // User opted for BZip2 as default
+#endif
+#ifdef USE_LZMA
+    if ( options.testFlag(AbZip::useLzmaCompression))
+        return methodLzma;     // User opted for LZMA as default
 #endif
 
     // Don't compress any files too small!

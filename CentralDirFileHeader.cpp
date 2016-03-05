@@ -212,20 +212,20 @@ void CentralDirFileHeader::setFileName( const QString& filename )
 //                        ^^^^^^^^ DOS attribute bits
 void CentralDirFileHeader::setPermissions( QFile::Permissions perm, bool isDir)
 {
-    quint32 attr = isDir ? 0x40000 : 0;
+    quint32 attr = isDir ? 0x4000 : 0x8000;
 
     if ((perm & QFile::ReadOwner) != 0)
-        attr |= 0x400;
-    if ((perm & QFile::WriteOwner) != 0)
-        attr |= 0x200;
-    if ((perm & QFile::ExeOwner) != 0)
         attr |= 0x100;
-    if ((perm & QFile::ReadGroup) != 0)
+    if ((perm & QFile::WriteOwner) != 0)
+        attr |= 0x80;
+    if ((perm & QFile::ExeOwner) != 0)
         attr |= 0x40;
-    if ((perm & QFile::WriteGroup) != 0)
+    if ((perm & QFile::ReadGroup) != 0)
         attr |= 0x20;
-    if ((perm & QFile::ExeGroup) != 0)
+    if ((perm & QFile::WriteGroup) != 0)
         attr |= 0x10;
+    if ((perm & QFile::ExeGroup) != 0)
+        attr |= 0x08;
     if ((perm & QFile::ReadOther) != 0)
         attr |= 0x04;
     if ((perm & QFile::WriteOther) != 0)
@@ -245,17 +245,17 @@ QFile::Permissions  CentralDirFileHeader::getPermissions()
 
     QFile::Permissions perm = 0;
 
-    if ((attr & 0x400) != 0)
-        perm |= QFile::ReadOwner;
-    if ((attr & 0x200) != 0)
-        perm |= QFile::WriteOwner;
     if ((attr & 0x100) != 0)
-        perm |= QFile::ExeOwner;
+        perm |= QFile::ReadOwner;
+    if ((attr & 0x80) != 0)
+        perm |= QFile::WriteOwner;
     if ((attr & 0x40) != 0)
-        perm |= QFile::ReadGroup;
+        perm |= QFile::ExeOwner;
     if ((attr & 0x20) != 0)
-        perm |= QFile::WriteGroup;
+        perm |= QFile::ReadGroup;
     if ((attr & 0x10) != 0)
+        perm |= QFile::WriteGroup;
+    if ((attr & 0x08) != 0)
         perm |= QFile::ExeGroup;
     if ((attr & 0x04) != 0)
         perm |= QFile::ReadOther;
@@ -271,7 +271,7 @@ bool CentralDirFileHeader::isDirectory( )
 {
     quint32 attr = (externalFileAttr >> 16) & 0xffff;
 
-    return ((externalFileAttr&0x10) || (attr & 0x40000)) ? true : false;
+    return ((externalFileAttr&0x10) || (attr & 0x4000)) ? true : false;
 }
 
 

@@ -33,11 +33,7 @@
 Bzip2Compressor::Bzip2Compressor( int compressionLevel, QIODevice* inDev, QIODevice* outDev ) :
     Compressor(inDev, outDev)
 {
-    bstream.avail_in = 0;
-    bstream.total_in_hi32 = 0;
-    bstream.total_in_lo32 = 0;
-    bstream.total_out_hi32 = 0;
-    bstream.total_out_lo32 = 0;
+    memset( &bstream, 0, sizeof(bz_stream));
 
     init( compressionLevel );
 }

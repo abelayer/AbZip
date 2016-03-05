@@ -36,6 +36,9 @@ enum tMethod
 #ifdef USE_BZIP2
     ,methodBzip2 = 12
 #endif
+#ifdef USE_LZMA
+    , methodLzma = 14
+#endif
 };
 
 

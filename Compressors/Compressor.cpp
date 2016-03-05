@@ -24,6 +24,8 @@
 #include "DeflateCompressor.h"
 #include "Bzip2Compressor.h"
 #include "Bzip2Decompressor.h"
+#include "LzmaCompressor.h"
+#include "LzmaDecompressor.h"
 #include "StoreCompressor.h"
 
 
@@ -64,6 +66,11 @@ Compressor* Compressor::createCompressor( quint32 type, int level, QIODevice* in
         comp = new Bzip2Compressor( level, inDev, outDev );
         break;
 #endif
+#ifdef USE_LZMA
+    case methodLzma:
+        comp = new LzmaCompressor( level, inDev, outDev );
+        break;
+#endif
 
     case methodDeflate:
         comp  = new DeflateCompressor( level, inDev, outDev );
@@ -86,6 +93,11 @@ Compressor* Compressor::createDecompressor( quint32 type, QIODevice* inDev, QIOD
 #ifdef USE_BZIP2
     case methodBzip2:
         comp = new Bzip2Decompressor( inDev, outDev );
+        break;
+#endif
+#ifdef USE_LZMA
+    case methodLzma:
+        comp = new LzmaDecompressor( inDev, outDev );
         break;
 #endif
 
