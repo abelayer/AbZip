@@ -52,8 +52,8 @@ public:
     bool ntfs( qint64* mtime = 0, qint64* atime = 0, qint64* ctime = 0);
     void setNtfs( qint64 mtime, qint64 atime, qint64 ctime );
     bool timestamp( qint64* mtime, qint64* atime = 0, qint64* ctime = 0);
-    void setTimeStamp( qint64 mtime, qint64 atime, qint64 ctime );
-    bool unix( qint64* mtime, qint64* atime = 0);
+    void setTimeStamp( qint64 mtime, qint64 atime = 0, qint64 ctime = 0);
+    bool getUnix( qint64* mtime, qint64* atime = 0);
     void setUnix( qint64 mtime, qint64 atime );
     bool getWinZipAES( quint16& method, quint8& strength );
     void setWinZipAES( quint16 method );

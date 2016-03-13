@@ -10,3 +10,8 @@ debug/moc_AbZip.cpp
 debug/moc_CentralDirFileHeader.cpp
 debug/moc_LocalFileHeader.cpp
 AbZip_resource.rc
+bzip2/bzip2.pro.user.90d8917
+debug/AbZip0.dll
+debug/libAbZip0.a
+aes/debug/libaes.a
+bzip2/debug/libbzip2.a

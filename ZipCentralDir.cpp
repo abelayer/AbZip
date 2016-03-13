@@ -29,6 +29,7 @@
 ZipCentralDir::ZipCentralDir() : iteratorEntries(sortedEntries)
 {
     startOfEndOfCD = -1;
+    bytesBeforeZip = 0;
     endOfCentralDir64 = NULL;
     modified = false;
     isValid = true;      // state for a new central directory
@@ -160,21 +161,22 @@ bool ZipCentralDir::read( QIODevice* ioDevice, AbZipPrivate* zip )
             }
         }
 
+        calcBytesBeforeZip();
+
         // 'End of Central Dir' read ok. now read the Central Directory
-       ioDevice->seek( offsetToStartOfCD() );
-       for( int i=0; i < numberOfEntries(); i++ )
-       {
-           CentralDirFileHeader* header = new CentralDirFileHeader;
-           if ( header->read( ioDevice ) )
-               entries.append( header );
-           else
-               zip->setError(AbZip::CentralDirError,
+        ioDevice->seek( offsetToStartOfCD() );
+        for( int i=0; i < numberOfEntries(); i++ )
+        {
+            CentralDirFileHeader* header = new CentralDirFileHeader;
+            if ( header->read( ioDevice ) )
+                entries.append( header );
+            else
+                zip->setError(AbZip::CentralDirError,
                                     QT_TR_NOOP("Invalid Central Directory header record found!") );
-       }
-       isValid = true;
+        }
+        isValid = true;
     }
     return true;
-
 }
 
 qint64 ZipCentralDir::write( QIODevice* ioDevice )
@@ -203,6 +205,15 @@ qint64 ZipCentralDir::write( QIODevice* ioDevice )
         return endOfCentralDir.write( ioDevice );
     }
     return 1;   // This is ok
+}
+
+
+void ZipCentralDir::calcBytesBeforeZip()
+{
+    if ( endOfCentralDir64 )
+        bytesBeforeZip = startOfEndOfCD - endOfCentralDir64->sizeOfCD - endOfCentralDir64->offsetToStartOfCD;
+    else
+        bytesBeforeZip = startOfEndOfCD - endOfCentralDir.sizeOfCD - endOfCentralDir.offsetToStartOfCD;
 }
 
 

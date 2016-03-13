@@ -248,7 +248,7 @@ void ExtraFields::setTimeStamp( qint64 mtime, qint64 atime, qint64 ctime )
 }
 
 
-bool ExtraFields::unix( qint64* mtime, qint64* atime )
+bool ExtraFields::getUnix( qint64* mtime, qint64* atime )
 {
     quint16 headerID = ZIP_EXTRA_UNIX;
 

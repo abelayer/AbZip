@@ -10,6 +10,15 @@ TARGET = bzip2
 TEMPLATE = lib
 CONFIG += staticlib
 
+OBJECTS_DIR = objs
+MOC_DIR = objs
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
+
+
 SOURCES += blocksort.c \
     bzlib.c \
     compress.c \
@@ -21,8 +30,3 @@ SOURCES += blocksort.c \
 HEADERS += \
     bzlib.h \
     bzlib_private.h
-
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-}

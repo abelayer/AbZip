@@ -66,6 +66,8 @@ public: //protected:
 //protected:
 
     qint64 locateSignature( quint32 signature, QIODevice* ioDevice  );
+    qint64 bytesBeforeZip;          // for SFX stuff
+    void calcBytesBeforeZip();
 
     QList<CentralDirFileHeader*> entries;
 

@@ -121,10 +121,12 @@ public:
         IgnoreStoreOnlyChecks  = 0x8000,    ///< AbZip will detect any files that it thinks should not be compressed and store them raw
                                             /// (e.g. files that are already compressed).  If you want to ignore this feature, then specify this option.
 
-        useBZip2Compression    = 0x10000,   ///< For the use of BZip2 compression over the default Deflate compression
+        useBZip2Compression    = 0x10000,   ///< For the use of BZip2 compression over the default Deflate compression.
+                                            /// BZip2 give a much higher compression ratio but takes longer.
         useAESEncryption       = 0x20000,   ///< Use WinZip AES strong encryption over the default crc encryption
-        useLzmaCompression     = 0x40000    ///< Use Lzma compression over the default. This gives higher compression
-                                            /// ratios but take a little longer than the default.
+        useLzmaCompression     = 0x40000    ///< Use Lzma compression over the default. \b WARNING: This compression
+                                            /// method is not yet compatible with other arching software. If you need
+                                            /// higher compression levels and compatibilty then use BZip2.
         };
         Q_DECLARE_FLAGS(ZipOptions, Option)
 

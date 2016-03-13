@@ -34,7 +34,9 @@
 #include <qt_windows.h>
 #endif
 
-
+#if defined(Q_OS_LINUX) || defined(Q_OS_MACX)
+#include "utime.h"
+#endif
 
 namespace ZipUtils {
 
@@ -136,6 +138,8 @@ quint32 getFileAttributes( const QString& filePath )
     quint32 attr = 0;
 #ifdef Q_OS_WIN
     attr = GetFileAttributesW( reinterpret_cast<const wchar_t *>(filePath.utf16()) );
+#else
+    Q_UNUSED(filePath);
 #endif
     return attr;
 }

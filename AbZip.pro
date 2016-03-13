@@ -5,7 +5,22 @@ QT -= gui
 TARGET = AbZip
 CONFIG -= app_bundle
 
-CONFIG(release, debug|release): DESTDIR = lib
+
+CONFIG(debug, debug|release) {
+DESTDIR = debug
+OBJECTS_DIR = debug
+MOC_DIR = debug
+} else {
+DESTDIR = lib
+OBJECTS_DIR = objs
+MOC_DIR = objs
+}
+
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
 
 INCLUDEPATH += $$PWD/Compressors
 INCLUDEPATH += $$PWD/Encryption
@@ -23,7 +38,7 @@ CONFIG+=bzip2
 bzip2 {
 DEFINES += USE_BZIP2
 INCLUDEPATH += $$PWD/bzip2
-LIBS += -L$$PWD/bzip2/release -lbzip2
+win32: LIBS += -L$$PWD/bzip2/release -lbzip2
 }
 
 # if you want WinZip AES support....
@@ -32,7 +47,7 @@ CONFIG+=aes
 aes {
 DEFINES += USE_AES
 INCLUDEPATH += $$PWD/aes
-LIBS += -L$$PWD/aes/release -laes
+win32: LIBS += -L$$PWD/aes/release -laes
 }
 
 # if you want LZMA support....
@@ -41,7 +56,7 @@ LIBS += -L$$PWD/aes/release -laes
 lzma {
 DEFINES += USE_LZMA
 INCLUDEPATH += $$PWD/Lzma/include
-LIBS += -L$$PWD/Lzma/lib -lLzma
+win32: LIBS += -L$$PWD/Lzma/lib -lLzma
 }
 
 #CONFIG += staticlib
@@ -99,7 +114,7 @@ HEADERS += \
     Compressors/LzmaDecompressor.h
 
 
-VERSION = 0.1.0.0
+VERSION = 0.2.0.0
 QMAKE_TARGET_COMPANY = Andy Bray
 QMAKE_TARGET_PRODUCT = "AbZip"
-QMAKE_TARGET_COPYRIGHT = copyright (c) Andy Bray
+QMAKE_TARGET_COPYRIGHT = copyright (c) 2016 Andy Bray

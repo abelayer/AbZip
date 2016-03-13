@@ -121,7 +121,7 @@ void LocalFileHeader::initFromFile( const QFileInfo& file )
 
     extraFields->setNtfs(mtime, atime, ctime);
 #else
-    extraFields->setTimestamp( dtMod.toTime_t() );
+    extraFields->setTimeStamp( dtMod.toTime_t() );
 #endif
 
 }
@@ -303,7 +303,7 @@ QDateTime LocalFileHeader::lastModDate()
             return QDateTime::fromMSecsSinceEpoch(mtime*1000 );
         }
         // now try UNIX
-        extraFields->unix( &mtime );
+        extraFields->getUnix( &mtime );
         if ( mtime )
         {
             return QDateTime::fromMSecsSinceEpoch( mtime*1000 );

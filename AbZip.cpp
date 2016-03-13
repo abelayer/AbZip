@@ -26,7 +26,7 @@
 #include "LocalFileHeader.h"
 #include "Compressor.h"
 #include "StoreCompressor.h"
-#include "Encryption.h"
+#include "encryption.h"
 #include "Utils.h"
 
 #include <QFile>
@@ -941,7 +941,7 @@ bool AbZipPrivate::commitDeletedFiles()
 
 bool AbZipPrivate::writeToTempFile( QIODevice* ioTemp )
 {
-    // StoreCompressor is used simply to do the copting from one io device to another
+    // StoreCompressor is used simply to do the copying from one io device to another
     StoreCompressor copy( ioDevice, ioTemp );
 
     // First sort the list by offset in the file

@@ -10,6 +10,8 @@ TARGET = aes
 TEMPLATE = lib
 CONFIG += staticlib
 
+OBJECTS_DIR = objs
+MOC_DIR = objs
 
 unix {
     target.path = /usr/lib
