@@ -869,7 +869,7 @@ bool AbZipPrivate::deleteFile(AbZip& zip, const QString& filename, AbZip::ZipOpt
     return deleteFile( header );
 }
 
-bool AbZipPrivate::deleteFile(CentralDirFileHeader* header )
+bool AbZipPrivate::deleteFile(CentralDirFileHeader* header, bool dontLogIt )
 {
     int index = centralDir->entries.indexOf( header );
     if ( index >= 0 )
@@ -877,13 +877,110 @@ bool AbZipPrivate::deleteFile(CentralDirFileHeader* header )
         centralDir->entries.removeAt( index );
         centralDir->setModified();
     }
-    filesDeleted++;
+
+    if ( !dontLogIt )
+        filesDeleted++;
 
     // Add to the deletedEntries list
     deletedEntries.append( header );
     return true;
 }
 
+bool AbZipPrivate::renameFile( const QString& oldFilename, const QString& newFilename, AbZip::ZipOptions options)
+{
+    if ( !checkAutoOpenWrite() )
+        return false;
+
+    // Find the file
+    CentralDirFileHeader* header =  centralDir->findFile( oldFilename, options );
+    if ( !header )
+        return setError(AbZip::FileNotFound, QT_TR_NOOP("File '")+oldFilename+ QT_TR_NOOP("' not found in zip file") );
+
+    // The new filename must not exist
+    if ( centralDir->findFile( newFilename, options ) )
+        return setError(AbZip::FileExists, QT_TR_NOOP("File '")+newFilename+ QT_TR_NOOP("' already exists in zip file!") );
+
+    // seek to the start of the Local File Header
+    if ( !ioDevice->seek( header->getRelativeOffset() ) )
+        return setError(AbZip::SeekError,
+                        QString(QT_TR_NOOP("Failed to locate local file header in archive for '%1'")).arg(header->sFileName) );
+
+    // Read the local file header
+    QScopedPointer<LocalFileHeader> localHeader( new LocalFileHeader );
+    localHeader->read(ioDevice);
+
+    // Validate local header with Central directory header
+    if ( !localHeader->validate( header ) )
+        return setError(AbZip::HeaderIntegrityError,
+                        QString(QT_TR_NOOP("Local header record does not match Central Directory record for '%1'")).arg(header->sFileName) );
+
+    // Set new filename in localHeader
+    localHeader->setFileName( newFilename );
+
+    // Are we lucky enough to have the same length filenames?
+    if ( oldFilename.size() == newFilename.size() )
+    {
+        // Seek back to start of localHeader and write with update filename
+        ioDevice->seek( header->getRelativeOffset() );
+        localHeader->write(ioDevice);
+
+        // Update the filename in the Central Directory
+        header->setFileName( newFilename );
+        centralDir->setModified();
+
+        // job done!
+        return true;
+    }
+
+    // Ok so we need to re-add this file and delete the old one.  I don't see any other way!
+
+    // First save the current file pos so we can copy the file data from here and add as a new file
+    qint64 readPos = ioDevice->pos();
+
+    // Seek to the required point in the file where we can add new files
+    ioDevice->seek( centralDir->offsetToStartOfCD() );
+
+    // Save this point in the new CD file header later
+    qint64 relativeOffset = ioDevice->pos();
+
+    // Write the local file header
+    localHeader->write( ioDevice );
+
+    qint64 compressedSizeToRead = header->getCompressedSize();
+
+    // StoreCompressor is used simply to do the copying within the device
+    StoreCompressor copy( ioDevice, ioDevice );
+    if ( !copy.copyDataInSameFile( readPos, ioDevice->pos(), compressedSizeToRead ) )
+    {
+        centralDir->setModified();  // recover from an overwritten CD
+        return setError(AbZip::WriteFailed,
+                        QString(QT_TR_NOOP("Error copying data as part of the renaming process '%1'")).arg(header->sFileName) );
+    }
+
+    if ( ioDevice->isSequential() )
+    {
+        // Write the data descriptor here as we can't seek back
+        localHeader->writeDataDescriptor( ioDevice );
+    }
+
+    // save the point where we can add more files OR close and add the CD
+    centralDir->setOffsetToStartOfCD( ioDevice->pos() );
+
+    // Make a copy of the old header
+    CentralDirFileHeader* newHeader =  new CentralDirFileHeader( *header );
+    newHeader->setFileName( newFilename );
+    newHeader->relativeOffset = relativeOffset;
+
+    // Add the new CD File Header to CD list
+    centralDir->entries.append( newHeader );
+
+    // Delete the old file
+    deleteFile( header, true );
+
+    centralDir->setModified();
+
+    return true;
+}
 
 bool sortHeaderByOffset( CentralDirFileHeader* h1, CentralDirFileHeader* h2)
 {
@@ -1239,6 +1336,12 @@ bool AbZip::extractFiles(const QStringList& listFiles, const QString& destPath, 
 bool AbZip::deleteFile(const QString& filename, AbZip::ZipOptions options)
 {
     return d_ptr->deleteFile(*this, filename, options);
+
+}
+
+bool AbZip::renameFile(const QString& oldFilename, const QString& newFilename, AbZip::ZipOptions options)
+{
+    return d_ptr->renameFile( oldFilename, newFilename, options);
 
 }
 

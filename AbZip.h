@@ -208,7 +208,7 @@ public:
      * \sa Options: Recursive, AddRelativePaths, AddAbsolutePaths, AddIgnorePaths, SkipExistingFiles, AddReplaceFiles, ContinueOnError
      * \sa setNameFilters();
      */
-    bool addDirectory(const QString& srcPath, const QString&, ZipOptions options = AddRelativePaths, int level = -1 );
+    bool addDirectory(const QString& srcPath, const QString& root, ZipOptions options = AddRelativePaths, int level = -1 );
 
     /**
      * @brief Add all files in a directory to the archive.
@@ -273,7 +273,7 @@ public:
      * @brief Delete the specified file from the archive.
      * \b Note: The file data is only removed from the archive when you call close()
      * @param filename The full path and filename to the file within the archive to be deleted. Wildcard specifications
-     * camn be used to delete all files matching a wildcard spec. (e.g. "*.pdf" will delete \b all files in the archive
+     * can be used to delete all files matching a wildcard spec. (e.g. "*.pdf" will delete \b all files in the archive
      * with a '.pdf' file extention)
      * @param options Options use for extracting
      * @return \c true if successful otherwise \c false. See errorCode() and errorString() for information on the error
@@ -282,6 +282,17 @@ public:
      * \sa setNameFilters();
      */
     bool deleteFile(const QString& filename, ZipOptions options = AbZip::None);
+
+    /**
+     * @brief Rename the specified file to a new name in the archive. If teh new file name exists, then this function
+     * will return \c false
+     * @param oldFilename The full path and filename to the old file within the archive.
+     * @param newFilename The full path and filename to the new file name.
+     * @param options Options use for extracting
+     * @return \c true if successful otherwise \c false. See errorCode() and errorString() for information on the error
+     */
+    bool renameFile(const QString& oldFilename, const QString& newFilename, AbZip::ZipOptions options = AbZip::None);
+
 
     /**
      * @brief This function performs a full integrity check of the archive file.

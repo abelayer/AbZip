@@ -30,6 +30,7 @@ public:
     StoreCompressor( QIODevice* inDev, QIODevice* outDev = 0 );
 
     bool copyData( qint64 toRead );
+    bool copyDataInSameFile( qint64 readPos, qint64 writePos, qint64 toRead );
 
     virtual bool compressData( Encryption* encrypt = 0);
     virtual bool decompressData( qint64 size, Encryption* encrypt = 0);

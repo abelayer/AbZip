@@ -17,6 +17,7 @@
  * - Update existing files
  * - Delete files from the archive (not many Zip classes do this as I found out, which
  * is the reason I wrote these classes!)
+ * - Rename files within the archive.
  * - Extract one or more files
  * - Extract based on file name filters
  * - Search for files, again using wildcard filters
@@ -81,10 +82,10 @@ $ make install
  * GitHub <a
  * href="https://github.com/abelayer/AbZip/issues">Issues</a>.
  * If you want to send me a private message, please do so via 
- * web@gabelay.com
+ * web@abelay.com
  *
  * Do not use e-mail to report bugs, please. Reporting bugs and problems
- * with the SourceForge.net's bug report system.
+ * with the Github or SourceForge.net's bug report system.
  *
  * Copyright (C) 2016 Andy Bray and contributors
  **/

@@ -41,7 +41,10 @@ class CentralDirFileHeader : public LocalFileHeader
     Q_OBJECT
 public:
     explicit CentralDirFileHeader(QObject *parent = 0);
+    CentralDirFileHeader(const CentralDirFileHeader & );
     virtual ~CentralDirFileHeader();
+
+    CentralDirFileHeader& operator=(const CentralDirFileHeader& other);
 
     virtual void initFromFile( const QFileInfo& file );
 

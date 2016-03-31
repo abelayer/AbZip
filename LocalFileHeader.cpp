@@ -27,6 +27,7 @@
 #include <QIODevice>
 #include <QDebug>
 #include <QDateTime>
+#include <QTextCodec>
 
 LocalFileHeader::LocalFileHeader(QObject *parent) : QObject(parent)
 {
@@ -44,6 +45,43 @@ LocalFileHeader::LocalFileHeader(QObject *parent) : QObject(parent)
 
     // Expanded version of extraField if there are any
     extraFields = NULL;
+}
+
+LocalFileHeader::LocalFileHeader(const LocalFileHeader & other) : QObject()
+{
+    extraFields = NULL;
+
+    *this = other;
+}
+
+LocalFileHeader& LocalFileHeader::operator=(const LocalFileHeader& other)
+{
+    // check for self-assignment
+    if(&other == this)
+        return *this;
+
+    signature = other.signature;
+    versionNeeded = other.versionNeeded;
+    generalFlag = other.generalFlag;
+    compressionMethod = other.compressionMethod;
+    lastModFileTime = other.lastModFileTime;
+    lastModFileDate = other.lastModFileDate;
+    crc_32 = other.crc_32;
+    compressedSize = other.compressedSize;
+    uncompressedSize = other.uncompressedSize;
+    filenameLength = other.filenameLength;
+    extraFieldLength = other.extraFieldLength;
+    fileName = other.fileName;
+    extraField = other.extraField;
+
+    if ( other.extraFields )
+    {
+        if ( !extraFields )
+            extraFields = new ExtraFields;
+        *extraFields = *(other.extraFields);
+    }
+
+    return *this;
 }
 
 LocalFileHeader::~LocalFileHeader()
@@ -124,6 +162,13 @@ void LocalFileHeader::initFromFile( const QFileInfo& file )
     extraFields->setTimeStamp( dtMod.toTime_t() );
 #endif
 
+}
+
+void LocalFileHeader::setFileName( const QString& filename )
+{
+    // Always store in UTF8
+    fileName = QTextCodec::codecForName("UTF-8")->fromUnicode( filename );    // Save in a QString for convienience (searching etc)
+    filenameLength = fileName.size();
 }
 
 

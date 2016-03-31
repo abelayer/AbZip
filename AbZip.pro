@@ -5,6 +5,7 @@ QT -= gui
 TARGET = AbZip
 CONFIG -= app_bundle
 
+VERSION = 1.3.0.0
 
 CONFIG(debug, debug|release) {
 DESTDIR = debug
@@ -29,7 +30,6 @@ INCLUDEPATH += $$PWD/Encryption
 lessThan(QT_MAJOR_VERSION, 5) {
 INCLUDEPATH += $$PWD
 INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
-#win32:QMAKE_LFLAGS += -shared
 }
 
 # if you want Bzip2 support....
@@ -114,7 +114,7 @@ HEADERS += \
     Compressors/LzmaDecompressor.h
 
 
-VERSION = 0.2.0.0
+
 QMAKE_TARGET_COMPANY = Andy Bray
 QMAKE_TARGET_PRODUCT = "AbZip"
 QMAKE_TARGET_COPYRIGHT = copyright (c) 2016 Andy Bray

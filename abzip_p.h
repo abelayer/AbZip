@@ -59,7 +59,9 @@ public:
 
 
     bool deleteFile(AbZip& zip, const QString& filename, AbZip::ZipOptions options = AbZip::None);
-    bool deleteFile(CentralDirFileHeader* header );
+    bool deleteFile(CentralDirFileHeader* header, bool dontLogIt = false );
+
+    bool renameFile(const QString& oldFilename, const QString& newFilename, AbZip::ZipOptions options);
 
     QList<ZipFileInfo> findFile( AbZip& zip, const QString& filename, const QString& root, AbZip::ZipOptions options = AbZip::Recursive );
 

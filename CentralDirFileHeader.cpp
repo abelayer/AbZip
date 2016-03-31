@@ -43,6 +43,30 @@ CentralDirFileHeader::CentralDirFileHeader(QObject *parent) : LocalFileHeader(pa
     relativeOffset = 0;
 }
 
+CentralDirFileHeader::CentralDirFileHeader(const CentralDirFileHeader & other) : LocalFileHeader(other)
+{
+    *this = other;
+}
+
+CentralDirFileHeader& CentralDirFileHeader::operator=(const CentralDirFileHeader& other)
+{
+    // check for self-assignment
+    if(&other == this)
+        return *this;
+
+    versionMadeBy = other.versionMadeBy;
+    fileCommentLength = other.fileCommentLength;
+    diskNumberStart = other.diskNumberStart;
+    internalFileAttr = other.internalFileAttr;
+    externalFileAttr = other.externalFileAttr;
+    relativeOffset = other.relativeOffset;
+    comment = other.comment;
+    sFileName = other.sFileName;
+
+    return *this;
+}
+
+
 CentralDirFileHeader::~CentralDirFileHeader()
 {
 }

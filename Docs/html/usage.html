@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">AbZip
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
   </td>
  </tr>
@@ -41,7 +41,7 @@
 <div class="title">Usage </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This page provides general information on <a class="el" href="class_ab_zip.html">AbZip</a> usage.</p>
+<div class="textblock"><p>This page provides general information on <a class="el" href="class_ab_zip.html">AbZip</a> usage. See also the example project in the 'ExampleUsage' sub-folder.</p>
 <h1><a class="anchor" id="examples"></a>
 Examples</h1>
 <p>Compressing a single file and overwrite old the one if it exists </p><pre class="fragment">   AbZip zip( "theFile.zip" );
@@ -68,7 +68,7 @@ Examples</h1>
    zip.close();
 </pre><h1><a class="anchor" id="error-handling"></a>
 Error handling</h1>
-<p>Almost all function that perform actions on the archive will return either <code>true</code> or <code>false</code> indicating success or failure. The main exception to this is the findFile() fucntion that returns a QList of found entries. You should always check the return value for errors.</p>
+<p>Almost all function that perform actions on the archive will return either <code>true</code> or <code>false</code> indicating success or failure. The main exception to this is the findFile() function that returns a QList of found entries. You should always check the return value for errors.</p>
 <p>To get information about the error use the functions errorCode(), errorString() and errorCount(). </p>
 </div></div><!-- contents -->
 <!-- start footer part -->

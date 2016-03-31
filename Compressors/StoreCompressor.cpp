@@ -142,3 +142,42 @@ bool StoreCompressor::copyData( qint64 toRead )
     return true;
 }
 
+bool StoreCompressor::copyDataInSameFile( qint64 readPos, qint64 writePos, qint64 toRead )
+{
+    qint64 rep = toRead / DEFAULT_BUFSIZE;
+    qint64 rem = toRead % DEFAULT_BUFSIZE;
+    qint64 cur = 0;
+
+
+    uncompressedSize = 0;
+    qint64 read;
+    inDevice->seek( readPos );
+    while ( (read = inDevice->read(inBuffer, cur < rep ? DEFAULT_BUFSIZE : rem)) > 0 )
+    {
+        // Save current read pos
+        readPos = inDevice->pos();
+
+        uncompressedSize += read;
+
+        // Goto the write pos
+        outDevice->seek( writePos );
+        if (outDevice->write(inBuffer, read) != read)
+            return setError(WriteFailed, "error writing to output device");
+        // Save current write pos
+        writePos = outDevice->pos();
+
+        cur++;
+        if ((qint64)uncompressedSize == toRead)
+            break;
+
+        // Go back to current read pos and read next chunk
+        inDevice->seek( readPos );
+    }
+
+    if (read < 0)
+        return setError(ReadFailed, "error reading from input device");
+
+    // Make sure we are end of the write pos
+    outDevice->seek( writePos );
+    return true;
+}

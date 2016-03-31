@@ -54,10 +54,16 @@ class LocalFileHeader : public QObject
     Q_OBJECT
 public:
     explicit LocalFileHeader(QObject *parent = 0);
+    LocalFileHeader(const LocalFileHeader&);
+
+    LocalFileHeader& operator=(const LocalFileHeader& other);
+
     virtual ~LocalFileHeader();
 
 
     void init( CentralDirFileHeader* );
+
+    void setFileName( const QString& filename );
 
     virtual void initFromFile( const QFileInfo& file );
     virtual bool validate( LocalFileHeader* header);

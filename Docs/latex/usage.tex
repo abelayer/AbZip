@@ -1,4 +1,4 @@
-This page provides general information on \hyperlink{class_ab_zip}{Ab\+Zip} usage.\hypertarget{usage_examples}{}\section{Examples}\label{usage_examples}
+This page provides general information on \hyperlink{class_ab_zip}{Ab\+Zip} usage. See also the example project in the \textquotesingle{}Example\+Usage\textquotesingle{} sub-\/folder.\hypertarget{usage_examples}{}\section{Examples}\label{usage_examples}
 Compressing a single file and overwrite old the one if it exists \begin{DoxyVerb}   AbZip zip( "theFile.zip" );
    if ( !zip.addFile( "theFile.doc" ))
     qDebug() << zip.errorString();
@@ -36,6 +36,6 @@ Search for all P\+DF files within an archive. Use set\+Filter\+Names() to add mo
    zip.close();
 \end{DoxyVerb}
 \hypertarget{usage_error-handling}{}\section{Error handling}\label{usage_error-handling}
-Almost all function that perform actions on the archive will return either {\ttfamily true} or {\ttfamily false} indicating success or failure. The main exception to this is the find\+File() fucntion that returns a Q\+List of found entries. You should always check the return value for errors.
+Almost all function that perform actions on the archive will return either {\ttfamily true} or {\ttfamily false} indicating success or failure. The main exception to this is the find\+File() function that returns a Q\+List of found entries. You should always check the return value for errors.
 
 To get information about the error use the functions error\+Code(), error\+String() and error\+Count(). 

@@ -1,6 +1,6 @@
 /** \page usage Usage
  * 
- * This page provides general information on AbZip usage. 
+ * This page provides general information on AbZip usage. See also the example project in the 'ExampleUsage' sub-folder.
  *
  * \section examples Examples
  *
@@ -55,7 +55,7 @@
  *
  * Almost all function that perform actions on the archive will return
  * either \c true or \c false indicating success or failure. The main exception to this
- * is the findFile() fucntion that returns a QList of found entries.
+ * is the findFile() function that returns a QList of found entries.
  * You should always check the return value for errors.
  *
  * To get information about the error use the functions errorCode(), errorString()
