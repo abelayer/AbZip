@@ -138,7 +138,7 @@ bool ZipCentralDir::read( QIODevice* ioDevice, AbZipPrivate* zip )
         if ( startOfEndOfCD < 0 )
         {
             return zip->setError(AbZip::CentralDirError,
-                                 QT_TR_NOOP("Error locating Central Directory. This may not be a valid zip file!") );
+                                 QT_TR_NOOP("Error locating Central Directory! Will attempt to recover it.") );
         }
 
         // Move to start of 'End of Central Dir'
@@ -146,7 +146,7 @@ bool ZipCentralDir::read( QIODevice* ioDevice, AbZipPrivate* zip )
         if ( !endOfCentralDir.read( ioDevice ) )
         {
             return zip->setError(AbZip::CentralDirError,
-                                 QT_TR_NOOP("Error reading End of Central Directory. This may not be a valid zip file!") );
+                                 QT_TR_NOOP("Error reading End of Central Directory! Will attempt to recover it.") );
         }
 
         // Do we have a zip64 file?

@@ -84,7 +84,8 @@ public:
     void setWinZipAES( );
     bool getWinZipAES( quint16& method, quint8& strength );
 
-    qint32 writeDataDescriptor( QIODevice* ioDevice );
+    qint64 writeDataDescriptor( QIODevice* ioDevice );
+    void readDataDescriptor( QIODevice* ioDevice );
 
     bool isEncrypted()const { return generalFlag & ZIP_IS_ENCRYPTED; }          // Bit 1
     bool isStrongEncryption()const { return isEncrypted() && (generalFlag & ZIP_IS_STRONG_ENCRYPTION); }          // Bit 6

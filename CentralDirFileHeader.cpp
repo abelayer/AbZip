@@ -188,6 +188,28 @@ void CentralDirFileHeader::initFromFile( const QFileInfo& file )
         externalFileAttr |= 0x01;
 }
 
+// This is call when repairing a damaged or lost CD
+// We need to make some assumptions about the external and internal attributes!!
+void CentralDirFileHeader::initFromLocalHeader( const LocalFileHeader& localHeader )
+{
+    // Call copy operator for local Header
+    *((LocalFileHeader*)this) = localHeader;
+
+    if ( getCompressedSize() == 0 )
+    {
+        // it's a dir
+        setPermissions( 0, true );
+    }
+    else
+    {
+        // default all files to 'Archive' and RW
+        setPermissions( QFile::ReadOwner | QFile::WriteOwner |
+                        QFile::ReadGroup | QFile::WriteGroup |
+                        QFile::ReadOther | QFile::WriteOther, false);
+        externalFileAttr |= 0x20;
+    }
+}
+
 void CentralDirFileHeader::setSizes( qint64 uncompSize, qint64 compSize, qint64 offset)
 {
     if ( compSize > 0xffffffff || uncompSize > 0xffffffff || offset > 0xffffffff)

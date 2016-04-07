@@ -66,6 +66,8 @@ public:
     QList<ZipFileInfo> findFile( AbZip& zip, const QString& filename, const QString& root, AbZip::ZipOptions options = AbZip::Recursive );
 
     bool checkIntegrity();
+    bool repairArchive();
+    bool rebuildCentralDirectory( );
 
     bool setError( int err, QString msg = QString() );
 

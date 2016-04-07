@@ -74,8 +74,8 @@ void AbZipPrivate::init()
 
 AbZipPrivate::~AbZipPrivate()
 {
-  if(isOpen())
-    close();
+    if(isOpen())
+        close();
 }
 
 
@@ -123,7 +123,11 @@ bool AbZipPrivate::open( AbZip::Mode mode, AbZip::ZipOptions options )
 
     // Always read the Central Directory
     if ( ioDevice->size() >= 22 && !centralDir->read( ioDevice, this ) )
-        return setError(AbZip::InvalidArchive, QT_TR_NOOP("Error reading zip file. It may not be a valid zip file!") );
+    {
+        // Attempt a recovery of CD
+        if ( !rebuildCentralDirectory() )
+            return setError(AbZip::InvalidArchive, QT_TR_NOOP("Error reading zip file. It may not be a valid zip file!") );
+    }
 
     return true;
 }
@@ -1131,6 +1135,158 @@ bool AbZipPrivate::checkIntegrity()
     return errorMsg.isEmpty();
 }
 
+static qint64 locateSignature( quint32 signature, QIODevice* ioDevice  )
+{
+    QByteArray baSig = QByteArray::fromRawData((const char*) &signature, sizeof(quint32)) ;
+
+    qint64 fileSize = ioDevice->size();
+    qint64 startPoint = ioDevice->pos();
+
+    int readSize = 0x400;     // max read size
+
+    qint64 foundPos = -1;
+
+    QByteArray ba;
+
+    qint64 sizeRead = 0;
+    while ( sizeRead < fileSize )
+    {
+        readSize = qMin( (qint64)readSize, fileSize-sizeRead);
+
+        // Read a block from file
+        ba.clear();
+        ba = ioDevice->read( readSize );
+        if ( ba.size() != readSize )
+        {
+            // Error reading from file
+            return -1;
+        }
+
+
+        // Look for signature
+        for (int i = 0; i < (int)readSize-3; i++ )
+        {
+            if ( ba[i]==baSig[0] && ba[i+1]==baSig[1] &&
+                 ba[i+2]==baSig[2] && ba[i+3]==baSig[3] )
+            {
+                foundPos = startPoint + sizeRead + i;
+                break;
+            }
+        }
+        sizeRead += readSize;
+
+        if ( foundPos >= 0 )
+            break;
+    }
+
+    return foundPos;
+}
+
+// If silent is true, then we are attempting an auto recovery
+bool AbZipPrivate::repairArchive( )
+{
+    // Check if it is bad
+    if( checkIntegrity() )
+    {
+        setError(AbZip::Ok, QT_TR_NOOP("The archive appears to be OK!  Repair not required.") );
+        return true;
+    }
+
+    if ( !zipName.isEmpty() )
+    {
+        // Close the archive
+        if ( isOpen())
+            close();
+
+        // Create a backup of original file
+        QFileInfo fileInfo( zipName );
+        QString backupFilename = fileInfo.absolutePath() + "/" + fileInfo.baseName() + QT_TR_NOOP(" (bad).") + fileInfo.completeSuffix();
+
+        if ( QFile::exists(backupFilename) )
+            QFile::remove(backupFilename);
+        if ( !QFile::copy(zipName, backupFilename) )
+            setError(AbZip::CopyError, QT_TR_NOOP("Failed to create back of current archive") );
+
+        // re-open archive for reading/writing
+        ioDevice = new QFile(zipName);
+        if (!ioDevice->open(QIODevice::ReadWrite))
+            return setError(AbZip::OpenFileError, QT_TR_NOOP("Cannot open device for reading: ")+ioDevice->errorString() );
+    }
+
+
+    if ( !rebuildCentralDirectory() )
+    {
+        return setError(AbZip::InvalidArchive, QT_TR_NOOP("This does not appear to be a valid Zip file!") );
+    }
+
+    setError(AbZip::Ok, QString( QT_TR_NOOP("repairArchive recovered %1 files") ).arg(centralDir->entries.size()) );
+    return true;
+}
+
+bool AbZipPrivate::rebuildCentralDirectory( )
+{
+    ioDevice->seek( centralDir->bytesBeforeZip );
+
+    QScopedPointer<LocalFileHeader> localHeader( new LocalFileHeader );
+
+    // Start reading LocalHeaders
+    qint64 localHeaderPos = -1;
+    while( (localHeaderPos = locateSignature( LOCAL_FILE_HEADER_SIGNATURE, ioDevice )) >= 0 )
+    {
+        // Found a local header
+        ioDevice->seek( localHeaderPos );
+        // Read it
+        if ( localHeader->read(ioDevice) )
+        {
+            // Jump to end of local file data
+            if ( localHeader->hasDataDescriptor() )
+            {
+                // We don't know the crc or compressed data size yet!
+                // WARNING: this assumes we have a data descriptor signature.  If not then.......!!!!!!
+
+                qint64 curPos = ioDevice->pos();    // save current file pos
+                qint64 nextLocalHeaderPos = locateSignature( LOCAL_FILE_HEADER_SIGNATURE, ioDevice );
+                ioDevice->seek( curPos );
+
+                // Search for DataDescriptor header
+                qint64 dataDescriptorPos = locateSignature( DATA_DESCRIPTOR_SIGNATURE, ioDevice );
+                if ( dataDescriptorPos > 0 && (nextLocalHeaderPos == -1 || dataDescriptorPos < nextLocalHeaderPos ) )
+                {
+                    // Found a valid data descriptor for this local file
+                    ioDevice->seek( dataDescriptorPos );
+                    localHeader->readDataDescriptor( ioDevice );
+                }
+            }
+            else
+            {
+                // We know the compressed size so seek to end of this local file data
+                ioDevice->seek( localHeaderPos + localHeader->getCompressedSize() );
+            }
+
+            // Create the new CD header
+            CentralDirFileHeader* cdHeader = new CentralDirFileHeader();
+
+            // copy all info found in local header into this new CD header
+            cdHeader->initFromLocalHeader( *(localHeader.data()) );
+            cdHeader->setSizes( localHeader->getUncompressedSize(), localHeader->getCompressedSize(), localHeaderPos );
+
+            // Add the new CD File Header to CD list
+            centralDir->entries.append( cdHeader );
+        }
+    }
+
+    // Did we find any LocalHeaders?
+    if ( centralDir->entries.size() > 0 )
+    {
+        centralDir->setOffsetToStartOfCD( ioDevice->pos() );
+        centralDir->setModified();
+        centralDir->isValid = true;
+        return true;
+    }
+
+    return false;
+}
+
 
 
 bool AbZipPrivate::setError( int err, QString msg )
@@ -1369,5 +1525,11 @@ QList<ZipFileInfo> AbZip::findFile( const QString& filename, const QString& root
 bool AbZip::checkIntegrity()
 {
     return d_ptr->checkIntegrity();
+
+}
+
+bool AbZip::repairArchive()
+{
+    return d_ptr->repairArchive();
 
 }

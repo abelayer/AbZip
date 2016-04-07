@@ -303,6 +303,15 @@ public:
     bool checkIntegrity();
 
     /**
+     * @brief This function will attempt to repair a broken archive.  This normally involves rebuilding the
+     * Central Directory by reading the file from the start and locating each LocalHeader and creating new
+     * Central Directory Header entry for it. This function will make a copy of the old archive prior to repair.
+     * \b Note: The process of recovering a damages Central Directory is performed automatically.
+     * @return \c true if successful otherwise \c false. See errorCode() and errorString() for information on the error
+     */
+    bool repairArchive();
+
+    /**
      * @brief This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled
      * containing the zip file information about that file.
      * @param filename The filename to search for. Filename wildcards can be used (e.g. '*.pdf' or '*accounts* )

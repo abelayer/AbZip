@@ -112,6 +112,8 @@ bool \hyperlink{class_ab_zip_a6e40593befbfd07151bfd89ee1fbc731}{rename\+File} (c
 \begin{DoxyCompactList}\small\item\em Rename the specified file to a new name in the archive. If teh new file name exists, then this function will return {\ttfamily false}. \end{DoxyCompactList}\item 
 bool \hyperlink{class_ab_zip_a783167f4c5f87551d7e2dc54b2beea3f}{check\+Integrity} ()
 \begin{DoxyCompactList}\small\item\em This function performs a full integrity check of the archive file. Including badly formed Central Directories, mismating local headers and corrupted file data. This function is the equivalent to calling extract\+All( \char`\"{}\char`\"{}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}{Ab\+Zip\+::\+Verify\+Only} );. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ab_zip_aa61a973112ca3ba98185839d818ca77c}{repair\+Archive} ()
+\begin{DoxyCompactList}\small\item\em This function will attempt to repair a broken archive. This normally involves rebuilding the Central Directory by reading the file from the start and locating each Local\+Header and creating new Central Directory Header entry for it. This function will make a copy of the old archive prior to repair. {\bfseries Note\+:} The process of recovering a damages Central Directory is performed automatically. \end{DoxyCompactList}\item 
 Q\+List$<$ \hyperlink{class_zip_file_info}{Zip\+File\+Info} $>$ \hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File} (const Q\+String \&filename, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive})
 \begin{DoxyCompactList}\small\item\em This searches the archive for a matching file spec. If found, then a \hyperlink{class_zip_file_info}{Zip\+File\+Info} structure is filled containing the zip file information about that file. \end{DoxyCompactList}\item 
 Q\+List$<$ \hyperlink{class_zip_file_info}{Zip\+File\+Info} $>$ \hyperlink{class_ab_zip_a3a60562106d519e49173bb0fdc42808f}{find\+File} (const Q\+String \&filename, const Q\+String \&root, Zip\+Options options=\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive})
@@ -642,6 +644,20 @@ References extract\+All().
 
 
 This function performs a full integrity check of the archive file. Including badly formed Central Directories, mismating local headers and corrupted file data. This function is the equivalent to calling extract\+All( \char`\"{}\char`\"{}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5aecc21ef1487642e3109d04d1a195010a}{Ab\+Zip\+::\+Verify\+Only} );. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error 
+\end{DoxyReturn}
+\index{Ab\+Zip@{Ab\+Zip}!repair\+Archive@{repair\+Archive}}
+\index{repair\+Archive@{repair\+Archive}!Ab\+Zip@{Ab\+Zip}}
+\subsubsection[{\texorpdfstring{repair\+Archive()}{repairArchive()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Ab\+Zip\+::repair\+Archive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ab_zip_aa61a973112ca3ba98185839d818ca77c}{}\label{class_ab_zip_aa61a973112ca3ba98185839d818ca77c}
+
+
+This function will attempt to repair a broken archive. This normally involves rebuilding the Central Directory by reading the file from the start and locating each Local\+Header and creating new Central Directory Header entry for it. This function will make a copy of the old archive prior to repair. {\bfseries Note\+:} The process of recovering a damages Central Directory is performed automatically. 
 
 \begin{DoxyReturn}{Returns}
 {\ttfamily true} if successful otherwise {\ttfamily false}. See \hyperlink{class_ab_zip_aed3be53eab7d843ca48943247b03d8c4}{error\+Code()} and \hyperlink{class_ab_zip_a218ae44456c9e7518ad22fb9f8fd7466}{error\+String()} for information on the error 

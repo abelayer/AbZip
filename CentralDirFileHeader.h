@@ -47,6 +47,7 @@ public:
     CentralDirFileHeader& operator=(const CentralDirFileHeader& other);
 
     virtual void initFromFile( const QFileInfo& file );
+    void initFromLocalHeader( const LocalFileHeader& localHeader ); // Used for recovery of bad CD
 
 
     virtual bool read(QIODevice* ioDevice);

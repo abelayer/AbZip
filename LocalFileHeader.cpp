@@ -60,7 +60,7 @@ LocalFileHeader& LocalFileHeader::operator=(const LocalFileHeader& other)
     if(&other == this)
         return *this;
 
-    signature = other.signature;
+    //signature = other.signature;
     versionNeeded = other.versionNeeded;
     generalFlag = other.generalFlag;
     compressionMethod = other.compressionMethod;
@@ -264,7 +264,7 @@ void LocalFileHeader::checkForExtraData()
 }
 
 
-qint32 LocalFileHeader::writeDataDescriptor( QIODevice* ioDevice )
+qint64 LocalFileHeader::writeDataDescriptor( QIODevice* ioDevice )
 {
     Q_ASSERT(ioDevice);
 
@@ -276,6 +276,32 @@ qint32 LocalFileHeader::writeDataDescriptor( QIODevice* ioDevice )
     buffer.writeUInt32( uncompressedSize );
 
     return ioDevice->write( buffer.getByteArray() );
+}
+
+void LocalFileHeader::readDataDescriptor( QIODevice* ioDevice )
+{
+    Q_ASSERT(ioDevice);
+
+    IOBuffer buffer;
+    buffer.read( ioDevice, sizeof(quint32)*3 );
+
+    quint32 signature = buffer.readUInt32( );
+    if ( signature == DATA_DESCRIPTOR_SIGNATURE )
+    {
+        // Found signature
+        crc_32 = buffer.readUInt32( );
+        compressedSize = buffer.readUInt32( );
+
+        // Read 1 more int32
+        buffer.read( ioDevice, sizeof(quint32) );
+        uncompressedSize = buffer.readUInt32( );
+    }
+    else
+    {
+        crc_32 = signature;
+        compressedSize = buffer.readUInt32( );
+        uncompressedSize = buffer.readUInt32( );
+    }
 }
 
 void LocalFileHeader::setSizes( qint64 uncompSize, qint64 compSize, qint64 offset )

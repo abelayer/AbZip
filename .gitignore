@@ -15,3 +15,5 @@ debug/AbZip0.dll
 debug/libAbZip0.a
 aes/debug/libaes.a
 bzip2/debug/libbzip2.a
+aes/release/libaes.a
+aes/aes.pro.user.90d8917
