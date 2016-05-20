@@ -52,6 +52,16 @@ QString getFileName( const QString& strFullFile)
     return strFile;
 }
 
+/// just extract the filename extension part only from a full path
+QString getFileSuffix( const QString& name)
+{
+    int index = name.lastIndexOf( QLatin1Char('.') );
+    if ( index > 0 )
+        return name.mid( index );
+
+    return "";
+}
+
 QString fixPathSeparators( const QString& strFullFile )
 {
     QString strFile( strFullFile );         // This will convert windows '\' into char /

@@ -66,7 +66,15 @@ enum \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5}{Option} \{ \\*
 \\*
 \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a58109d8c41d7075deeba22c6600feec1}{use\+B\+Zip2\+Compression} = 0x10000, 
 \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}{use\+A\+E\+S\+Encryption} = 0x20000, 
-\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f}{use\+Lzma\+Compression} = 0x40000
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f}{use\+Lzma\+Compression} = 0x40000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90}{Sort\+By\+Name} = 0x80000, 
+\\*
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc}{Sort\+By\+Time} = 0x100000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2}{Sort\+By\+Compressed\+Size} = 0x200000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534}{Sort\+By\+Uncompressed\+Size} = 0x400000, 
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4}{Sort\+By\+Type} = 0x800000, 
+\\*
+\hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5}{Sort\+Reversed} = 0x1000000
  \}\begin{DoxyCompactList}\small\item\em Archive options. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
@@ -265,7 +273,19 @@ use\+B\+Zip2\+Compression\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53
 use\+A\+E\+S\+Encryption\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454}
 }]Use Win\+Zip A\+ES strong encryption over the default crc encryption. \index{use\+Lzma\+Compression@{use\+Lzma\+Compression}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!use\+Lzma\+Compression@{use\+Lzma\+Compression}}\item[{\em 
 use\+Lzma\+Compression\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f}
-}]Use Lzma compression over the default. {\bfseries W\+A\+R\+N\+I\+NG\+:} This compression method is not yet compatible with other arching software. If you need higher compression levels and compatibilty then use B\+Zip2. \end{description}
+}]Use Lzma compression over the default. {\bfseries W\+A\+R\+N\+I\+NG\+:} This compression method is not yet compatible with other arching software. If you need higher compression levels and compatibilty then use B\+Zip2. \index{Sort\+By\+Name@{Sort\+By\+Name}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Sort\+By\+Name@{Sort\+By\+Name}}\item[{\em 
+Sort\+By\+Name\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90}
+}]\hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}\+: Sort by file name \index{Sort\+By\+Time@{Sort\+By\+Time}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Sort\+By\+Time@{Sort\+By\+Time}}\item[{\em 
+Sort\+By\+Time\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc}
+}]\hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}\+: Sort by last modified date/time \index{Sort\+By\+Compressed\+Size@{Sort\+By\+Compressed\+Size}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Sort\+By\+Compressed\+Size@{Sort\+By\+Compressed\+Size}}\item[{\em 
+Sort\+By\+Compressed\+Size\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2}
+}]\hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}\+: Sort by compresses size \index{Sort\+By\+Uncompressed\+Size@{Sort\+By\+Uncompressed\+Size}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Sort\+By\+Uncompressed\+Size@{Sort\+By\+Uncompressed\+Size}}\item[{\em 
+Sort\+By\+Uncompressed\+Size\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534}
+}]\hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}\+: Sort by uncompressed size \index{Sort\+By\+Type@{Sort\+By\+Type}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Sort\+By\+Type@{Sort\+By\+Type}}\item[{\em 
+Sort\+By\+Type\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4}
+}]\hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}\+: Sort by file type \index{Sort\+Reversed@{Sort\+Reversed}!Ab\+Zip@{Ab\+Zip}}\index{Ab\+Zip@{Ab\+Zip}!Sort\+Reversed@{Sort\+Reversed}}\item[{\em 
+Sort\+Reversed\hypertarget{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5}{}\label{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5}
+}]\hyperlink{class_ab_zip_a0ac7b0fe63df09a394d7c3bdb5568c1b}{find\+File()}\+: Reverse the sort order \end{description}
 \end{Desc}
 
 
@@ -685,7 +705,7 @@ This searches the archive for a matching file spec. If found, then a \hyperlink{
 If one or more matches are found, then a Qlist of \hyperlink{class_zip_file_info}{Zip\+File\+Info} entries are returned, else an empty list is returned.
 \end{DoxyReturn}
 \begin{DoxySeeAlso}{See also}
-Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90}{Sort\+By\+Name}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc}{Sort\+By\+Time}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4}{Sort\+By\+Type}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2}{Sort\+By\+Compressed\+Size} \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534}{Sort\+By\+Uncompressed\+Size}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5}{Sort\+Reversed} 
 
 \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
 \end{DoxySeeAlso}
@@ -715,7 +735,7 @@ This searches the archive for a matching file spec. If found, then a \hyperlink{
 If one or more matches are found, then a Qlist of \hyperlink{class_zip_file_info}{Zip\+File\+Info} entries are returned, else an empty list is returned.
 \end{DoxyReturn}
 \begin{DoxySeeAlso}{See also}
-Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive} 
+Options\+: \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3}{Recursive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542}{Continue\+On\+Error}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef}{Case\+Sensitive}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90}{Sort\+By\+Name}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc}{Sort\+By\+Time}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4}{Sort\+By\+Type}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2}{Sort\+By\+Compressed\+Size} \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534}{Sort\+By\+Uncompressed\+Size}, \hyperlink{class_ab_zip_a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5}{Sort\+Reversed} 
 
 \hyperlink{class_ab_zip_a80724c61b6812aaea06f575860bed8e6}{set\+Name\+Filters()}; 
 \end{DoxySeeAlso}

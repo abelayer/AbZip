@@ -224,3 +224,103 @@ QString ZipDirIterator::path() const
     return QString();
 }
 
+
+
+
+
+// Sorting
+struct ZipDirSortItem
+{
+    mutable QString filename;
+    mutable QString suffix;
+    ZipFileInfo item;
+};
+
+
+class ZipDirSortItemComparator
+{
+    AbZip::ZipOptions options;
+public:
+    ZipDirSortItemComparator(AbZip::ZipOptions options) : options(options) {}
+    bool operator()(const ZipDirSortItem &, const ZipDirSortItem &) const;
+};
+
+bool ZipDirSortItemComparator::operator()(const ZipDirSortItem &n1, const ZipDirSortItem &n2) const
+{
+    const ZipDirSortItem* f1 = &n1;
+    const ZipDirSortItem* f2 = &n2;
+
+    qint64 r = 0;
+
+    if ( options.testFlag( AbZip::SortByTime ) )
+    {
+        QDateTime firstModified = f1->item.lastModifiedDate;
+        QDateTime secondModified = f2->item.lastModifiedDate;
+
+        // QDateTime by default will do all sorts of conversions on these to
+        // find timezones, which is incredibly expensive. As we aren't
+        // presenting these to the user, we don't care (at all) about the
+        // local timezone, so force them to UTC to avoid that conversion.
+        firstModified.setTimeSpec(Qt::UTC);
+        secondModified.setTimeSpec(Qt::UTC);
+
+        r = firstModified.msecsTo(secondModified);
+    }
+    else if ( options.testFlag( AbZip::SortByCompressedSize ) )
+    {
+        r = f2->item.compressedSize - f1->item.compressedSize;
+    }
+    else if ( options.testFlag( AbZip::SortByUncompressedSize ) )
+    {
+        r = f2->item.uncompressedSize - f1->item.uncompressedSize;
+    }
+    else if ( options.testFlag( AbZip::SortByType ) )
+    {
+        if ( options.testFlag( AbZip::CaseSensitive ) )
+        {
+            f1->suffix = ZipUtils::getFileSuffix( f1->item.filePath );
+            f2->suffix = ZipUtils::getFileSuffix( f2->item.filePath );
+        }
+        else
+        {
+            f1->suffix = ZipUtils::getFileSuffix( f1->item.filePath ).toLower();
+            f2->suffix = ZipUtils::getFileSuffix( f2->item.filePath ).toLower();
+        }
+        r = f1->suffix.compare(f2->suffix);
+    }
+    else
+    {
+        if ( options.testFlag( AbZip::CaseSensitive ) )
+        {
+            f1->filename = ZipUtils::getFileName( f1->item.filePath );
+            f2->filename = ZipUtils::getFileName( f2->item.filePath );
+        }
+        else
+        {
+            f1->filename = ZipUtils::getFileName( f1->item.filePath ).toLower();
+            f2->filename = ZipUtils::getFileName( f2->item.filePath ).toLower();
+        }
+
+        r = f1->filename.compare(f2->filename);
+    }
+
+    if ( options.testFlag( AbZip::SortReversed) )
+        return r > 0;
+
+    return r < 0;
+}
+
+void sortInfoList(QList<ZipFileInfo> &list, QList<ZipFileInfo>& sortedList, AbZip::ZipOptions options)
+{
+    int n = list.size();
+
+    QScopedArrayPointer<ZipDirSortItem> si(new ZipDirSortItem[n]);
+
+    for (int i = 0; i < n; ++i)
+        si[i].item = list.at(i);
+
+    std::sort(si.data(), si.data() + n, ZipDirSortItemComparator(options));
+
+    for (int i = 0; i < n; ++i)
+        sortedList.append(si[i].item);
+}

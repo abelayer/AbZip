@@ -5,7 +5,7 @@ QT -= gui
 TARGET = AbZip
 CONFIG -= app_bundle
 
-VERSION = 1.4.0
+VERSION = 1.5.0
 
 CONFIG(debug, debug|release) {
 DESTDIR = debug

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">AbZip
-   &#160;<span id="projectnumber">1.4</span>
+   &#160;<span id="projectnumber">1.5</span>
    </div>
   </td>
  </tr>
@@ -118,7 +118,15 @@ Public Types</h2></td></tr>
 <br />
 &#160;&#160;<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a58109d8c41d7075deeba22c6600feec1">useBZip2Compression</a> = 0x10000, 
 <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a79d4e798432a232ffc5c666e791a3454">useAESEncryption</a> = 0x20000, 
-<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f">useLzmaCompression</a> = 0x40000
+<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f">useLzmaCompression</a> = 0x40000, 
+<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90">SortByName</a> = 0x80000, 
+<br />
+&#160;&#160;<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc">SortByTime</a> = 0x100000, 
+<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2">SortByCompressedSize</a> = 0x200000, 
+<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534">SortByUncompressedSize</a> = 0x400000, 
+<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4">SortByType</a> = 0x800000, 
+<br />
+&#160;&#160;<a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5">SortReversed</a> = 0x1000000
 <br />
  }<tr class="memdesc:a9c4f57d6b8d9a449c2eb6c4d4e53c9d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Archive options.  <a href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5">More...</a><br /></td></tr>
 </td></tr>
@@ -405,6 +413,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setZipFileName</b> (c
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a7ca8bd61e23ce817f825c1ad9012d91f"></a>useLzmaCompression&#160;</td><td class="fielddoc">
 <p>Use Lzma compression over the default. <b>WARNING:</b> This compression method is not yet compatible with other arching software. If you need higher compression levels and compatibilty then use BZip2. </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90"></a>SortByName&#160;</td><td class="fielddoc">
+<p><a class="el" href="class_ab_zip.html#a0ac7b0fe63df09a394d7c3bdb5568c1b" title="This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled ...">findFile()</a>: Sort by file name </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc"></a>SortByTime&#160;</td><td class="fielddoc">
+<p><a class="el" href="class_ab_zip.html#a0ac7b0fe63df09a394d7c3bdb5568c1b" title="This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled ...">findFile()</a>: Sort by last modified date/time </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2"></a>SortByCompressedSize&#160;</td><td class="fielddoc">
+<p><a class="el" href="class_ab_zip.html#a0ac7b0fe63df09a394d7c3bdb5568c1b" title="This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled ...">findFile()</a>: Sort by compresses size </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534"></a>SortByUncompressedSize&#160;</td><td class="fielddoc">
+<p><a class="el" href="class_ab_zip.html#a0ac7b0fe63df09a394d7c3bdb5568c1b" title="This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled ...">findFile()</a>: Sort by uncompressed size </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4"></a>SortByType&#160;</td><td class="fielddoc">
+<p><a class="el" href="class_ab_zip.html#a0ac7b0fe63df09a394d7c3bdb5568c1b" title="This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled ...">findFile()</a>: Sort by file type </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5"></a>SortReversed&#160;</td><td class="fielddoc">
+<p><a class="el" href="class_ab_zip.html#a0ac7b0fe63df09a394d7c3bdb5568c1b" title="This searches the archive for a matching file spec. If found, then a ZipFileInfo structure is filled ...">findFile()</a>: Reverse the sort order </p>
 </td></tr>
 </table>
 
@@ -1018,7 +1044,7 @@ Options: <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If one or more matches are found, then a Qlist of <a class="el" href="class_zip_file_info.html" title="This class holds information about a file stored within the archive file. ">ZipFileInfo</a> entries are returned, else an empty list is returned.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd>Options: <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3" title="When searching or adding directories, recurse into all sub folders. ">Recursive</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542" title="On operations that add or extract multiple files, then continue if an error occures. ">ContinueOnError</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef" title="When searching for files in the archive or to add to the archive, use Case Sensitive matching...">CaseSensitive</a> </dd>
+<dl class="section see"><dt>See also</dt><dd>Options: <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3" title="When searching or adding directories, recurse into all sub folders. ">Recursive</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542" title="On operations that add or extract multiple files, then continue if an error occures. ">ContinueOnError</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef" title="When searching for files in the archive or to add to the archive, use Case Sensitive matching...">CaseSensitive</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90" title="findFile(): Sort by file name ">SortByName</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc" title="findFile(): Sort by last modified date/time ">SortByTime</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4" title="findFile(): Sort by file type ">SortByType</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2" title="findFile(): Sort by compresses size ">SortByCompressedSize</a> <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534" title="findFile(): Sort by uncompressed size ">SortByUncompressedSize</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5" title="findFile(): Reverse the sort order ">SortReversed</a> </dd>
 <dd>
 <a class="el" href="class_ab_zip.html#a80724c61b6812aaea06f575860bed8e6" title="This allows you to set specific name filters when adding, extractinmg or searching for files...">setNameFilters()</a>; </dd></dl>
 
@@ -1064,7 +1090,7 @@ Options: <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If one or more matches are found, then a Qlist of <a class="el" href="class_zip_file_info.html" title="This class holds information about a file stored within the archive file. ">ZipFileInfo</a> entries are returned, else an empty list is returned.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd>Options: <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3" title="When searching or adding directories, recurse into all sub folders. ">Recursive</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542" title="On operations that add or extract multiple files, then continue if an error occures. ">ContinueOnError</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef" title="When searching for files in the archive or to add to the archive, use Case Sensitive matching...">CaseSensitive</a> </dd>
+<dl class="section see"><dt>See also</dt><dd>Options: <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a23555db8b40ecaf3966a205023b515e3" title="When searching or adding directories, recurse into all sub folders. ">Recursive</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a8da32dae1589f05f6e1eaf2a77353542" title="On operations that add or extract multiple files, then continue if an error occures. ">ContinueOnError</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a257e58b9099305375be6f8cf0cae3cef" title="When searching for files in the archive or to add to the archive, use Case Sensitive matching...">CaseSensitive</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5adb8a6c0b6537c00c1c1ad0b5d4d0ba90" title="findFile(): Sort by file name ">SortByName</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ac2b67e6ea028f8c0d442560918722dbc" title="findFile(): Sort by last modified date/time ">SortByTime</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a358b96ea1a56b19821d280ca474905b4" title="findFile(): Sort by file type ">SortByType</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5a0fb0591a2d85f25370ac37cfcdfe30b2" title="findFile(): Sort by compresses size ">SortByCompressedSize</a> <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae7c704a93d3e5b1b44533cf11d460534" title="findFile(): Sort by uncompressed size ">SortByUncompressedSize</a>, <a class="el" href="class_ab_zip.html#a9c4f57d6b8d9a449c2eb6c4d4e53c9d5ae3efe2a40e67d7e71933846a2f3c08e5" title="findFile(): Reverse the sort order ">SortReversed</a> </dd>
 <dd>
 <a class="el" href="class_ab_zip.html#a80724c61b6812aaea06f575860bed8e6" title="This allows you to set specific name filters when adding, extractinmg or searching for files...">setNameFilters()</a>; </dd></dl>
 

@@ -47,7 +47,7 @@
  * name filters to this search if you like.
   \verbatim
 	AbZip zip( "theArchive.zip" );
-	QList<ZipFileInfo> list = zip.findFile( "*.pdf", AbZip::Recursive );
+	QList<ZipFileInfo> list = zip.findFile( "*.pdf", AbZip::Recursive | AbZip::SortByTime );
 	zip.close();
  \endverbatim
 

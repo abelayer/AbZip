@@ -60,7 +60,7 @@ LocalFileHeader& LocalFileHeader::operator=(const LocalFileHeader& other)
     if(&other == this)
         return *this;
 
-    //signature = other.signature;
+    signature = other.signature;
     versionNeeded = other.versionNeeded;
     generalFlag = other.generalFlag;
     compressionMethod = other.compressionMethod;

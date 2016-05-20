@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">AbZip
-   &#160;<span id="projectnumber">1.4</span>
+   &#160;<span id="projectnumber">1.5</span>
    </div>
   </td>
  </tr>
@@ -64,7 +64,7 @@ Examples</h1>
     qDebug() &lt;&lt; zip.errorCount() &lt;&lt; "errors occured.\n" &lt;&lt; zip.errorString();
    zip.close();
 </pre><p>Search for all PDF files within an archive. Use setFilterNames() to add more name filters to this search if you like. </p><pre class="fragment">   AbZip zip( "theArchive.zip" );
-   QList&lt;ZipFileInfo&gt; list = zip.findFile( "*.pdf", AbZip::Recursive );
+   QList&lt;ZipFileInfo&gt; list = zip.findFile( "*.pdf", AbZip::Recursive | AbZip::SortByTime );
    zip.close();
 </pre><h1><a class="anchor" id="error-handling"></a>
 Error handling</h1>

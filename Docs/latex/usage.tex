@@ -32,7 +32,7 @@ Extract all files from the archive \begin{DoxyVerb}   AbZip zip( "theArchive.zip
 
 
 Search for all P\+DF files within an archive. Use set\+Filter\+Names() to add more name filters to this search if you like. \begin{DoxyVerb}   AbZip zip( "theArchive.zip" );
-   QList<ZipFileInfo> list = zip.findFile( "*.pdf", AbZip::Recursive );
+   QList<ZipFileInfo> list = zip.findFile( "*.pdf", AbZip::Recursive | AbZip::SortByTime );
    zip.close();
 \end{DoxyVerb}
 \hypertarget{usage_error-handling}{}\section{Error handling}\label{usage_error-handling}

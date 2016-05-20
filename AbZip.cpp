@@ -254,6 +254,11 @@ void AbZipPrivate::flushAndClose()
         ioDevice->close();
 }
 
+
+
+
+
+
 QList<ZipFileInfo> AbZipPrivate::findFile( AbZip& zip, const QString& filename,
                                   const QString& root, AbZip::ZipOptions options )
 {
@@ -277,11 +282,26 @@ QList<ZipFileInfo> AbZipPrivate::findFile( AbZip& zip, const QString& filename,
         else
         {
             // Fast Find the file by direct path/name
-            CentralDirFileHeader* header =  centralDir->findFile( filename, options );
+            QString pathFile = filename;
+            if ( !root.isEmpty() )
+                pathFile = root + "/" + filename;
+
+            CentralDirFileHeader* header =  centralDir->findFile( pathFile, options );
             if ( header )
             {
                 list.append( ZipFileInfo(header) );
             }
+        }
+
+
+        // Sort?
+        if ( list.size() > 1 &&
+             (options & (AbZip::SortByCompressedSize | AbZip::SortByUncompressedSize | AbZip::SortByType |
+                        AbZip::SortByTime | AbZip::SortByName ) ))
+        {
+            QList<ZipFileInfo> sortedList;
+            sortInfoList( list,  sortedList, options );
+            return sortedList;
         }
     }
 
@@ -1031,6 +1051,9 @@ bool AbZipPrivate::commitDeletedFiles()
     {
         // Copy the temp file back to original
         QFile::remove(zipName);
+
+        // close the temp file before we copy it
+        tmpFile.close();
 
         // Copy temp file back to this zip
         if ( !tmpFile.copy( zipName ) )

@@ -124,9 +124,17 @@ public:
         useBZip2Compression    = 0x10000,   ///< For the use of BZip2 compression over the default Deflate compression.
                                             /// BZip2 give a much higher compression ratio but takes longer.
         useAESEncryption       = 0x20000,   ///< Use WinZip AES strong encryption over the default crc encryption
-        useLzmaCompression     = 0x40000    ///< Use Lzma compression over the default. \b WARNING: This compression
+        useLzmaCompression     = 0x40000,   ///< Use Lzma compression over the default. \b WARNING: This compression
                                             /// method is not yet compatible with other arching software. If you need
                                             /// higher compression levels and compatibilty then use BZip2.
+
+        SortByName             = 0x80000,   ///< findFile(): Sort by file name
+        SortByTime             = 0x100000,  ///< findFile(): Sort by last modified date/time
+        SortByCompressedSize   = 0x200000,  ///< findFile(): Sort by compresses size
+        SortByUncompressedSize = 0x400000,  ///< findFile(): Sort by uncompressed size
+        SortByType             = 0x800000,  ///< findFile(): Sort by file type
+        SortReversed           = 0x1000000  ///< findFile(): Reverse the sort order
+
         };
         Q_DECLARE_FLAGS(ZipOptions, Option)
 
@@ -318,7 +326,8 @@ public:
      * @param options Options use for the search (e.g. Recursive, CaseSensitive )
      * @return If one or more matches are found, then a Qlist of ZipFileInfo entries are returned, else an empty list is returned.
      *
-     * \sa Options: Recursive, ContinueOnError, CaseSensitive
+     * \sa Options: Recursive, ContinueOnError, CaseSensitive, SortByName, SortByTime, SortByType, SortByCompressedSize
+     * SortByUncompressedSize, SortReversed
      * \sa setNameFilters();
      */
     QList<ZipFileInfo> findFile( const QString& filename, ZipOptions options = Recursive );
@@ -331,7 +340,8 @@ public:
      * @param options Options use for the search (e.g. Recursive, CaseSensitive )
      * @return If one or more matches are found, then a Qlist of ZipFileInfo entries are returned, else an empty list is returned.
      *
-     * \sa Options: Recursive, ContinueOnError, CaseSensitive
+     * \sa Options: Recursive, ContinueOnError, CaseSensitive, SortByName, SortByTime, SortByType, SortByCompressedSize
+     * SortByUncompressedSize, SortReversed
      * \sa setNameFilters();
      */
     QList<ZipFileInfo> findFile( const QString& filename, const QString& root, ZipOptions options = Recursive );

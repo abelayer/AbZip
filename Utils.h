@@ -35,6 +35,8 @@ namespace ZipUtils {
 /// just extract the filename part only from a full path
 QString getFileName( const QString& strFullFile);
 
+QString getFileSuffix( const QString& strFullFile);
+
 QString stripDriveLetter( const QString& name );
 
 /// Convert all path serarators into /

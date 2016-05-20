@@ -20,7 +20,7 @@
  * - Rename files within the archive.
  * - Extract one or more files
  * - Extract based on file name filters
- * - Search for files, again using wildcard filters
+ * - Search for files, again using wildcard filters and apply sorting
  * - Use Strong AES encryption instead of the default Pkware CRC base encryption
  * - Supports 64bit archives.
  * - Additional compression methods can easily be created and added (Currently I've

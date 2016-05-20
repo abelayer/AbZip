@@ -104,4 +104,6 @@ private:
     friend class AbZipPrivate;
 };
 
+void sortInfoList(QList<ZipFileInfo> &list, QList<ZipFileInfo>& sortedList, AbZip::ZipOptions options);
+
 #endif

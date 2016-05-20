@@ -44,6 +44,7 @@ void ZipCentralDir::reset()
 {
     qDeleteAll( entries );
     entries.clear();
+    sortedEntries.clear();
 
     startOfEndOfCD = -1;
     if ( endOfCentralDir64 )
